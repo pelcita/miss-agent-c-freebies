@@ -41,33 +41,114 @@ from pdf_generator import generate_pdf
 
 # ── HTML generieren ─────────────────────────────────────────────
 
-DEFAULT_BENEFITS = [
-    ("🎯", "Sofort einsetzbar", "Keine Vorkenntnisse nötig — öffnen und loslegen."),
-    ("⚡", "Zeitsparend", "Was andere Stunden kostet, schaffst du in Minuten."),
-    ("🔥", "Praxiserprobt", "Getestet und optimiert für echte Ergebnisse."),
-]
-
-BENEFIT_HTML_TEMPLATE = """            <div class="benefit">
-                <div class="benefit-icon">{icon}</div>
-                <div class="benefit-text">
-                    <h3>{title}</h3>
-                    <p>{desc}</p>
-                </div>
-            </div>"""
+DEFAULT_TAGS = ["Sofort einsetzbar", "Praxiserprobt", "Kostenlos"]
 
 
-def generate_benefits_html(benefits=None):
-    """Erzeugt HTML für die Benefits-Sektion."""
-    if benefits is None:
-        benefits = DEFAULT_BENEFITS
-    return "\n".join(
-        BENEFIT_HTML_TEMPLATE.format(icon=b[0], title=b[1], desc=b[2])
-        for b in benefits
-    )
+def render_block_html(block):
+    """Rendert einen einzelnen Content-Block als HTML."""
+    block_type = block.get("type", "text")
+
+    if block_type == "text":
+        return f'        <p>{block["content"]}</p>'
+
+    elif block_type == "subtitle":
+        return f'        <h3>{block["content"]}</h3>'
+
+    elif block_type == "bullets":
+        items = "\n".join(f'            <li>{item}</li>' for item in block["items"])
+        return f'        <ul class="bullet-list">\n{items}\n        </ul>'
+
+    elif block_type == "numbered":
+        items = "\n".join(f'            <li>{item}</li>' for item in block["items"])
+        return f'        <ol class="numbered-list">\n{items}\n        </ol>'
+
+    elif block_type == "tip":
+        return (
+            f'        <div class="tip-box">\n'
+            f'            <p><strong>Tipp:</strong> {block["content"]}</p>\n'
+            f'        </div>'
+        )
+
+    elif block_type == "warning":
+        return (
+            f'        <div class="warning-box">\n'
+            f'            <p><strong>Wichtig:</strong> {block["content"]}</p>\n'
+            f'        </div>'
+        )
+
+    elif block_type == "prompt":
+        label = block.get("label", "Prompt")
+        return (
+            f'        <div class="prompt-box">\n'
+            f'            <div class="prompt-box-header">\n'
+            f'                <span>{label}</span>\n'
+            f'                <button class="copy-btn">Kopieren</button>\n'
+            f'            </div>\n'
+            f'            <div class="prompt-box-content">{block["content"]}</div>\n'
+            f'        </div>'
+        )
+
+    elif block_type == "cards":
+        cards_html = ""
+        for card in block["items"]:
+            icon = card.get("icon", "")
+            cards_html += (
+                f'            <div class="card">\n'
+                f'                <div class="card-icon">{icon}</div>\n'
+                f'                <h4>{card["title"]}</h4>\n'
+                f'                <p>{card.get("desc", "")}</p>\n'
+                f'            </div>\n'
+            )
+        return f'        <div class="card-grid">\n{cards_html}        </div>'
+
+    elif block_type == "spacer":
+        return '        <div class="divider"></div>'
+
+    return ""
 
 
-def generate_html(name, title, keyword, description=None, benefits=None, downloads="500"):
-    """Erzeugt die Landing Page HTML aus dem Template."""
+def render_sections_html(sections):
+    """Rendert alle Sektionen als HTML mit Nummerierung."""
+    html_parts = []
+    for i, section in enumerate(sections, 1):
+        section_id = f"section-{i}"
+        blocks_html = "\n".join(render_block_html(b) for b in section.get("blocks", []))
+        section_html = (
+            f'    <section class="section" id="{section_id}">\n'
+            f'        <div class="section-header">\n'
+            f'            <div class="section-number">{i}</div>\n'
+            f'            <h2>{section["title"]}</h2>\n'
+            f'        </div>\n'
+            f'{blocks_html}\n'
+            f'    </section>'
+        )
+        html_parts.append(section_html)
+    return "\n\n".join(html_parts)
+
+
+def render_toc_html(sections):
+    """Rendert das Inhaltsverzeichnis."""
+    items = []
+    for i, section in enumerate(sections, 1):
+        items.append(
+            f'                <li>\n'
+            f'                    <span class="toc-num">{i}</span>\n'
+            f'                    <a href="#section-{i}">{section["title"]}</a>\n'
+            f'                </li>'
+        )
+    return "\n".join(items)
+
+
+def render_tags_html(tags=None):
+    """Rendert die Tags im Hero."""
+    if tags is None:
+        tags = DEFAULT_TAGS
+    return "\n".join(f'            <span class="hero-tag">{t}</span>' for t in tags)
+
+
+def generate_html(name, title, keyword, description=None, sections=None,
+                  tags=None, **kwargs):
+    """Erzeugt die interaktive Freebie-Seite aus dem Template."""
     template_path = os.path.join(os.path.dirname(__file__), "template.html")
     with open(template_path, "r", encoding="utf-8") as f:
         html = f.read()
@@ -75,12 +156,14 @@ def generate_html(name, title, keyword, description=None, benefits=None, downloa
     if description is None:
         description = f"Hol dir jetzt kostenlos: {title}. Praxiserprobt, sofort einsetzbar."
 
+    if sections is None:
+        sections = []
+
     html = html.replace("{{TITLE}}", title)
-    html = html.replace("{{NAME}}", name)
-    html = html.replace("{{KEYWORD}}", keyword.upper())
     html = html.replace("{{DESCRIPTION}}", description)
-    html = html.replace("{{DOWNLOADS}}", str(downloads))
-    html = html.replace("{{BENEFITS}}", generate_benefits_html(benefits))
+    html = html.replace("{{TAGS}}", render_tags_html(tags))
+    html = html.replace("{{TOC}}", render_toc_html(sections))
+    html = html.replace("{{SECTIONS}}", render_sections_html(sections))
 
     return html
 
@@ -88,22 +171,26 @@ def generate_html(name, title, keyword, description=None, benefits=None, downloa
 def generate_vercel_json(name):
     """Erzeugt eine minimale vercel.json für den Unterordner."""
     return json.dumps({
-        "version": 2,
-        "builds": [{"src": "index.html", "use": "@vercel/static"}],
-        "routes": [{"src": "/(.*)", "dest": "/index.html"}]
+        "version": 2
     }, indent=2, ensure_ascii=False)
 
 
 # ── Dateien schreiben ───────────────────────────────────────────
 
-def write_freebie_files(name, title, keyword, description=None, benefits=None,
-                        downloads="500", sections_file=None, skip_pdf=False):
+def write_freebie_files(name, title, keyword, description=None,
+                        sections_file=None, skip_pdf=False, tags=None, **kwargs):
     """Erzeugt den Freebie-Ordner mit allen Dateien."""
     freebie_dir = os.path.join(os.path.dirname(__file__), name)
     os.makedirs(freebie_dir, exist_ok=True)
 
+    # Sections laden
+    sections = []
+    if sections_file and os.path.exists(sections_file):
+        with open(sections_file, "r", encoding="utf-8") as f:
+            sections = json.load(f)
+
     # HTML
-    html = generate_html(name, title, keyword, description, benefits, downloads)
+    html = generate_html(name, title, keyword, description, sections=sections, tags=tags)
     html_path = os.path.join(freebie_dir, "index.html")
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(html)
@@ -142,25 +229,26 @@ def update_redirect_map(name, keyword):
         content = f.read()
 
     keyword_upper = keyword.upper()
-    entry = f'            "{keyword_upper}":  "/{name}/",'
 
     # Prüfen ob Keyword schon existiert
     if f'"{keyword_upper}"' in content:
-        print(f"✅ Redirect: {keyword_upper} → /{name}/ (bereits vorhanden)")
+        print(f"✅ Redirect: {keyword_upper} (bereits vorhanden)")
         return
+
+    # Platzhalter-URL — wird nach Vercel-Deploy mit echter URL ersetzt
+    entry = f'            "{keyword_upper}":  "https://{name}-DEPLOY-URL.vercel.app",'
 
     # Vor dem Kommentar "// Neue Freebies hier einfügen:" einfügen
     marker = "            // Neue Freebies hier einfügen:"
     if marker in content:
         content = content.replace(marker, f"{entry}\n{marker}")
     else:
-        # Fallback: vor dem FALLBACK-Kommentar einfügen
         content = content.replace("        };", f"{entry}\n        }};")
 
     with open(go_path, "w", encoding="utf-8") as f:
         f.write(content)
 
-    print(f"✅ Redirect: {keyword_upper} → /{name}/")
+    print(f"⚠️  Redirect: {keyword_upper} eingetragen — URL muss nach Deploy aktualisiert werden")
 
 
 # ── Git Push ────────────────────────────────────────────────────
@@ -307,8 +395,7 @@ def main():
     parser.add_argument("--title", required=True, help="Titel des Freebies")
     parser.add_argument("--keyword", required=True, help="ManyChat-Keyword (z.B. PROMPT)")
     parser.add_argument("--description", default=None, help="Kurzbeschreibung")
-    parser.add_argument("--downloads", default="500", help="Social Proof Zahl")
-    parser.add_argument("--sections", default=None, help="Pfad zu sections.json für PDF")
+    parser.add_argument("--sections", default=None, help="Pfad zu sections.json")
     parser.add_argument("--skip-push", action="store_true", help="Nicht zu GitHub pushen")
     parser.add_argument("--skip-pdf", action="store_true", help="Kein PDF generieren")
     parser.add_argument("--skip-manychat", action="store_true", help="ManyChat nicht updaten")
@@ -330,7 +417,6 @@ def main():
         title=args.title,
         keyword=args.keyword,
         description=args.description,
-        downloads=args.downloads,
         sections_file=args.sections,
         skip_pdf=args.skip_pdf,
     )
