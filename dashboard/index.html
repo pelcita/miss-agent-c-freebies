@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freebie Dashboard | Miss Agent C</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sky: #88BEC5;
+            --sky-light: #A4CCCE;
+            --orange: #F48225;
+            --orange-light: #f89b4f;
+            --golden: #EFA818;
+            --navy: #091440;
+            --warm-white: #FFF9ED;
+            --white: #FFFFFF;
+            --text: #091440;
+            --text-light: #3d4f6f;
+            --text-muted: #6b7a94;
+            --border: #e2e8f0;
+            --success: #22c55e;
+            --danger: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--warm-white);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ── Sidebar ──────────────────────── */
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: var(--navy);
+            color: var(--white);
+            padding: 2rem 0;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-brand {
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-brand h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .sidebar-brand p {
+            font-size: 0.75rem;
+            opacity: 0.5;
+            margin-top: 0.3rem;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1.5rem;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: white;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .nav-item.active {
+            border-left: 3px solid var(--orange);
+            padding-left: calc(1.5rem - 3px);
+        }
+
+        .nav-item svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.75rem;
+            opacity: 0.4;
+        }
+
+        /* ── Main ─────────────────────────── */
+        .main {
+            flex: 1;
+            padding: 2rem 2.5rem;
+            overflow-y: auto;
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--navy);
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--orange-light);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--sky);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: var(--sky-light);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--sky);
+            color: var(--sky);
+        }
+
+        .btn svg { width: 18px; height: 18px; }
+
+        /* ── Stats ────────────────────────── */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--navy);
+        }
+
+        .stat-card .stat-value.orange { color: var(--orange); }
+        .stat-card .stat-value.sky { color: var(--sky); }
+
+        /* ── Freebie List ─────────────────── */
+        .freebie-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .freebie-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .freebie-card:hover {
+            border-color: var(--sky);
+            box-shadow: 0 4px 16px rgba(9,20,64,0.06);
+        }
+
+        .freebie-color {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .freebie-color.sky { background: var(--sky); }
+        .freebie-color.orange { background: var(--orange); }
+
+        .freebie-info { flex: 1; }
+
+        .freebie-info h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+
+        .freebie-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .freebie-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .freebie-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .freebie-tag.live {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .freebie-tag.keyword {
+            background: #fff3e0;
+            color: var(--orange);
+        }
+
+        .freebie-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .freebie-actions a {
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .freebie-actions a:hover {
+            color: var(--orange);
+            border-color: var(--orange);
+        }
+
+        /* ── Create Form ──────────────────── */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        .form-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-card > p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text);
+            background: var(--white);
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--sky);
+            box-shadow: 0 0 0 3px rgba(136,190,197,0.15);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-group .hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        /* ── Upload Area ──────────────────── */
+        .upload-area {
+            border: 2px dashed var(--border);
+            border-radius: 14px;
+            padding: 2.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #fafbfc;
+        }
+
+        .upload-area:hover, .upload-area.dragover {
+            border-color: var(--orange);
+            background: #fff8f0;
+        }
+
+        .upload-area svg {
+            width: 40px;
+            height: 40px;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .upload-area p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .upload-area .upload-formats {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            opacity: 0.7;
+        }
+
+        .upload-area .browse {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .uploaded-file {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .uploaded-file .file-name {
+            flex: 1;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .uploaded-file .remove-file {
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        /* ── Option Cards ─────────────────── */
+        .option-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .option-card {
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .option-card:hover {
+            border-color: var(--sky);
+        }
+
+        .option-card.selected {
+            border-color: var(--orange);
+            background: #fff8f0;
+        }
+
+        .option-card .option-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .option-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.3rem;
+        }
+
+        .option-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ── Color Picker ─────────────────── */
+        .color-options {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .color-option {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .color-option:hover { transform: scale(1.1); }
+
+        .color-option.selected {
+            border-color: var(--navy);
+            box-shadow: 0 0 0 2px white, 0 0 0 4px var(--navy);
+        }
+
+        .color-option.sky { background: var(--sky); }
+        .color-option.orange { background: var(--orange); }
+        .color-option.golden { background: var(--golden); }
+
+        /* ── Generated Output ─────────────── */
+        .output-box {
+            background: var(--navy);
+            color: #a5f3fc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .output-box .copy-output {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        /* ── Mobile ───────────────────────── */
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main { padding: 1.5rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .option-cards { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-brand">
+                <h1>Miss Agent C</h1>
+                <p>Freebie Dashboard</p>
+            </div>
+            <div class="sidebar-nav">
+                <button class="nav-item active" onclick="showPage('overview')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                    Meine Freebies
+                </button>
+                <button class="nav-item" onclick="showPage('create')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    Neues Freebie
+                </button>
+            </div>
+            <div class="sidebar-footer">
+                Head Up High GmbH<br>@miss.agent.c
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main">
+
+            <!-- ═══ Page: Overview ═══ -->
+            <div id="page-overview" class="page active">
+                <div class="page-header">
+                    <div>
+                        <h2>Meine Freebies</h2>
+                        <p>Alle aktiven Freebies auf einen Blick</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="showPage('create')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Neues Freebie
+                    </button>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-label">Aktive Freebies</div>
+                        <div class="stat-value" id="stat-total">1</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Keywords aktiv</div>
+                        <div class="stat-value orange" id="stat-keywords">2</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Redirect-Service</div>
+                        <div class="stat-value sky">Live</div>
+                    </div>
+                </div>
+
+                <div class="freebie-list" id="freebie-list">
+                    <!-- Wird dynamisch befuellt -->
+                </div>
+            </div>
+
+            <!-- ═══ Page: Create ═══ -->
+            <div id="page-create" class="page">
+                <div class="page-header">
+                    <div>
+                        <h2>Neues Freebie erstellen</h2>
+                        <p>Wähle wie du dein Freebie erstellen möchtest</p>
+                    </div>
+                    <button class="btn btn-outline" onclick="showPage('overview')">Zurück</button>
+                </div>
+
+                <!-- Step 1: Methode wählen -->
+                <div class="form-card">
+                    <h3>Wie möchtest du das Freebie erstellen?</h3>
+                    <p>Du kannst eine Vorlage hochladen oder Claude recherchieren lassen.</p>
+
+                    <div class="option-cards">
+                        <div class="option-card" id="opt-upload" onclick="selectMethod('upload')">
+                            <div class="option-icon">📄</div>
+                            <h4>Vorlage hochladen</h4>
+                            <p>PDF, Screenshot oder Text als Basis verwenden</p>
+                        </div>
+                        <div class="option-card" id="opt-research" onclick="selectMethod('research')">
+                            <div class="option-icon">🔍</div>
+                            <h4>Claude recherchiert</h4>
+                            <p>Beschreib das Thema, Claude erstellt den Inhalt</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Area (nur bei Vorlage) -->
+                <div class="form-card" id="upload-section" style="display:none">
+                    <h3>Vorlage hochladen</h3>
+                    <p>Lade ein PDF, einen Screenshot oder eine Textdatei hoch die als Basis dient.</p>
+
+                    <div class="upload-area" id="upload-area" onclick="document.getElementById('file-input').click()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        <p>Datei hierher ziehen oder <span class="browse">durchsuchen</span></p>
+                        <p class="upload-formats">PDF, PNG, JPG, TXT — max 10 MB</p>
+                    </div>
+                    <input type="file" id="file-input" accept=".pdf,.png,.jpg,.jpeg,.txt,.md" style="display:none" onchange="handleFile(this)">
+                    <div id="file-preview"></div>
+                </div>
+
+                <!-- Research Area (nur bei Recherche) -->
+                <div class="form-card" id="research-section" style="display:none">
+                    <h3>Was soll Claude recherchieren?</h3>
+                    <p>Beschreib das Thema so genau wie möglich. Claude erstellt daraus den Freebie-Inhalt.</p>
+
+                    <div class="form-group">
+                        <label>Thema / Briefing</label>
+                        <textarea id="research-topic" placeholder="z.B. Erstelle ein Freebie über die 10 besten KI-Tools für Content Creator. Fokus auf kostenlose Tools, mit Vor- und Nachteilen und konkreten Anwendungsbeispielen."></textarea>
+                        <p class="hint">Je genauer dein Briefing, desto besser das Ergebnis.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2: Details -->
+                <div class="form-card">
+                    <h3>Freebie-Details</h3>
+                    <p>Diese Infos braucht der Generator.</p>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Titel</label>
+                            <input type="text" id="freebie-title" placeholder="z.B. Die ultimative Prompt-Bibliothek">
+                        </div>
+                        <div class="form-group">
+                            <label>Keyword (ManyChat)</label>
+                            <input type="text" id="freebie-keyword" placeholder="z.B. PROMPT" style="text-transform: uppercase">
+                            <p class="hint">Das Wort das Follower kommentieren</p>
+                        </div>
+                        <div class="form-group full">
+                            <label>Beschreibung</label>
+                            <textarea id="freebie-desc" placeholder="Kurze Beschreibung für den Hero-Bereich..." style="min-height:60px"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Header-Farbe</label>
+                            <div class="color-options">
+                                <div class="color-option sky selected" data-color="sky" onclick="selectColor(this)"></div>
+                                <div class="color-option orange" data-color="orange" onclick="selectColor(this)"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Tags (optional)</label>
+                            <input type="text" id="freebie-tags" placeholder="z.B. KI-Tools, Kostenlos, 2026">
+                            <p class="hint">Komma-getrennt</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Generate -->
+                <div class="form-card">
+                    <h3>Claude Code Befehl</h3>
+                    <p>Kopiere diesen Befehl und füge ihn in Claude Code ein. Claude baut dein Freebie und deployed es automatisch.</p>
+
+                    <button class="btn btn-primary" onclick="generateCommand()" style="margin-bottom:1rem">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        Befehl generieren
+                    </button>
+
+                    <div id="command-output" style="display:none">
+                        <div class="output-box" id="command-text">
+                            <button class="copy-output" onclick="copyCommand()">Kopieren</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // ── Freebie Data ─────────────────────
+        const FREEBIES = [
+            {
+                name: "prompt-bibliothek",
+                title: "Die ultimative Prompt-Bibliothek",
+                keyword: "PROMPT",
+                desc: "50+ getestete KI-Prompts",
+                url: "https://prompt-bibliothek-five.vercel.app",
+                color: "sky",
+                status: "live",
+                date: "2026-04-12"
+            }
+        ];
+
+        // ── Page Navigation ──────────────────
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + page).classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            document.querySelectorAll('.nav-item')[page === 'overview' ? 0 : 1].classList.add('active');
+        }
+
+        // ── Method Selection ─────────────────
+        let selectedMethod = null;
+
+        function selectMethod(method) {
+            selectedMethod = method;
+            document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById('opt-' + method).classList.add('selected');
+            document.getElementById('upload-section').style.display = method === 'upload' ? 'block' : 'none';
+            document.getElementById('research-section').style.display = method === 'research' ? 'block' : 'none';
+        }
+
+        // ── Color Selection ──────────────────
+        let selectedColor = 'sky';
+
+        function selectColor(el) {
+            selectedColor = el.dataset.color;
+            document.querySelectorAll('.color-option').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        // ── File Upload ──────────────────────
+        let uploadedFile = null;
+
+        const uploadArea = document.getElementById('upload-area');
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            if (e.dataTransfer.files.length) handleFileObj(e.dataTransfer.files[0]);
+        });
+
+        function handleFile(input) {
+            if (input.files.length) handleFileObj(input.files[0]);
+        }
+
+        function handleFileObj(file) {
+            uploadedFile = file;
+            document.getElementById('file-preview').innerHTML = `
+                <div class="uploaded-file">
+                    <span style="font-size:1.2rem">📎</span>
+                    <span class="file-name">${file.name} (${(file.size/1024).toFixed(0)} KB)</span>
+                    <button class="remove-file" onclick="removeFile()">Entfernen</button>
+                </div>
+            `;
+        }
+
+        function removeFile() {
+            uploadedFile = null;
+            document.getElementById('file-preview').innerHTML = '';
+            document.getElementById('file-input').value = '';
+        }
+
+        // ── Generate Command ─────────────────
+        function generateCommand() {
+            const title = document.getElementById('freebie-title').value || 'Mein Freebie';
+            const keyword = (document.getElementById('freebie-keyword').value || 'FREEBIE').toUpperCase();
+            const desc = document.getElementById('freebie-desc').value || '';
+            const tags = document.getElementById('freebie-tags').value || '';
+            const slug = title.toLowerCase()
+                .replace(/[äÄ]/g, 'ae').replace(/[öÖ]/g, 'oe').replace(/[üÜ]/g, 'ue')
+                .replace(/ß/g, 'ss').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+            let cmd = '';
+
+            if (selectedMethod === 'research') {
+                const topic = document.getElementById('research-topic').value || '';
+                cmd = `Recherchiere zum Thema und erstelle ein komplettes Freebie:
+
+Thema: ${topic}
+
+Freebie-Details:
+- Name: ${slug}
+- Titel: ${title}
+- Keyword: ${keyword}
+- Beschreibung: ${desc}
+- Header-Farbe: ${selectedColor}
+${tags ? '- Tags: ' + tags : ''}
+
+Bitte:
+1. Recherchiere das Thema und erstelle eine sections.json mit mindestens 5 Sektionen
+2. Generiere die Freebie-Seite mit generate.py
+3. Deploye auf Vercel
+4. Aktualisiere den Redirect-Service
+5. Gib mir die fertige URL`;
+            } else if (selectedMethod === 'upload' && uploadedFile) {
+                cmd = `Erstelle ein Freebie basierend auf der hochgeladenen Vorlage:
+
+Vorlage: ${uploadedFile.name}
+(Die Datei liegt in meinem Downloads-Ordner)
+
+Freebie-Details:
+- Name: ${slug}
+- Titel: ${title}
+- Keyword: ${keyword}
+- Beschreibung: ${desc}
+- Header-Farbe: ${selectedColor}
+${tags ? '- Tags: ' + tags : ''}
+
+Bitte:
+1. Lies die Vorlage und extrahiere die Inhalte
+2. Erstelle eine sections.json daraus
+3. Generiere die Freebie-Seite mit generate.py
+4. Deploye auf Vercel
+5. Aktualisiere den Redirect-Service
+6. Gib mir die fertige URL`;
+            } else {
+                cmd = `Erstelle ein neues Freebie:
+
+- Name: ${slug}
+- Titel: ${title}
+- Keyword: ${keyword}
+- Beschreibung: ${desc}
+- Header-Farbe: ${selectedColor}
+${tags ? '- Tags: ' + tags : ''}
+
+Bitte:
+1. Erstelle eine sections.json mit passendem Inhalt
+2. Generiere die Freebie-Seite mit generate.py
+3. Deploye auf Vercel
+4. Aktualisiere den Redirect-Service
+5. Gib mir die fertige URL`;
+            }
+
+            document.getElementById('command-text').textContent = cmd;
+            document.getElementById('command-output').style.display = 'block';
+
+            // Re-add copy button
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'copy-output';
+            copyBtn.textContent = 'Kopieren';
+            copyBtn.onclick = copyCommand;
+            document.getElementById('command-text').appendChild(copyBtn);
+        }
+
+        function copyCommand() {
+            const text = document.getElementById('command-text').textContent.replace('Kopieren', '').trim();
+            navigator.clipboard.writeText(text).then(() => {
+                document.querySelector('.copy-output').textContent = 'Kopiert!';
+                setTimeout(() => {
+                    document.querySelector('.copy-output').textContent = 'Kopieren';
+                }, 2000);
+            });
+        }
+
+        // ── Render Freebie List ───────────────
+        function renderFreebies() {
+            const list = document.getElementById('freebie-list');
+            list.innerHTML = FREEBIES.map(f => `
+                <div class="freebie-card">
+                    <div class="freebie-color ${f.color}">📄</div>
+                    <div class="freebie-info">
+                        <h3>${f.title}</h3>
+                        <p>${f.desc}</p>
+                        <div class="freebie-meta">
+                            <span class="freebie-tag live">Live</span>
+                            <span class="freebie-tag keyword">${f.keyword}</span>
+                        </div>
+                    </div>
+                    <div class="freebie-actions">
+                        <a href="${f.url}" target="_blank">Ansehen</a>
+                        <a href="https://go-bay.vercel.app/go/${f.keyword}" target="_blank">Redirect</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        renderFreebies();
+    </script>
+</body>
+</html>
