@@ -1,0 +1,59 @@
+[
+    {
+        "title": "Was ist diese Prompt-Bibliothek?",
+        "blocks": [
+            {"type": "text", "content": "Diese Bibliothek enthält 50+ getestete Prompts, die du sofort für dein Business einsetzen kannst. Jeder Prompt wurde von Miss Agent C persönlich getestet und optimiert."},
+            {"type": "tip", "content": "Kopiere die Prompts direkt und passe nur die [Platzhalter] an dein Business an."}
+        ]
+    },
+    {
+        "title": "Content-Erstellung",
+        "blocks": [
+            {"type": "subtitle", "content": "Instagram Captions"},
+            {"type": "prompt", "content": "Schreibe eine Instagram Caption für [THEMA]. Zielgruppe: [ZIELGRUPPE]. Ton: inspirierend aber authentisch. Füge 3 relevante Hashtags hinzu und einen Call-to-Action der zum Kommentieren einlädt."},
+            {"type": "spacer"},
+            {"type": "subtitle", "content": "Reel-Skripte"},
+            {"type": "prompt", "content": "Erstelle ein 60-Sekunden Reel-Skript über [THEMA]. Hook in den ersten 3 Sekunden. Struktur: Problem → Lösung → CTA. Halte es conversational und nutze kurze Sätze."},
+            {"type": "spacer"},
+            {"type": "subtitle", "content": "Story-Sequenzen"},
+            {"type": "prompt", "content": "Plane eine 5-teilige Instagram Story-Sequenz zum Thema [THEMA]. Slide 1: Hook/Frage. Slide 2-4: Wertvoller Content. Slide 5: CTA mit Umfrage-Sticker."}
+        ]
+    },
+    {
+        "title": "E-Mail Marketing",
+        "blocks": [
+            {"type": "subtitle", "content": "Welcome-Sequenz"},
+            {"type": "prompt", "content": "Schreibe eine 3-teilige Welcome-E-Mail-Sequenz für [BUSINESS]. E-Mail 1: Persönliche Begrüßung + Freebie-Link. E-Mail 2: Deine Geschichte + größter Tipp. E-Mail 3: Erstes Angebot mit Soft-Sell."},
+            {"type": "spacer"},
+            {"type": "subtitle", "content": "Newsletter"},
+            {"type": "prompt", "content": "Schreibe einen Newsletter über [THEMA]. Betreffzeile die neugierig macht (max 50 Zeichen). Persönlicher Einstieg. 1 konkreter Tipp mit Beispiel. CTA am Ende."},
+            {"type": "tip", "content": "Teste immer 2-3 Betreffzeilen gegeneinander — die Öffnungsrate entscheidet über den Erfolg deines Newsletters."}
+        ]
+    },
+    {
+        "title": "Business-Strategie",
+        "blocks": [
+            {"type": "subtitle", "content": "Angebotsentwicklung"},
+            {"type": "prompt", "content": "Hilf mir ein digitales Produkt zu entwickeln. Meine Zielgruppe: [ZIELGRUPPE]. Ihr größtes Problem: [PROBLEM]. Meine Expertise: [EXPERTISE]. Schlage 3 Produktideen vor mit: Name, Format, Preis, und warum es funktioniert."},
+            {"type": "spacer"},
+            {"type": "subtitle", "content": "Wettbewerbsanalyse"},
+            {"type": "prompt", "content": "Analysiere den Markt für [NISCHE]. Was machen die Top 5 Accounts anders? Welche Content-Formate performen am besten? Wo gibt es eine Lücke die ich füllen kann?"},
+            {"type": "spacer"},
+            {"type": "subtitle", "content": "Wochenplanung"},
+            {"type": "prompt", "content": "Erstelle einen Content-Plan für nächste Woche. Nische: [NISCHE]. 5 Posts (Mo-Fr). Mix aus: Educational, Behind-the-Scenes, Social Proof, Storytelling, CTA. Für jeden Post: Hook + Kernbotschaft + Format."}
+        ]
+    },
+    {
+        "title": "Bonus: KI-Automatisierung",
+        "blocks": [
+            {"type": "text", "content": "Diese Prompts helfen dir, Routineaufgaben zu automatisieren und mehr Zeit für das Wesentliche zu haben."},
+            {"type": "bullets", "items": [
+                "Nutze ChatGPT oder Claude für die Prompts",
+                "Speichere deine besten Ergebnisse als Templates",
+                "Passe die [Platzhalter] immer an dein spezifisches Business an",
+                "Iteriere: Der erste Output ist selten der beste — verfeinere mit Follow-up Prompts"
+            ]},
+            {"type": "tip", "content": "Folge @miss.agent.c auf Instagram für wöchentlich neue Prompts und KI-Tipps!"}
+        ]
+    }
+]

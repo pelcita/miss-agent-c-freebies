@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Die ultimative Prompt-Bibliothek | Miss Agent C</title>
+    <meta name="description" content="50+ getestete KI-Prompts fuer Content, E-Mail und Business - sofort einsetzbar.">
+    <meta property="og:title" content="Die ultimative Prompt-Bibliothek | Miss Agent C">
+    <meta property="og:description" content="50+ getestete KI-Prompts fuer Content, E-Mail und Business - sofort einsetzbar.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #88BEC5;          /* Sky Blue — Hauptfarbe 1 */
+            --primary-light: #A4CCCE;    /* Soft Blue */
+            --primary-dark: #6EA8B0;     /* Sky Blue dunkel */
+            --accent: #F48225;           /* Accent Orange — Hauptfarbe 2 */
+            --accent-light: #EFA818;     /* Golden */
+            --bg-dark: #FFF9ED;          /* Warm White — Hintergrund */
+            --bg-card: #FFFFFF;          /* White — Karten */
+            --bg-card-hover: #FFF3DC;    /* Warm White hover */
+            --text-primary: #2D2D2D;     /* Dunkel — Haupttext */
+            --text-secondary: #555555;   /* Grau — Sekundärtext */
+            --text-muted: #888888;       /* Muted */
+            --border: rgba(136, 190, 197, 0.3);
+            --glow: rgba(244, 130, 37, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(108, 58, 237, 0.15), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 50%, rgba(139, 92, 246, 0.08), transparent),
+                radial-gradient(ellipse 60% 40% at 20% 80%, rgba(245, 158, 11, 0.05), transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* Benefits */
+        .benefits {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .benefit:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .benefit-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .benefit-text h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .benefit-text p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center top, var(--glow), transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            position: relative;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .cta-steps {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .cta-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .step-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .cta-keyword {
+            display: inline-block;
+            background: var(--bg-dark);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .cta-keyword code {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 20px var(--glow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--glow);
+        }
+
+        .cta-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .social-proof span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .cta-steps {
+                gap: 1rem;
+            }
+
+            .benefit {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="badge">Kostenloses Freebie</div>
+            <h1>Die ultimative Prompt-Bibliothek</h1>
+            <p class="subtitle">50+ getestete KI-Prompts fuer Content, E-Mail und Business - sofort einsetzbar.</p>
+        </header>
+
+        <!-- Benefits -->
+        <section class="benefits">
+                        <div class="benefit">
+                <div class="benefit-icon">🎯</div>
+                <div class="benefit-text">
+                    <h3>Sofort einsetzbar</h3>
+                    <p>Keine Vorkenntnisse nötig — öffnen und loslegen.</p>
+                </div>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">⚡</div>
+                <div class="benefit-text">
+                    <h3>Zeitsparend</h3>
+                    <p>Was andere Stunden kostet, schaffst du in Minuten.</p>
+                </div>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">🔥</div>
+                <div class="benefit-text">
+                    <h3>Praxiserprobt</h3>
+                    <p>Getestet und optimiert für echte Ergebnisse.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>So bekommst du es kostenlos:</h2>
+            <p>In 30 Sekunden in deinem Postfach.</p>
+
+            <div class="cta-steps">
+                <div class="cta-step">
+                    <div class="step-number">1</div>
+                    <span class="step-label">Instagram</span>
+                </div>
+                <div class="cta-step">
+                    <div class="step-number">2</div>
+                    <span class="step-label">Nachricht</span>
+                </div>
+                <div class="cta-step">
+                    <div class="step-number">3</div>
+                    <span class="step-label">Fertig!</span>
+                </div>
+            </div>
+
+            <div class="cta-keyword">
+                <code>PROMPT</code>
+            </div>
+
+            <p>Schreib das Keyword an <strong>@miss.agent.c</strong> auf Instagram</p>
+
+            <a href="https://ig.me/m/miss.agent.c" class="cta-button" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                Jetzt auf Instagram holen
+            </a>
+        </section>
+
+        <!-- Social Proof -->
+        <div class="social-proof">
+            Bereits <span>500+</span> Downloads
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Miss Agent C | <a href="https://instagram.com/miss.agent.c">@miss.agent.c</a></p>
+        </footer>
+    </div>
+</body>
+</html>
