@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weiterleitung... | Miss Agent C</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFF9ED;
+            color: #091440;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            max-width: 480px;
+            box-shadow: 0 4px 24px rgba(9, 20, 64, 0.08);
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #091440;
+        }
+        p { color: #555; line-height: 1.6; }
+        .spinner {
+            width: 40px; height: 40px;
+            border: 4px solid #A4CCCE;
+            border-top: 4px solid #F48225;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 1.5rem auto;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .error { display: none; margin-top: 1.5rem; }
+        .error a {
+            display: inline-block;
+            background: #F48225;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        .footer a { color: #F48225; text-decoration: none; }
+    </style>
+    <script>
+        // Keyword → Freebie URL Mapping
+        const REDIRECTS = {
+            "PROMPT":  "/prompt-bibliothek/",
+            "FREEBIE": "/prompt-bibliothek/",
+            // Neue Freebies hier einfügen:
+            // "CLAUDE":  "/claude-code-setup/",
+            // "SKILLS":  "/ki-skills-guide/",
+        };
+
+        // Fallback-URL wenn Keyword nicht gefunden
+        const FALLBACK = "https://www.skool.com/ag3nt-c-2041/about";
+
+        function redirect() {
+            // Keyword aus URL holen: /go/PROMPT → PROMPT
+            const path = window.location.pathname;
+            const parts = path.split("/").filter(Boolean);
+            // parts = ["go", "PROMPT"] oder ["go"]
+            const keyword = parts.length > 1 ? parts[parts.length - 1].toUpperCase().trim() : null;
+
+            if (keyword && REDIRECTS[keyword]) {
+                window.location.replace(REDIRECTS[keyword]);
+            } else {
+                // Keyword unbekannt → zeige Fehlermeldung
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("error").style.display = "block";
+            }
+        }
+
+        // Kurze Verzögerung damit die Seite kurz sichtbar ist
+        setTimeout(redirect, 800);
+    </script>
+</head>
+<body>
+    <div class="card">
+        <div id="loading">
+            <h1>Einen Moment...</h1>
+            <div class="spinner"></div>
+            <p>Dein Freebie wird geladen.</p>
+        </div>
+        <div id="error" class="error">
+            <h1>Hmm, das hat nicht geklappt 🤔</h1>
+            <p>Das Keyword wurde nicht erkannt. Aber kein Problem — hier findest du alle Freebies:</p>
+            <a href="https://www.skool.com/ag3nt-c-2041/about">Zur Community</a>
+        </div>
+        <div class="footer">
+            <p>@miss.agent.c &middot; <a href="https://instagram.com/miss.agent.c">Instagram</a> &middot; <a href="https://www.skool.com/ag3nt-c-2041/about">Community</a></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -125,7 +125,42 @@ def write_freebie_files(name, title, keyword, description=None, benefits=None,
         )
         print(f"✅ PDF: {pdf_path}")
 
+    # Redirect-Service aktualisieren
+    update_redirect_map(name, keyword)
+
     return freebie_dir
+
+
+def update_redirect_map(name, keyword):
+    """Fügt ein neues Keyword → URL Mapping in go/index.html ein."""
+    go_path = os.path.join(os.path.dirname(__file__), "go", "index.html")
+    if not os.path.exists(go_path):
+        print(f"⚠️  Redirect-Service nicht gefunden: {go_path}")
+        return
+
+    with open(go_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    keyword_upper = keyword.upper()
+    entry = f'            "{keyword_upper}":  "/{name}/",'
+
+    # Prüfen ob Keyword schon existiert
+    if f'"{keyword_upper}"' in content:
+        print(f"✅ Redirect: {keyword_upper} → /{name}/ (bereits vorhanden)")
+        return
+
+    # Vor dem Kommentar "// Neue Freebies hier einfügen:" einfügen
+    marker = "            // Neue Freebies hier einfügen:"
+    if marker in content:
+        content = content.replace(marker, f"{entry}\n{marker}")
+    else:
+        # Fallback: vor dem FALLBACK-Kommentar einfügen
+        content = content.replace("        };", f"{entry}\n        }};")
+
+    with open(go_path, "w", encoding="utf-8") as f:
+        f.write(content)
+
+    print(f"✅ Redirect: {keyword_upper} → /{name}/")
 
 
 # ── Git Push ────────────────────────────────────────────────────
