@@ -26,15 +26,16 @@ PRIMARY_LIGHT = HexColor("#A4CCCE") # Soft Blue
 ACCENT = HexColor("#F48225")        # Accent Orange — Hauptfarbe 2
 GOLDEN = HexColor("#EFA818")        # Golden — Akzent
 DEEP_ORANGE = HexColor("#DE7C30")   # Deep Orange — Sekundär
-BG_DARK = HexColor("#FFF9ED")       # Warm White — Hintergrund
+NAVY = HexColor("#091440")          # Navy Blue — Headlines, Buttons, Schrift
+WARM_WHITE = HexColor("#FFF9ED")    # Warm White — PDF-Hintergrund (IMMER)
 BG_CARD = HexColor("#FFFFFF")       # White
-TEXT_PRIMARY = HexColor("#2D2D2D")  # Dunkel
-TEXT_SECONDARY = HexColor("#555555")
 TEXT_MUTED = HexColor("#888888")
 WHITE = HexColor("#FFFFFF")
-DARK_TEXT = HexColor("#2D2D2D")
-LIGHT_BG = HexColor("#FFF9ED")      # Warm White
-CARD_BG = HexColor("#F5F0E8")
+DARK_TEXT = HexColor("#091440")     # Navy als Haupttextfarbe
+
+# Pflicht-Links (müssen in jedem PDF enthalten sein)
+COMMUNITY_URL = "https://www.skool.com/ag3nt-c-2041/about"
+AFFILIATE_URL = "https://blotato.com/?ref=olgai3"
 
 
 def get_styles():
@@ -46,7 +47,7 @@ def get_styles():
         fontName="Helvetica-Bold",
         fontSize=28,
         leading=34,
-        textColor=PRIMARY,
+        textColor=NAVY,
         alignment=TA_CENTER,
         spaceAfter=12,
     ))
@@ -66,7 +67,7 @@ def get_styles():
         fontName="Helvetica-Bold",
         fontSize=20,
         leading=26,
-        textColor=PRIMARY,
+        textColor=NAVY,
         spaceBefore=20,
         spaceAfter=12,
     ))
@@ -223,10 +224,10 @@ def build_section(section, styles):
 
 
 def build_cta_page(styles):
-    """Erstellt die letzte Seite mit CTA."""
+    """Erstellt die letzte Seite mit CTA + Pflicht-Links."""
     elements = []
     elements.append(PageBreak())
-    elements.append(Spacer(1, 50 * mm))
+    elements.append(Spacer(1, 40 * mm))
 
     elements.append(Paragraph(
         "Hat dir dieses Freebie geholfen?",
@@ -241,7 +242,7 @@ def build_cta_page(styles):
             leading=20, textColor=DARK_TEXT, alignment=TA_CENTER
         )
     ))
-    elements.append(Spacer(1, 15 * mm))
+    elements.append(Spacer(1, 12 * mm))
     elements.append(HRFlowable(
         width="30%", thickness=2, color=ACCENT,
         spaceAfter=12, hAlign="CENTER"
@@ -250,8 +251,32 @@ def build_cta_page(styles):
         "Schreib mir <b>FREEBIE</b> als DM f\u00fcr das n\u00e4chste kostenlose Template!",
         ParagraphStyle(
             "CTAKeyword", fontName="Helvetica-Bold", fontSize=12,
-            leading=16, textColor=PRIMARY, alignment=TA_CENTER
+            leading=16, textColor=ACCENT, alignment=TA_CENTER
         )
+    ))
+
+    # Pflicht-Links
+    elements.append(Spacer(1, 20 * mm))
+    elements.append(HRFlowable(
+        width="60%", thickness=1, color=PRIMARY_LIGHT,
+        spaceAfter=12, hAlign="CENTER"
+    ))
+    link_style = ParagraphStyle(
+        "LinkText", fontName="Helvetica", fontSize=10,
+        leading=16, textColor=DARK_TEXT, alignment=TA_CENTER
+    )
+    elements.append(Paragraph(
+        f'Community: <a href="{COMMUNITY_URL}" color="#F48225">skool.com/ag3nt-c-2041/about</a>',
+        link_style
+    ))
+    elements.append(Paragraph(
+        f'Tool-Empfehlung: <a href="{AFFILIATE_URL}" color="#F48225">blotato.com/?ref=olgai3</a>',
+        link_style
+    ))
+    elements.append(Spacer(1, 10 * mm))
+    elements.append(Paragraph(
+        "Head Up High GmbH &middot; Olga Reyes-Busch &middot; @miss.agent.c",
+        styles["FooterText"]
     ))
 
     return elements
@@ -266,7 +291,7 @@ def add_page_footer(canvas, doc):
         A4[0] / 2, 15 * mm,
         f"@miss.agent.c  |  Seite {doc.page}"
     )
-    # Lila Linie oben
+    # Sky Blue Linie oben
     canvas.setStrokeColor(PRIMARY)
     canvas.setLineWidth(0.5)
     canvas.line(20 * mm, A4[1] - 15 * mm, A4[0] - 20 * mm, A4[1] - 15 * mm)
