@@ -724,7 +724,7 @@
                 <!-- Step 3: Deploy -->
                 <div class="form-card">
                     <h3>Freebie erstellen</h3>
-                    <p>Ein Klick — dein Freebie wird generiert, deployed und der ManyChat-Redirect aktiviert.</p>
+                    <p>Ein Klick — Claude schreibt den Inhalt, die Seite wird gebaut und deployed.</p>
 
                     <button class="btn btn-primary" id="deploy-btn" onclick="deployFreebie()" style="margin-bottom:1rem">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
@@ -842,18 +842,7 @@
 
     <script>
         // ── Freebie Data ─────────────────────
-        const FREEBIES = [
-            {
-                name: "prompt-bibliothek",
-                title: "Die ultimative Prompt-Bibliothek",
-                keyword: "PROMPT",
-                desc: "50+ getestete KI-Prompts",
-                url: "https://prompt-bibliothek-five.vercel.app",
-                color: "sky",
-                status: "live",
-                date: "2026-04-12"
-            }
-        ];
+        let FREEBIES = [];
 
         // ── Page Navigation ──────────────────
         function showPage(page) {
@@ -1173,29 +1162,62 @@ Bitte:
             return [{title: 'Überblick', blocks: blocks}];
         }
 
-        // ── Render Freebie List ───────────────
+        // ── Load & Render Freebie List ────────
+        async function loadFreebies() {
+            try {
+                const resp = await fetch('/api/freebies');
+                FREEBIES = await resp.json();
+                renderFreebies();
+                document.getElementById('stat-total').textContent = FREEBIES.length;
+            } catch (e) {
+                console.error('Freebies laden fehlgeschlagen:', e);
+            }
+        }
+
         function renderFreebies() {
             const list = document.getElementById('freebie-list');
-            list.innerHTML = FREEBIES.map(f => `
+            const colors = ['sky', 'orange', 'sky', 'orange'];
+
+            if (FREEBIES.length === 0) {
+                list.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:2rem">Noch keine Freebies erstellt. Klick auf "Neues Freebie"!</p>';
+                return;
+            }
+
+            list.innerHTML = FREEBIES.map((f, i) => `
                 <div class="freebie-card">
-                    <div class="freebie-color ${f.color}">📄</div>
+                    <div class="freebie-color ${colors[i % colors.length]}">📄</div>
                     <div class="freebie-info">
-                        <h3>${f.title}</h3>
-                        <p>${f.desc}</p>
+                        <h3>${f.title || f.name}</h3>
+                        <p>${f.sections ? f.sections + ' Sektionen' : 'Freebie'}</p>
                         <div class="freebie-meta">
                             <span class="freebie-tag live">Live</span>
-                            <span class="freebie-tag keyword">${f.keyword}</span>
                         </div>
                     </div>
                     <div class="freebie-actions">
-                        <a href="${f.url}" target="_blank">Ansehen</a>
-                        <a href="https://go-bay.vercel.app/go/${f.keyword}" target="_blank">Redirect</a>
+                        <a href="/${f.name}/index.html" target="_blank">Ansehen</a>
+                        <a href="#" onclick="deleteFreebie('${f.name}'); return false;" style="color:var(--danger)">Löschen</a>
                     </div>
                 </div>
             `).join('');
         }
 
-        renderFreebies();
+        async function deleteFreebie(name) {
+            if (!confirm('Freebie "' + name + '" wirklich löschen?')) return;
+
+            try {
+                const resp = await fetch('/api/freebies/' + name, { method: 'DELETE' });
+                const result = await resp.json();
+                if (result.success) {
+                    loadFreebies();
+                } else {
+                    alert('Fehler: ' + (result.error || 'Unbekannt'));
+                }
+            } catch (e) {
+                alert('Fehler: ' + e.message);
+            }
+        }
+
+        loadFreebies();
     </script>
 </body>
 </html>
