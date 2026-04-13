@@ -1132,10 +1132,10 @@ Bitte:
             });
         }
 
-        function copyText(elementId) {
-            const text = document.getElementById(elementId).textContent;
+        function copyText(elementId, directText) {
+            const text = directText || document.getElementById(elementId).textContent;
             navigator.clipboard.writeText(text).then(() => {
-                alert('Kopiert: ' + text);
+                alert('Kopiert!');
             });
         }
 
@@ -1188,14 +1188,14 @@ Bitte:
                     <div class="freebie-color ${colors[i % colors.length]}">📄</div>
                     <div class="freebie-info">
                         <h3>${f.title || f.name}</h3>
-                        <p>${f.sections ? f.sections + ' Sektionen' : 'Freebie'}</p>
+                        <p>${f.url ? '<span style="font-size:0.75rem;color:var(--text-muted)">' + f.url + '</span>' : 'Freebie'}</p>
                         <div class="freebie-meta">
                             <span class="freebie-tag live">Live</span>
                         </div>
                     </div>
                     <div class="freebie-actions">
-                        <a href="/${f.name}/index.html" target="_blank">Ansehen</a>
-                        <a href="#" onclick="deleteFreebie('${f.name}'); return false;" style="color:var(--danger)">Löschen</a>
+                        <a href="${f.url || '/' + f.name + '/index.html'}" target="_blank">Ansehen</a>
+                        <button onclick="copyText(null, '${f.url || ''}')" style="padding:0.5rem 0.8rem;border-radius:8px;font-size:0.8rem;font-weight:600;color:var(--orange);border:1px solid var(--border);background:none;cursor:pointer">Link</button>
                     </div>
                 </div>
             `).join('');
