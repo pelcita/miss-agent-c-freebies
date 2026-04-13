@@ -1,0 +1,142 @@
+[
+  {
+    "title": "Das CLAUDE.md Projekt-Gehirn: Dein KI-Assistent lernt dein Projekt auswendig",
+    "blocks": [
+      {"type": "text", "content": "Vergiss endlose Erklärungen in jedem Chat. Mit einer strategisch aufgebauten CLAUDE.md Datei im Root deines Projekts wird Claude sofort zum Experten für dein spezifisches Projekt. Diese Datei ist wie ein Gehirn-Download — einmal erstellt, versteht Claude deine Codebase, Standards und Ziele perfekt."},
+      {"type": "subtitle", "content": "Die 5 Kern-Bereiche deiner CLAUDE.md"},
+      {"type": "numbered", "items": [
+        "PROJECT OVERVIEW — Worum geht's? Welche Technologien? Welches Ziel?",
+        "FILE STRUCTURE — Welche Dateien sind wichtig? Was macht was?", 
+        "CODING STANDARDS — Welchen Style verwendest du? Naming Conventions?",
+        "CURRENT CONTEXT — Was machst du gerade? Welche Features entwickelst du?",
+        "TEMPLATES & PATTERNS — Wiederkehrende Code-Snippets und Strukturen"
+      ]},
+      {"type": "tip", "content": "Leg die CLAUDE.md direkt ins Root-Verzeichnis. Claude findet sie automatisch und liest sie bei jedem neuen Chat."},
+      {"type": "prompt", "content": "Erstelle eine CLAUDE.md für mein [PROJEKTTYP]-Projekt. Technologie-Stack: [TECHNOLOGIEN]. Hauptfunktion: [BESCHREIBUNG]. Analysiere meine Dateistruktur und erstelle eine vollständige Projekt-Dokumentation mit allen 5 Kern-Bereichen.", "label": "CLAUDE.md Generator"},
+      {"type": "cards", "items": [
+        {"icon": "🧠", "title": "Instant Context", "desc": "Claude versteht sofort dein Projekt ohne Nachfragen"},
+        {"icon": "⚡", "title": "Konsistenter Code", "desc": "Alle Vorschläge folgen deinen Standards automatisch"},
+        {"icon": "🎯", "title": "Fokussierte Hilfe", "desc": "Relevante Lösungen statt generische Antworten"}
+      ]}
+    ]
+  },
+  {
+    "title": "Der CLAUDE.md Template-Aufbau: So strukturierst du es richtig",
+    "blocks": [
+      {"type": "text", "content": "Eine schlechte CLAUDE.md ist nutzlos. Eine gute ist pure Magie. Hier ist die bewährte Struktur, die bei 1000+ Projekten funktioniert:"},
+      {"type": "subtitle", "content": "Der Copy-Paste Template"},
+      {"type": "prompt", "content": "# PROJECT: [PROJEKTNAME]\n\n## OVERVIEW\n- **Type**: [Web App / Mobile App / API / etc.]\n- **Tech Stack**: [Framework, Database, etc.]\n- **Purpose**: [Was macht die App?]\n- **Target Users**: [Wer nutzt es?]\n\n## FILE STRUCTURE\n```\n[Deine wichtigste Ordnerstruktur hier]\n```\n\n## CODING STANDARDS\n- **Variables**: camelCase\n- **Functions**: [Dein Standard]\n- **Files**: [Naming Convention]\n- **Comments**: [Wann und wie]\n\n## CURRENT CONTEXT\n- **Working on**: [Aktuelle Aufgabe]\n- **Next Priority**: [Was kommt als nächstes]\n- **Known Issues**: [Aktuelle Probleme]\n\n## CODE TEMPLATES\n```javascript\n[Deine Standard-Patterns hier]\n```", "label": "CLAUDE.md Basis-Template"},
+      {"type": "warning", "content": "Halt die CLAUDE.md aktuell! Veraltete Info führt zu schlechten Vorschlägen. Update sie bei größeren Änderungen."},
+      {"type": "bullets", "items": [
+        "Maximal 2-3 Seiten — Claude soll es schnell erfassen können",
+        "Konkrete Beispiele statt vage Beschreibungen",
+        "Aktuelle TODOs und Prioritäten immer drin",
+        "Code-Snippets für wiederkehrende Patterns",
+        "Links zu wichtigen Dateien oder Dokumentation"
+      ]},
+      {"type": "tip", "content": "Pro-Tipp: Füge eine 'NEVER DO' Sektion hinzu mit Anti-Patterns, die Claude vermeiden soll."}
+    ]
+  },
+  {
+    "title": "Slash Commands: Deine eigenen Claude-Superkräfte erstellen",
+    "blocks": [
+      {"type": "text", "content": "Slash Commands sind wie Hotkeys für Claude. Statt lange Prompts zu schreiben, tippst du /generate-api und Claude weiß sofort, was zu tun ist. Das Geheimnis liegt im .claude/commands/ Ordner deines Projekts."},
+      {"type": "subtitle", "content": "So erstellst du Custom Commands"},
+      {"type": "numbered", "items": [
+        "Erstelle .claude/commands/ Ordner im Projekt-Root",
+        "Für jeden Command eine .md Datei (z.B. generate-api.md)",
+        "Definiere klare Befehle mit Parametern",
+        "Claude erkennt diese automatisch als /commands"
+      ]},
+      {"type": "prompt", "content": "Erstelle mir 5 Custom Slash Commands für mein [PROJEKTTYP]-Projekt:\n\n/generate-component - Erstellt React/Vue/Angular Komponenten nach meinen Standards\n/write-test - Schreibt Unit Tests für gegebene Funktion\n/optimize-code - Analysiert und verbessert Code Performance\n/create-api - Generiert REST API Endpoints mit Validation\n/debug-error - Analysiert Fehlermeldungen und schlägt Fixes vor\n\nJeder Command soll eine eigene .md Datei im .claude/commands/ Ordner bekommen.", "label": "Custom Commands Generator"},
+      {"type": "cards", "items": [
+        {"icon": "⚡", "title": "/generate-component", "desc": "Erstellt Komponenten nach deinen exakten Standards"},
+        {"icon": "🧪", "title": "/write-test", "desc": "Generiert passende Unit Tests für jede Funktion"},
+        {"icon": "🔍", "title": "/debug-error", "desc": "Analysiert Fehler und schlägt konkrete Lösungen vor"},
+        {"icon": "📝", "title": "/document-code", "desc": "Erstellt JSDoc/TypeDoc für deine Funktionen"}
+      ]},
+      {"type": "tip", "content": "Benenne Commands nach Aktionen: /generate-, /create-, /fix-, /optimize-. Das macht sie intuitiver."}
+    ]
+  },
+  {
+    "title": "Command-Struktur: So baust du perfekte Slash Commands",
+    "blocks": [
+      {"type": "text", "content": "Ein guter Slash Command ist wie ein Mini-Experte für eine spezifische Aufgabe. Hier siehst du, wie du sie strukturierst, damit sie every single time perfekt funktionieren:"},
+      {"type": "subtitle", "content": "Anatomie eines Command Files"},
+      {"type": "prompt", "content": "# /generate-component\n\n## Purpose\nGeneriert eine neue [React/Vue/Angular] Komponente mit allen nötigen Dateien\n\n## Usage\n/generate-component [ComponentName] [type:functional|class] [props:prop1,prop2]\n\n## Template\n```javascript\n[Hier dein Standard-Template]\n```\n\n## Files to create\n- [ComponentName].jsx\n- [ComponentName].module.css\n- [ComponentName].test.js\n- index.js (export)\n\n## Standards\n- [Deine Naming Conventions]\n- [Props Validation Standards]\n- [Styling Standards]\n\n## Example\n/generate-component UserCard functional props:name,email,avatar", "label": "Command Template Structure"},
+      {"type": "bullets", "items": [
+        "PURPOSE — Was macht der Command? In einem Satz.",
+        "USAGE — Syntax mit allen Parametern und Optionen",
+        "TEMPLATE — Der Code/Structure den Claude verwenden soll",
+        "FILES TO CREATE — Welche Dateien soll Claude generieren?",
+        "STANDARDS — Spezifische Regeln für diesen Command",
+        "EXAMPLE — Mindestens ein konkretes Anwendungsbeispiel"
+      ]},
+      {"type": "warning", "content": "Commands ohne klare Parameter führen zu inkonsistenten Ergebnissen. Definiere ALLE möglichen Optionen."},
+      {"type": "tip", "content": "Teste deine Commands mit Edge Cases: Leere Parameter, Sonderzeichen, sehr lange Namen."}
+    ]
+  },
+  {
+    "title": "Das --print Flag: Headless Claude für n8n Automationen",
+    "blocks": [
+      {"type": "text", "content": "Das --print Flag ist der Game-Changer für Automationen. Claude gibt nur den finalen Code zurück, ohne Erklärungen oder Formatierung. Perfect für n8n Workflows, wo du direkt in Dateien schreiben oder APIs befeuern willst."},
+      {"type": "subtitle", "content": "Wie --print deine Workflows revolutioniert"},
+      {"type": "cards", "items": [
+        {"icon": "🔄", "title": "n8n Integration", "desc": "Output direkt in HTTP Requests oder File Operations"},
+        {"icon": "📁", "title": "Direct File Write", "desc": "Code landet ohne Umweg in deinen Projekt-Dateien"},
+        {"icon": "⚡", "title": "Zero Formatting", "desc": "Kein Markdown, keine Erklärung — nur purer Code"},
+        {"icon": "🎯", "title": "API Ready", "desc": "Perfect für REST Calls und Webhook Responses"}
+      ]},
+      {"type": "prompt", "content": "Erstelle eine React Komponente für [KOMPONENTE] mit Props [PROPS]. --print", "label": "Headless Component Generator"},
+      {"type": "text", "content": "Mit --print bekommst du nur den Code, den du brauchst. Keine ```javascript Blöcke, keine Erklärungen, keine Höflichkeitsfloskeln. Direkt ready für deine Automation Pipeline."},
+      {"type": "tip", "content": "Kombiniere --print mit Slash Commands für maximale Effizienz: /generate-api UserService --print"}
+    ]
+  },
+  {
+    "title": "n8n Workflow-Setup: Claude als Code-Generator integrieren",
+    "blocks": [
+      {"type": "text", "content": "Hier wird's richtig spicy. Mit n8n kannst du Claude zu einem vollautomatischen Code-Generator machen. Trigger, Generate, Deploy — alles ohne manuellen Eingriff."},
+      {"type": "subtitle", "content": "Der Complete Automation Flow"},
+      {"type": "numbered", "items": [
+        "TRIGGER — Webhook oder Scheduler startet den Workflow",
+        "CLAUDE REQUEST — HTTP Node sendet Prompt mit --print Flag",
+        "FILE OPERATIONS — Code wird direkt in Projekt-Dateien geschrieben",
+        "GIT COMMIT — Automatischer Commit mit Generated Code",
+        "DEPLOYMENT — Optional: Trigger für Build & Deploy Pipeline"
+      ]},
+      {"type": "prompt", "content": "Erstelle mir einen n8n Workflow der:\n1. Auf GitHub Issues mit Label 'generate-code' reagiert\n2. Den Issue-Text als Prompt an Claude sendet (mit --print)\n3. Den generierten Code in die entsprechende Datei schreibt\n4. Einen Pull Request mit dem Code erstellt\n5. Das Issue automatisch schließt\n\nClaud Prompt Format: 'Generiere [ISSUE_CONTENT] basierend auf meiner CLAUDE.md --print'", "label": "GitHub Integration Workflow"},
+      {"type": "cards", "items": [
+        {"icon": "🎣", "title": "Webhook Trigger", "desc": "GitHub, GitLab, oder Custom Hooks starten Generation"},
+        {"icon": "🤖", "title": "Claude API Call", "desc": "HTTP Request mit deinem Prompt und --print Flag"},
+        {"icon": "💾", "title": "File Write", "desc": "Direct write in deine Projekt-Struktur"},
+        {"icon": "🚀", "title": "Auto Deploy", "desc": "Trigger für Build Pipeline nach Code Generation"}
+      ]},
+      {"type": "warning", "content": "Teste Automationen immer in einem separaten Branch. Code-Generation kann unerwartete Ergebnisse haben."},
+      {"type": "tip", "content": "Nutze n8n's Error Handling um bei fehlerhafter Generation automatisch ein Issue zu erstellen."}
+    ]
+  },
+  {
+    "title": "Pro-Tricks: Diese Kombinationen machen dich unschlagbar",
+    "blocks": [
+      {"type": "text", "content": "Jetzt kommt das Finale — die Kombination aller drei Tricks zu einem System, das dich 10x produktiver macht. Diese Setups nutzen nur die Profis:"},
+      {"type": "subtitle", "content": "The Ultimate Development Stack"},
+      {"type": "cards", "items": [
+        {"icon": "🧠", "title": "Smart Context", "desc": "CLAUDE.md + Commands = Claude kennt dein Projekt perfekt"},
+        {"icon": "⚡", "title": "Lightning Fast", "desc": "Slash Commands + --print = Instant Code ohne Gequatsche"},
+        {"icon": "🔄", "title": "Full Automation", "desc": "--print + n8n = Complete hands-off Development"}
+      ]},
+      {"type": "prompt", "content": "Setup für mich das Ultimate Claude Development Environment:\n\n1. Analysiere mein [PROJEKTTYP] Projekt und erstelle eine optimale CLAUDE.md\n2. Generiere 10 Custom Slash Commands für meine häufigsten Aufgaben\n3. Erstelle n8n Workflow Templates für:\n   - Automatische Component Generation aus Figma Comments\n   - Code Review Automation mit GitHub Integration\n   - Auto-Testing Pipeline mit Claude-generated Tests\n\nAlles soll mit --print Flag für seamless Integration funktionieren.", "label": "Ultimate Setup Generator"},
+      {"type": "numbered", "items": [
+        "CLAUDE.md mit deinem kompletten Projekt-Context erstellen",
+        "Mindestens 8-10 Slash Commands für deine Daily Tasks definieren", 
+        "n8n Workflow für automatische Code-Generation bei Git Events",
+        "Testing Pipeline die Claude für Unit Test Generation nutzt",
+        "Documentation Automation — Claude schreibt deine Docs",
+        "Error Monitoring mit automatic Fix Suggestions via Claude"
+      ]},
+      {"type": "tip", "content": "Start mit einem Command pro Tag. Nach einer Woche hast du ein komplettes Arsenal an Claude-Superkräften."},
+      {"type": "warning", "content": "Diese Power comes with responsibility. Immer Code reviewen bevor es in Production geht, auch wenn's von Claude kommt."},
+      {"type": "text", "content": "Mit diesen drei Insider-Tricks verwandelst du Claude von einem Chat-Bot zu deinem persönlichen Senior Developer. Tausende Entwickler nutzen bereits diese Methoden — jetzt bist du auch dabei. 🚀"}
+    ]
+  }
+]

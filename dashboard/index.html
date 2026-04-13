@@ -692,9 +692,18 @@
                             <input type="text" id="freebie-keyword" placeholder="z.B. PROMPT" style="text-transform: uppercase">
                             <p class="hint">Das Wort das Follower kommentieren</p>
                         </div>
-                        <div class="form-group full">
+                        <div class="form-group full" id="desc-group">
                             <label>Beschreibung</label>
                             <textarea id="freebie-desc" placeholder="Kurze Beschreibung für den Hero-Bereich..." style="min-height:60px"></textarea>
+                            <p class="hint">Nur bei "Vorlage hochladen" — bei "Claude recherchiert" wird die aus dem Briefing erstellt.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Ausgabe-Format</label>
+                            <div class="color-options">
+                                <div class="color-option sky selected" data-format="vercel" onclick="selectFormat(this)" style="display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:white;width:auto;padding:0.5rem 1rem;height:auto">VERCEL</div>
+                                <div class="color-option orange" data-format="pdf" onclick="selectFormat(this)" style="display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:white;width:auto;padding:0.5rem 1rem;height:auto">PDF</div>
+                            </div>
+                            <p class="hint">Vercel = interaktive Webseite | PDF = für Skool Classroom</p>
                         </div>
                         <div class="form-group">
                             <label>Header-Farbe</label>
@@ -731,18 +740,66 @@
                         </div>
                     </div>
 
-                    <!-- Success -->
+                    <!-- Success: Vercel -->
                     <div id="deploy-success" style="display:none">
-                        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:1.5rem;text-align:center">
-                            <div style="font-size:2.5rem;margin-bottom:0.5rem">🎉</div>
-                            <h3 style="color:#16a34a;margin-bottom:0.5rem">Freebie ist live!</h3>
-                            <p id="deploy-url" style="margin-bottom:1rem"></p>
-                            <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap">
+                        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:1.5rem">
+                            <div style="text-align:center">
+                                <div style="font-size:2.5rem;margin-bottom:0.5rem">🎉</div>
+                                <h3 style="color:#16a34a;margin-bottom:0.5rem">Freebie ist live!</h3>
+                                <p id="deploy-url" style="margin-bottom:1rem"></p>
+                            </div>
+
+                            <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
                                 <a id="link-freebie" href="#" target="_blank" class="btn btn-primary">Freebie ansehen</a>
-                                <a id="link-redirect" href="#" target="_blank" class="btn btn-secondary">Redirect testen</a>
                                 <button class="btn btn-outline" onclick="copyUrl()">URL kopieren</button>
                             </div>
-                            <p id="deploy-keyword" style="margin-top:1rem;font-size:0.85rem;color:var(--text-muted)"></p>
+
+                            <!-- ManyChat Section -->
+                            <div style="background:var(--warm-white);border-radius:12px;padding:1.2rem;margin-top:1rem">
+                                <h4 style="font-family:'Playfair Display',serif;margin-bottom:0.75rem;color:var(--navy)">ManyChat einrichten</h4>
+                                <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Dupliziere deinen Master-Flow, trage Keyword + Link ein:</p>
+
+                                <div style="display:grid;grid-template-columns:auto 1fr auto;gap:0.5rem 1rem;align-items:center;font-size:0.9rem;margin-bottom:1rem">
+                                    <strong>Keyword:</strong>
+                                    <code id="mc-keyword" style="background:#e2e8f0;padding:0.3rem 0.8rem;border-radius:6px;font-weight:700"></code>
+                                    <button class="btn btn-outline" onclick="copyText('mc-keyword')" style="padding:0.3rem 0.8rem;font-size:0.75rem">Kopieren</button>
+
+                                    <strong>Link:</strong>
+                                    <code id="mc-link" style="background:#e2e8f0;padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;word-break:break-all"></code>
+                                    <button class="btn btn-outline" onclick="copyText('mc-link')" style="padding:0.3rem 0.8rem;font-size:0.75rem">Kopieren</button>
+                                </div>
+
+                                <a href="https://app.manychat.com/fb582071/cms?path=/&field=modified&order=desc" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center">
+                                    ManyChat Automations öffnen
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success: PDF -->
+                    <div id="pdf-success" style="display:none">
+                        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:1.5rem">
+                            <div style="text-align:center">
+                                <div style="font-size:2.5rem;margin-bottom:0.5rem">📄</div>
+                                <h3 style="color:#16a34a;margin-bottom:0.5rem">PDF ist fertig!</h3>
+                                <p id="pdf-title" style="margin-bottom:0.5rem;font-weight:600"></p>
+                                <p id="pdf-desc" style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem"></p>
+                            </div>
+
+                            <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
+                                <a id="link-pdf" href="#" download class="btn btn-primary">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    PDF herunterladen
+                                </a>
+                            </div>
+
+                            <div style="background:var(--warm-white);border-radius:12px;padding:1.2rem;margin-top:1rem">
+                                <h4 style="font-family:'Playfair Display',serif;margin-bottom:0.75rem;color:var(--navy)">In Skool hochladen</h4>
+                                <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Lade das PDF in deinen Classroom hoch:</p>
+                                <a href="https://www.skool.com/ag3nt-c-2041/classroom/d845b48a?md=a8d9e3cfc1534271990c5c56fcc1ed0a" target="_blank" class="btn btn-secondary" style="width:100%;justify-content:center">
+                                    Skool Classroom öffnen
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -805,6 +862,16 @@
             document.getElementById('opt-' + method).classList.add('selected');
             document.getElementById('upload-section').style.display = method === 'upload' ? 'block' : 'none';
             document.getElementById('research-section').style.display = method === 'research' ? 'block' : 'none';
+            document.getElementById('desc-group').style.display = method === 'research' ? 'none' : 'block';
+        }
+
+        // ── Format Selection ─────────────────
+        let selectedFormat = 'vercel';
+
+        function selectFormat(el) {
+            selectedFormat = el.dataset.format;
+            document.querySelectorAll('[data-format]').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
         }
 
         // ── Color Selection ──────────────────
@@ -951,6 +1018,7 @@ Bitte:
             const title = document.getElementById('freebie-title').value.trim();
             const keyword = (document.getElementById('freebie-keyword').value || 'FREEBIE').toUpperCase().trim();
             const desc = document.getElementById('freebie-desc').value.trim();
+            const briefing = document.getElementById('research-topic')?.value?.trim() || desc;
             const tagsRaw = document.getElementById('freebie-tags').value.trim();
             const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : [];
 
@@ -969,15 +1037,15 @@ Bitte:
             const bar = document.getElementById('deploy-bar');
             const status = document.getElementById('deploy-status');
 
-            bar.style.width = '20%';
-            status.textContent = 'HTML wird generiert...';
-
-            // Sections aus Beschreibung bauen (einfache Variante)
-            const sections = buildSectionsFromDesc(title, desc);
+            bar.style.width = '10%';
+            status.textContent = 'Claude schreibt den Inhalt... (1-2 Minuten)';
 
             try {
-                bar.style.width = '40%';
-                status.textContent = 'Wird auf Vercel deployed...';
+                // Simuliere Progress während Claude arbeitet
+                const progressTimer = setInterval(() => {
+                    const current = parseFloat(bar.style.width);
+                    if (current < 70) bar.style.width = (current + 5) + '%';
+                }, 3000);
 
                 const resp = await fetch('/api/generate', {
                     method: 'POST',
@@ -986,14 +1054,17 @@ Bitte:
                         title: title,
                         keyword: keyword,
                         description: desc || 'Ein Freebie von Miss Agent C',
-                        sections: sections,
+                        briefing: briefing,
                         tags: tags,
                         heroColor: selectedColor,
+                        format: selectedFormat,
                     })
                 });
 
-                bar.style.width = '80%';
-                status.textContent = 'Redirect wird aktualisiert...';
+                clearInterval(progressTimer);
+
+                bar.style.width = '85%';
+                status.textContent = 'Vercel deployed + Redirect wird aktualisiert...';
 
                 const result = await resp.json();
 
@@ -1004,13 +1075,24 @@ Bitte:
 
                     setTimeout(() => {
                         document.getElementById('deploy-progress').style.display = 'none';
-                        document.getElementById('deploy-success').style.display = 'block';
-                        document.getElementById('deploy-url').innerHTML =
-                            `<a href="${result.freebie_url}" target="_blank" style="color:var(--orange);font-weight:600">${result.freebie_url}</a>`;
-                        document.getElementById('link-freebie').href = result.freebie_url;
-                        document.getElementById('link-redirect').href = result.redirect_url;
-                        document.getElementById('deploy-keyword').textContent =
-                            `ManyChat-Keyword: ${result.keyword} — Redirect: ${result.redirect_url}`;
+
+                        if (selectedFormat === 'pdf') {
+                            // PDF Erfolg
+                            document.getElementById('pdf-success').style.display = 'block';
+                            document.getElementById('deploy-success').style.display = 'none';
+                            document.getElementById('pdf-title').textContent = result.title;
+                            document.getElementById('pdf-desc').textContent = desc || result.title;
+                            document.getElementById('link-pdf').href = `/api/pdf/${result.name}`;
+                        } else {
+                            // Vercel Erfolg
+                            document.getElementById('deploy-success').style.display = 'block';
+                            document.getElementById('pdf-success').style.display = 'none';
+                            document.getElementById('deploy-url').innerHTML =
+                                `<a href="${result.freebie_url}" target="_blank" style="color:var(--orange);font-weight:600">${result.freebie_url}</a>`;
+                            document.getElementById('link-freebie').href = result.freebie_url;
+                            document.getElementById('mc-keyword').textContent = result.keyword;
+                            document.getElementById('mc-link').textContent = result.freebie_url;
+                        }
 
                         // Freebie zur Liste hinzufügen
                         FREEBIES.push({
@@ -1047,6 +1129,13 @@ Bitte:
         function copyUrl() {
             navigator.clipboard.writeText(deployedUrl).then(() => {
                 alert('URL kopiert!');
+            });
+        }
+
+        function copyText(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Kopiert: ' + text);
             });
         }
 
