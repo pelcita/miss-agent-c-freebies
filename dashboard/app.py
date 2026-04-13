@@ -161,6 +161,7 @@ Antworte NUR mit dem JSON-Array der Sektionen."""
 HERO_COLORS = {
     "sky": "linear-gradient(135deg, #6EA8B0 0%, #88BEC5 40%, #A4CCCE 100%)",
     "orange": "linear-gradient(135deg, #DE7C30 0%, #F48225 40%, #f89b4f 100%)",
+    "golden": "linear-gradient(135deg, #DE7C30 0%, #EFA818 40%, #f5c44e 100%)",
 }
 
 
@@ -253,42 +254,44 @@ body{{font-family:'Inter',-apple-system,sans-serif;background:var(--warm-white);
 .hero-tags{{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}}
 .hero-tag{{background:rgba(255,255,255,.12);padding:.3rem .9rem;border-radius:8px;font-size:.8rem;font-weight:500}}
 .main{{max-width:780px;margin:0 auto;padding:0 1.5rem}}
-.toc{{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:-2rem auto 3rem;position:relative;z-index:2;box-shadow:0 4px 20px rgba(9,20,64,.06)}}
+.toc{{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:2rem;margin:-2rem auto 3rem;position:relative;z-index:2;box-shadow:0 8px 30px rgba(9,20,64,.08)}}
 .toc h2{{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:1rem;color:var(--navy)}}
 .toc-list{{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}}
 .toc-list li{{display:flex;align-items:center;gap:.6rem}}
 .toc-num{{width:26px;height:26px;background:var(--orange);color:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0}}
 .toc-list a{{color:var(--text-light);text-decoration:none;font-size:.9rem;font-weight:500}}
 .toc-list a:hover{{color:var(--orange)}}
-.section{{margin-bottom:3.5rem}}
-.section-header{{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}}
-.section-number{{width:36px;height:36px;background:var(--orange);color:white;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:800;flex-shrink:0}}
+.section{{margin-bottom:3.5rem;background:var(--white);border:1px solid var(--border);border-radius:20px;padding:2rem;box-shadow:0 2px 12px rgba(9,20,64,.04)}}
+.section-header{{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #f0f4f5}}
+.section-number{{width:40px;height:40px;background:var(--orange);color:white;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;flex-shrink:0;box-shadow:0 3px 10px rgba(244,130,37,.25)}}
 .section h2{{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--navy)}}
-.section h3{{font-size:1.1rem;font-weight:700;color:var(--navy);margin:1.8rem 0 .6rem}}
+.section h3{{font-size:1.1rem;font-weight:700;color:var(--navy);margin:1.8rem 0 .6rem;padding:.6rem 1rem;background:linear-gradient(135deg,#f0f7f8,#e8f4f5);border-radius:10px;border-left:3px solid var(--sky)}}
 .section p{{color:var(--text-light);margin-bottom:1rem}}
-.bullet-list{{list-style:none;margin:1rem 0 1.5rem}}
-.bullet-list li{{display:flex;align-items:flex-start;gap:.75rem;padding:.5rem 0;color:var(--text-light)}}
-.bullet-list li::before{{content:'';width:8px;height:8px;background:var(--sky);border-radius:50%;flex-shrink:0;margin-top:.45rem}}
+.bullet-list{{list-style:none;margin:1rem 0 1.5rem;background:#fafbfc;border-radius:12px;padding:1rem 1.2rem}}
+.bullet-list li{{display:flex;align-items:flex-start;gap:.75rem;padding:.6rem 0;color:var(--text-light);border-bottom:1px solid #f0f4f5}}
+.bullet-list li:last-child{{border-bottom:none}}
+.bullet-list li::before{{content:'';width:10px;height:10px;background:var(--sky);border-radius:50%;flex-shrink:0;margin-top:.4rem;box-shadow:0 0 0 3px rgba(136,190,197,.2)}}
 .numbered-list{{list-style:none;counter-reset:step;margin:1rem 0 1.5rem}}
-.numbered-list li{{counter-increment:step;display:flex;align-items:flex-start;gap:.75rem;padding:.5rem 0;color:var(--text-light)}}
-.numbered-list li::before{{content:counter(step);width:28px;height:28px;background:var(--orange);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0}}
-.tip-box{{background:linear-gradient(135deg,#e8f4f5,#d4ecee);border-left:4px solid var(--sky);border-radius:0 12px 12px 0;padding:1.2rem 1.5rem;margin:1.5rem 0}}
+.numbered-list li{{counter-increment:step;display:flex;align-items:flex-start;gap:1rem;padding:.75rem 1rem;color:var(--text-light);background:var(--white);border:1px solid var(--border);border-radius:12px;margin-bottom:.5rem}}
+.numbered-list li::before{{content:counter(step);width:32px;height:32px;background:var(--orange);color:white;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0;box-shadow:0 3px 10px rgba(244,130,37,.2)}}
+.tip-box{{background:linear-gradient(135deg,#e8f4f5,#d4ecee);border:1px solid rgba(136,190,197,.3);border-left:4px solid var(--sky);border-radius:0 14px 14px 0;padding:1.2rem 1.5rem;margin:1.5rem 0;box-shadow:0 2px 8px rgba(136,190,197,.1)}}
 .tip-box p{{color:var(--text);margin:0;font-size:.95rem}}
 .tip-box strong{{color:#6EA8B0}}
-.warning-box{{background:linear-gradient(135deg,#fff5eb,#feecd6);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:1.2rem 1.5rem;margin:1.5rem 0}}
+.warning-box{{background:linear-gradient(135deg,#fff5eb,#feecd6);border:1px solid rgba(244,130,37,.2);border-left:4px solid var(--orange);border-radius:0 14px 14px 0;padding:1.2rem 1.5rem;margin:1.5rem 0;box-shadow:0 2px 8px rgba(244,130,37,.08)}}
 .warning-box p{{color:var(--text);margin:0;font-size:.95rem}}
 .warning-box strong{{color:var(--deep-orange)}}
-.prompt-box{{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:1.5rem 0}}
-.prompt-box-header{{background:var(--navy);color:var(--white);padding:.6rem 1.2rem;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between}}
-.prompt-box-header .copy-btn{{background:rgba(255,255,255,.15);border:none;color:white;padding:.25rem .75rem;border-radius:6px;font-size:.75rem;cursor:pointer}}
-.prompt-box-header .copy-btn:hover{{background:rgba(255,255,255,.25)}}
-.prompt-box-content{{padding:1.2rem 1.5rem;font-family:'Courier New',monospace;font-size:.9rem;line-height:1.6;color:var(--text-light);white-space:pre-wrap}}
-.card-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.5rem 0}}
-.card{{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem;text-align:center;transition:all .3s}}
-.card:hover{{border-color:var(--sky);transform:translateY(-2px);box-shadow:0 8px 24px rgba(9,20,64,.08)}}
-.card-icon{{font-size:2rem;margin-bottom:.75rem}}
+.prompt-box{{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:1.5rem 0;box-shadow:0 2px 12px rgba(9,20,64,.06)}}
+.prompt-box-header{{background:linear-gradient(135deg,var(--navy),#1a2a5c);color:var(--white);padding:.7rem 1.2rem;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between}}
+.prompt-box-header .copy-btn{{background:var(--orange);border:none;color:white;padding:.3rem .9rem;border-radius:8px;font-size:.75rem;cursor:pointer;font-weight:600;transition:all .2s}}
+.prompt-box-header .copy-btn:hover{{background:var(--orange-light);transform:translateY(-1px)}}
+.prompt-box-content{{padding:1.3rem 1.5rem;font-family:'Courier New',monospace;font-size:.88rem;line-height:1.7;color:var(--text-light);white-space:pre-wrap;background:#fafbfc;border-top:1px solid var(--border)}}
+.card-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.5rem 0}}
+.card{{background:linear-gradient(135deg,#fafbfc,var(--white));border:1px solid var(--border);border-radius:16px;padding:1.5rem;text-align:center;transition:all .3s;position:relative;overflow:hidden}}
+.card::before{{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--sky),var(--orange))}}
+.card:hover{{border-color:var(--sky);transform:translateY(-3px);box-shadow:0 12px 32px rgba(9,20,64,.1)}}
+.card-icon{{font-size:2.2rem;margin-bottom:.75rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,.1))}}
 .card h4{{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.4rem}}
-.card p{{font-size:.85rem;color:var(--text-muted);margin:0}}
+.card p{{font-size:.82rem;color:var(--text-muted);margin:0;line-height:1.4}}
 .divider{{height:1px;background:var(--border);margin:3rem 0}}
 .cta-footer{{background:linear-gradient(135deg,var(--orange),var(--deep-orange));color:white;border-radius:20px;padding:3rem 2rem;text-align:center;margin:2rem 0 3rem}}
 .cta-footer h2{{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:1rem}}

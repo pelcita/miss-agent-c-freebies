@@ -698,18 +698,19 @@
                             <p class="hint">Nur bei "Vorlage hochladen" — bei "Claude recherchiert" wird die aus dem Briefing erstellt.</p>
                         </div>
                         <div class="form-group">
-                            <label>Ausgabe-Format</label>
+                            <label>Wo wird das Freebie eingesetzt?</label>
                             <div class="color-options">
-                                <div class="color-option sky selected" data-format="vercel" onclick="selectFormat(this)" style="display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:white;width:auto;padding:0.5rem 1rem;height:auto">VERCEL</div>
-                                <div class="color-option orange" data-format="pdf" onclick="selectFormat(this)" style="display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:white;width:auto;padding:0.5rem 1rem;height:auto">PDF</div>
+                                <div class="color-option orange selected" data-format="manychat" onclick="selectFormat(this)" style="display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:white;width:auto;padding:0.5rem 1rem;height:auto;border-radius:10px">MANYCHAT</div>
+                                <div class="color-option sky" data-format="skool" onclick="selectFormat(this)" style="display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:white;width:auto;padding:0.5rem 1rem;height:auto;border-radius:10px">SKOOL</div>
                             </div>
-                            <p class="hint">Vercel = interaktive Webseite | PDF = für Skool Classroom</p>
+                            <p class="hint">ManyChat = Link + Keyword für Instagram | Skool = Link + Info für Community</p>
                         </div>
                         <div class="form-group">
                             <label>Header-Farbe</label>
                             <div class="color-options">
                                 <div class="color-option sky selected" data-color="sky" onclick="selectColor(this)"></div>
                                 <div class="color-option orange" data-color="orange" onclick="selectColor(this)"></div>
+                                <div class="color-option golden" data-color="golden" onclick="selectColor(this)"></div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -776,29 +777,38 @@
                         </div>
                     </div>
 
-                    <!-- Success: PDF -->
-                    <div id="pdf-success" style="display:none">
+                    <!-- Success: Skool -->
+                    <div id="skool-success" style="display:none">
                         <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:1.5rem">
                             <div style="text-align:center">
-                                <div style="font-size:2.5rem;margin-bottom:0.5rem">📄</div>
-                                <h3 style="color:#16a34a;margin-bottom:0.5rem">PDF ist fertig!</h3>
-                                <p id="pdf-title" style="margin-bottom:0.5rem;font-weight:600"></p>
-                                <p id="pdf-desc" style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem"></p>
-                            </div>
-
-                            <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
-                                <a id="link-pdf" href="#" download class="btn btn-primary">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                    PDF herunterladen
-                                </a>
+                                <div style="font-size:2.5rem;margin-bottom:0.5rem">🎉</div>
+                                <h3 style="color:#16a34a;margin-bottom:0.5rem">Freebie ist live!</h3>
                             </div>
 
                             <div style="background:var(--warm-white);border-radius:12px;padding:1.2rem;margin-top:1rem">
-                                <h4 style="font-family:'Playfair Display',serif;margin-bottom:0.75rem;color:var(--navy)">In Skool hochladen</h4>
-                                <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Lade das PDF in deinen Classroom hoch:</p>
-                                <a href="https://www.skool.com/ag3nt-c-2041/classroom/d845b48a?md=a8d9e3cfc1534271990c5c56fcc1ed0a" target="_blank" class="btn btn-secondary" style="width:100%;justify-content:center">
-                                    Skool Classroom öffnen
-                                </a>
+                                <h4 style="font-family:'Playfair Display',serif;margin-bottom:0.75rem;color:var(--navy)">Für Skool Community posten</h4>
+                                <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem">Kopiere Titel, Beschreibung und Link für deinen Skool-Post:</p>
+
+                                <div style="display:grid;grid-template-columns:auto 1fr auto;gap:0.5rem 1rem;align-items:center;font-size:0.9rem;margin-bottom:1rem">
+                                    <strong>Titel:</strong>
+                                    <code id="skool-title" style="background:#e2e8f0;padding:0.3rem 0.8rem;border-radius:6px;font-weight:600"></code>
+                                    <button class="btn btn-outline" onclick="copyText('skool-title')" style="padding:0.3rem 0.8rem;font-size:0.75rem">Kopieren</button>
+
+                                    <strong>Text:</strong>
+                                    <code id="skool-desc" style="background:#e2e8f0;padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;word-break:break-all"></code>
+                                    <button class="btn btn-outline" onclick="copyText('skool-desc')" style="padding:0.3rem 0.8rem;font-size:0.75rem">Kopieren</button>
+
+                                    <strong>Link:</strong>
+                                    <code id="skool-link" style="background:#e2e8f0;padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;word-break:break-all"></code>
+                                    <button class="btn btn-outline" onclick="copyText('skool-link')" style="padding:0.3rem 0.8rem;font-size:0.75rem">Kopieren</button>
+                                </div>
+
+                                <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+                                    <a id="link-freebie-skool" href="#" target="_blank" class="btn btn-primary" style="flex:1;justify-content:center">Freebie ansehen</a>
+                                    <a href="https://www.skool.com/ag3nt-c-2041/classroom/d845b48a?md=a8d9e3cfc1534271990c5c56fcc1ed0a" target="_blank" class="btn btn-secondary" style="flex:1;justify-content:center">
+                                        Skool Classroom öffnen
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -866,7 +876,7 @@
         }
 
         // ── Format Selection ─────────────────
-        let selectedFormat = 'vercel';
+        let selectedFormat = 'manychat';
 
         function selectFormat(el) {
             selectedFormat = el.dataset.format;
@@ -1076,17 +1086,18 @@ Bitte:
                     setTimeout(() => {
                         document.getElementById('deploy-progress').style.display = 'none';
 
-                        if (selectedFormat === 'pdf') {
-                            // PDF Erfolg
-                            document.getElementById('pdf-success').style.display = 'block';
+                        if (selectedFormat === 'skool') {
+                            // Skool Erfolg
+                            document.getElementById('skool-success').style.display = 'block';
                             document.getElementById('deploy-success').style.display = 'none';
-                            document.getElementById('pdf-title').textContent = result.title;
-                            document.getElementById('pdf-desc').textContent = desc || result.title;
-                            document.getElementById('link-pdf').href = `/api/pdf/${result.name}`;
+                            document.getElementById('skool-title').textContent = result.title;
+                            document.getElementById('skool-desc').textContent = briefing || desc || result.title;
+                            document.getElementById('skool-link').textContent = result.freebie_url;
+                            document.getElementById('link-freebie-skool').href = result.freebie_url;
                         } else {
-                            // Vercel Erfolg
+                            // ManyChat Erfolg
                             document.getElementById('deploy-success').style.display = 'block';
-                            document.getElementById('pdf-success').style.display = 'none';
+                            document.getElementById('skool-success').style.display = 'none';
                             document.getElementById('deploy-url').innerHTML =
                                 `<a href="${result.freebie_url}" target="_blank" style="color:var(--orange);font-weight:600">${result.freebie_url}</a>`;
                             document.getElementById('link-freebie').href = result.freebie_url;

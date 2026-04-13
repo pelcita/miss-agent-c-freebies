@@ -1,142 +1,204 @@
 [
   {
-    "title": "Das CLAUDE.md Projekt-Gehirn: Dein KI-Assistent lernt dein Projekt auswendig",
+    "title": "Das CLAUDE.md Geheimnis — Dein Projekt-Gehirn einrichten",
     "blocks": [
-      {"type": "text", "content": "Vergiss endlose Erklärungen in jedem Chat. Mit einer strategisch aufgebauten CLAUDE.md Datei im Root deines Projekts wird Claude sofort zum Experten für dein spezifisches Projekt. Diese Datei ist wie ein Gehirn-Download — einmal erstellt, versteht Claude deine Codebase, Standards und Ziele perfekt."},
-      {"type": "subtitle", "content": "Die 5 Kern-Bereiche deiner CLAUDE.md"},
-      {"type": "numbered", "items": [
-        "PROJECT OVERVIEW — Worum geht's? Welche Technologien? Welches Ziel?",
-        "FILE STRUCTURE — Welche Dateien sind wichtig? Was macht was?", 
-        "CODING STANDARDS — Welchen Style verwendest du? Naming Conventions?",
-        "CURRENT CONTEXT — Was machst du gerade? Welche Features entwickelst du?",
-        "TEMPLATES & PATTERNS — Wiederkehrende Code-Snippets und Strukturen"
+      {"type": "text", "content": "99% der Claude-Nutzer verschenken ihr Potenzial, weil sie nicht wissen, wie man Claude als Projekt-Partner nutzt. Die Lösung? Eine CLAUDE.md Datei im Root-Verzeichnis deines Projekts. Diese eine Datei verwandelt Claude von einem einfachen Chatbot in deinen persönlichen Senior-Developer."},
+      {"type": "subtitle", "content": "Warum CLAUDE.md alles verändert"},
+      {"type": "bullets", "items": [
+        "Claude 'versteht' dein gesamtes Projekt auf einen Blick",
+        "Keine wiederholenden Erklärungen mehr nötig",
+        "Konsistente Code-Qualität über alle Sessions hinweg",
+        "Team-Members können sofort produktiv werden"
       ]},
-      {"type": "tip", "content": "Leg die CLAUDE.md direkt ins Root-Verzeichnis. Claude findet sie automatisch und liest sie bei jedem neuen Chat."},
-      {"type": "prompt", "content": "Erstelle eine CLAUDE.md für mein [PROJEKTTYP]-Projekt. Technologie-Stack: [TECHNOLOGIEN]. Hauptfunktion: [BESCHREIBUNG]. Analysiere meine Dateistruktur und erstelle eine vollständige Projekt-Dokumentation mit allen 5 Kern-Bereichen.", "label": "CLAUDE.md Generator"},
+      {"type": "text", "content": "Die CLAUDE.md fungiert als Projekt-DNA. Jedes Mal wenn du Claude aufrufst, liest er diese Datei und weiß sofort: Welche Technologien du nutzt, wie dein Code strukturiert ist, welche Conventions du befolgst und was deine aktuellen Ziele sind."},
+      {"type": "subtitle", "content": "Der perfekte CLAUDE.md Aufbau"},
+      {"type": "numbered", "items": [
+        "# PROJECT OVERVIEW — Kurze, prägnante Projektbeschreibung",
+        "## TECH STACK — Alle verwendeten Technologien auflisten",
+        "## ARCHITECTURE — Ordnerstruktur und Architektur-Patterns",
+        "## CODING STANDARDS — Deine spezifischen Regeln und Conventions",
+        "## CURRENT FOCUS — Was gerade entwickelt wird",
+        "## CONTEXT NOTES — Wichtige Entscheidungen und deren Begründung"
+      ]},
+      {"type": "prompt", "content": "Erstelle eine CLAUDE.md für mein [PROJEKTTYP] Projekt. Tech Stack: [TECHNOLOGIEN]. Das Projekt macht: [KURZE BESCHREIBUNG]. Meine Coding Standards: [STANDARDS]. Aktueller Fokus: [CURRENT TASK]. Nutze die 6-Sektionen Struktur und halte es prägnant aber informativ.", "label": "CLAUDE.md Generator"},
+      {"type": "tip", "content": "Pro-Tipp: Aktualisiere deine CLAUDE.md regelmäßig. Eine veraltete Projekt-DNA führt zu verwirrenden Antworten von Claude."},
       {"type": "cards", "items": [
-        {"icon": "🧠", "title": "Instant Context", "desc": "Claude versteht sofort dein Projekt ohne Nachfragen"},
-        {"icon": "⚡", "title": "Konsistenter Code", "desc": "Alle Vorschläge folgen deinen Standards automatisch"},
-        {"icon": "🎯", "title": "Fokussierte Hilfe", "desc": "Relevante Lösungen statt generische Antworten"}
+        {"icon": "🧠", "title": "Projekt-Gedächtnis", "desc": "Claude merkt sich dein gesamtes Setup"},
+        {"icon": "⚡", "title": "Zero Setup Time", "desc": "Sofort produktiv in neuen Sessions"},
+        {"icon": "🎯", "title": "Präzise Antworten", "desc": "Claude versteht deinen Kontext perfekt"}
       ]}
     ]
   },
   {
-    "title": "Der CLAUDE.md Template-Aufbau: So strukturierst du es richtig",
+    "title": "Slash Commands — Deine eigene Claude-Kommandozentrale",
     "blocks": [
-      {"type": "text", "content": "Eine schlechte CLAUDE.md ist nutzlos. Eine gute ist pure Magie. Hier ist die bewährte Struktur, die bei 1000+ Projekten funktioniert:"},
-      {"type": "subtitle", "content": "Der Copy-Paste Template"},
-      {"type": "prompt", "content": "# PROJECT: [PROJEKTNAME]\n\n## OVERVIEW\n- **Type**: [Web App / Mobile App / API / etc.]\n- **Tech Stack**: [Framework, Database, etc.]\n- **Purpose**: [Was macht die App?]\n- **Target Users**: [Wer nutzt es?]\n\n## FILE STRUCTURE\n```\n[Deine wichtigste Ordnerstruktur hier]\n```\n\n## CODING STANDARDS\n- **Variables**: camelCase\n- **Functions**: [Dein Standard]\n- **Files**: [Naming Convention]\n- **Comments**: [Wann und wie]\n\n## CURRENT CONTEXT\n- **Working on**: [Aktuelle Aufgabe]\n- **Next Priority**: [Was kommt als nächstes]\n- **Known Issues**: [Aktuelle Probleme]\n\n## CODE TEMPLATES\n```javascript\n[Deine Standard-Patterns hier]\n```", "label": "CLAUDE.md Basis-Template"},
-      {"type": "warning", "content": "Halt die CLAUDE.md aktuell! Veraltete Info führt zu schlechten Vorschlägen. Update sie bei größeren Änderungen."},
+      {"type": "text", "content": "Während andere immer dieselben langen Prompts tippen, nutzen Profis Custom Slash Commands. Mit dem .claude/commands/ Ordner verwandelst du wiederkehrende Aufgaben in Ein-Wort-Befehle. Statt 'Bitte analysiere meinen Code und gib mir Verbesserungsvorschläge basierend auf Clean Code Prinzipien' tippst du einfach /review."},
+      {"type": "subtitle", "content": "Setup: Deine Command-Struktur"},
+      {"type": "text", "content": "Erstelle in deinem Projekt-Root einen .claude/ Ordner mit einem commands/ Unterordner. Jede .md Datei darin wird zu einem verfügbaren Slash Command."},
+      {"type": "numbered", "items": [
+        ".claude/commands/review.md — Code Review Command",
+        ".claude/commands/debug.md — Debugging Assistant",
+        ".claude/commands/refactor.md — Refactoring Guide",
+        ".claude/commands/test.md — Test Generator",
+        ".claude/commands/docs.md — Documentation Creator"
+      ]},
+      {"type": "subtitle", "content": "Command-Aufbau: Die Anatomie eines Power-Commands"},
+      {"type": "text", "content": "Jeder Command braucht drei Teile: Clear Instructions, Context Awareness und Output Format. Hier ein Beispiel für einen professionellen /review Command:"},
+      {"type": "prompt", "content": "# Code Review Command\n\nANALYSE den bereitgestellten Code nach folgenden Kriterien:\n- Clean Code Prinzipien\n- Performance Optimierungen  \n- Security Best Practices\n- Maintainability\n\nCONTEXT: Nutze die Informationen aus CLAUDE.md für projektspezifische Standards.\n\nOUTPUT FORMAT:\n## 🔍 Analysis Summary\n- Overall Score: X/10\n- Main Issues: [List]\n\n## ⚡ Quick Wins\n[Sofort umsetzbare Verbesserungen]\n\n## 🏗️ Refactor Suggestions  \n[Strukturelle Verbesserungen]\n\n## 💡 Best Practice Notes\n[Langfristige Optimierungen]", "label": "/review Command Template"},
+      {"type": "tip", "content": "Mach deine Commands spezifisch für deinen Workflow. Ein Generic '/help' Command ist nutzlos. Ein '/api-design' Command für dein Backend-Projekt ist Gold wert."},
+      {"type": "warning", "content": "Übertreibe es nicht mit Commands. 5-8 wirklich nützliche sind besser als 20 mittelmäßige."},
+      {"type": "cards", "items": [
+        {"icon": "⚡", "title": "Instant Workflows", "desc": "Ein Befehl löst komplexe Aufgaben"},
+        {"icon": "🔄", "title": "Konsistenz", "desc": "Gleiche Qualität bei jeder Nutzung"},
+        {"icon": "🚀", "title": "Effizienz", "desc": "10x schneller als manuelle Prompts"}
+      ]}
+    ]
+  },
+  {
+    "title": "Das --print Flag — Dein n8n Automatisierungs-Hack",
+    "blocks": [
+      {"type": "text", "content": "Hier wird es richtig interessant: Das --print Flag macht Claude headless nutzbar. Das bedeutet, du kannst Claude-Outputs direkt in deine Automatisierungen einbauen, ohne manuell zu kopieren. Perfekt für n8n Workflows, Zapier oder eigene Scripts."},
+      {"type": "subtitle", "content": "Wie --print deine Automatisierung revolutioniert"},
       {"type": "bullets", "items": [
-        "Maximal 2-3 Seiten — Claude soll es schnell erfassen können",
-        "Konkrete Beispiele statt vage Beschreibungen",
-        "Aktuelle TODOs und Prioritäten immer drin",
-        "Code-Snippets für wiederkehrende Patterns",
-        "Links zu wichtigen Dateien oder Dokumentation"
+        "Direkte Integration in n8n Workflows ohne Copy-Paste",
+        "Automatische Code-Generation für wiederkehrende Tasks",
+        "Bulk-Processing von Dateien oder Daten",
+        "Silent Background Processing für Monitoring"
       ]},
-      {"type": "tip", "content": "Pro-Tipp: Füge eine 'NEVER DO' Sektion hinzu mit Anti-Patterns, die Claude vermeiden soll."}
-    ]
-  },
-  {
-    "title": "Slash Commands: Deine eigenen Claude-Superkräfte erstellen",
-    "blocks": [
-      {"type": "text", "content": "Slash Commands sind wie Hotkeys für Claude. Statt lange Prompts zu schreiben, tippst du /generate-api und Claude weiß sofort, was zu tun ist. Das Geheimnis liegt im .claude/commands/ Ordner deines Projekts."},
-      {"type": "subtitle", "content": "So erstellst du Custom Commands"},
+      {"type": "text", "content": "Das --print Flag unterdrückt die normale Chat-Interface und gibt nur den reinen Output zurück. Perfekt für APIs und Automatisierungen."},
+      {"type": "subtitle", "content": "n8n Integration: Step-by-Step Setup"},
       {"type": "numbered", "items": [
-        "Erstelle .claude/commands/ Ordner im Projekt-Root",
-        "Für jeden Command eine .md Datei (z.B. generate-api.md)",
-        "Definiere klare Befehle mit Parametern",
-        "Claude erkennt diese automatisch als /commands"
+        "HTTP Request Node zu Claude API konfigurieren",
+        "Authentication mit deinem Claude API Key",
+        "Message Body mit --print Flag strukturieren",
+        "Response Processing für sauberen Output",
+        "Error Handling für failed Requests implementieren"
       ]},
-      {"type": "prompt", "content": "Erstelle mir 5 Custom Slash Commands für mein [PROJEKTTYP]-Projekt:\n\n/generate-component - Erstellt React/Vue/Angular Komponenten nach meinen Standards\n/write-test - Schreibt Unit Tests für gegebene Funktion\n/optimize-code - Analysiert und verbessert Code Performance\n/create-api - Generiert REST API Endpoints mit Validation\n/debug-error - Analysiert Fehlermeldungen und schlägt Fixes vor\n\nJeder Command soll eine eigene .md Datei im .claude/commands/ Ordner bekommen.", "label": "Custom Commands Generator"},
+      {"type": "prompt", "content": "Konfiguriere einen n8n HTTP Request Node für Claude API Integration:\n\nURL: https://api.anthropic.com/v1/messages\nMethod: POST\nHeaders:\n- anthropic-version: 2023-06-01  \n- content-type: application/json\n- x-api-key: [DEIN_CLAUDE_API_KEY]\n\nBody:\n{\n  \"model\": \"claude-3-sonnet-20240229\",\n  \"max_tokens\": 1000,\n  \"messages\": [{\n    \"role\": \"user\", \n    \"content\": \"[DEINE_AUFGABE] --print\"\n  }]\n}\n\nProcessing: Extrahiere content[0].text aus der Response", "label": "n8n Claude Setup"},
+      {"type": "subtitle", "content": "Power-Use Cases für --print Automation"},
       {"type": "cards", "items": [
-        {"icon": "⚡", "title": "/generate-component", "desc": "Erstellt Komponenten nach deinen exakten Standards"},
-        {"icon": "🧪", "title": "/write-test", "desc": "Generiert passende Unit Tests für jede Funktion"},
-        {"icon": "🔍", "title": "/debug-error", "desc": "Analysiert Fehler und schlägt konkrete Lösungen vor"},
-        {"icon": "📝", "title": "/document-code", "desc": "Erstellt JSDoc/TypeDoc für deine Funktionen"}
+        {"icon": "📊", "title": "Daily Reports", "desc": "Automatische Analyse deiner App-Metriken"},
+        {"icon": "🔍", "title": "Code Monitoring", "desc": "Continuous Quality Checks im CI/CD"},
+        {"icon": "📝", "title": "Content Pipeline", "desc": "Bulk-Erstellung von Dokumentation"},
+        {"icon": "🚨", "title": "Alert Processing", "desc": "Intelligente Error-Analyse und Solutions"}
       ]},
-      {"type": "tip", "content": "Benenne Commands nach Aktionen: /generate-, /create-, /fix-, /optimize-. Das macht sie intuitiver."}
+      {"type": "text", "content": "Ein konkretes Beispiel: Du kannst einen n8n Workflow erstellen, der täglich deine GitHub Issues analysiert, mit Claude die Prioritäten bewertet und automatisch Labels zuweist. Alles ohne manuelle Intervention."},
+      {"type": "tip", "content": "Teste deine --print Commands immer erst manuell im Chat, bevor du sie in Automatisierungen verwendest. Die Outputs müssen strukturiert und vorhersagbar sein."},
+      {"type": "prompt", "content": "Erstelle mir einen GitHub Issue Analyzer für n8n:\n\n1. Analysiere Issue: [ISSUE_TITLE] und [ISSUE_DESCRIPTION]\n2. Bewerte Priorität (P0-P3) basierend auf: Severity, User Impact, Business Value\n3. Schlage 2-3 passende Labels vor\n4. Schätze Aufwand in Story Points (1,2,3,5,8)\n\nOutput Format (JSON):\n{\n  \"priority\": \"P1\",\n  \"labels\": [\"bug\", \"backend\"],\n  \"effort\": 3,\n  \"reasoning\": \"kurze Begründung\"\n} --print", "label": "GitHub Issue Analyzer"}
     ]
   },
   {
-    "title": "Command-Struktur: So baust du perfekte Slash Commands",
+    "title": "Advanced Projekt-Strukturen — Skalierung für große Projekte",
     "blocks": [
-      {"type": "text", "content": "Ein guter Slash Command ist wie ein Mini-Experte für eine spezifische Aufgabe. Hier siehst du, wie du sie strukturierst, damit sie every single time perfekt funktionieren:"},
-      {"type": "subtitle", "content": "Anatomie eines Command Files"},
-      {"type": "prompt", "content": "# /generate-component\n\n## Purpose\nGeneriert eine neue [React/Vue/Angular] Komponente mit allen nötigen Dateien\n\n## Usage\n/generate-component [ComponentName] [type:functional|class] [props:prop1,prop2]\n\n## Template\n```javascript\n[Hier dein Standard-Template]\n```\n\n## Files to create\n- [ComponentName].jsx\n- [ComponentName].module.css\n- [ComponentName].test.js\n- index.js (export)\n\n## Standards\n- [Deine Naming Conventions]\n- [Props Validation Standards]\n- [Styling Standards]\n\n## Example\n/generate-component UserCard functional props:name,email,avatar", "label": "Command Template Structure"},
+      {"type": "text", "content": "Wenn dein Projekt wächst, reicht eine einfache CLAUDE.md nicht mehr aus. Profis nutzen eine modulare Struktur, die auch bei 100+ Dateien und mehreren Team-Mitgliedern funktioniert. Hier lernst du, wie Enterprise-Teams Claude strukturieren."},
+      {"type": "subtitle", "content": "Die Enterprise CLAUDE-Struktur"},
+      {"type": "text", "content": "Statt einer monolithischen CLAUDE.md teilst du die Informationen in spezialisierte Dateien auf. Jede hat eine klare Verantwortlichkeit und kann unabhängig aktualisiert werden."},
       {"type": "bullets", "items": [
-        "PURPOSE — Was macht der Command? In einem Satz.",
-        "USAGE — Syntax mit allen Parametern und Optionen",
-        "TEMPLATE — Der Code/Structure den Claude verwenden soll",
-        "FILES TO CREATE — Welche Dateien soll Claude generieren?",
-        "STANDARDS — Spezifische Regeln für diesen Command",
-        "EXAMPLE — Mindestens ein konkretes Anwendungsbeispiel"
+        ".claude/project.md — Core Project Information",
+        ".claude/architecture.md — System Architecture & Patterns",
+        ".claude/conventions.md — Code Standards & Guidelines",
+        ".claude/context/ — Ordner für Feature-spezifische Kontexte",
+        ".claude/templates/ — Wiederverwendbare Code-Templates"
       ]},
-      {"type": "warning", "content": "Commands ohne klare Parameter führen zu inkonsistenten Ergebnissen. Definiere ALLE möglichen Optionen."},
-      {"type": "tip", "content": "Teste deine Commands mit Edge Cases: Leere Parameter, Sonderzeichen, sehr lange Namen."}
-    ]
-  },
-  {
-    "title": "Das --print Flag: Headless Claude für n8n Automationen",
-    "blocks": [
-      {"type": "text", "content": "Das --print Flag ist der Game-Changer für Automationen. Claude gibt nur den finalen Code zurück, ohne Erklärungen oder Formatierung. Perfect für n8n Workflows, wo du direkt in Dateien schreiben oder APIs befeuern willst."},
-      {"type": "subtitle", "content": "Wie --print deine Workflows revolutioniert"},
-      {"type": "cards", "items": [
-        {"icon": "🔄", "title": "n8n Integration", "desc": "Output direkt in HTTP Requests oder File Operations"},
-        {"icon": "📁", "title": "Direct File Write", "desc": "Code landet ohne Umweg in deinen Projekt-Dateien"},
-        {"icon": "⚡", "title": "Zero Formatting", "desc": "Kein Markdown, keine Erklärung — nur purer Code"},
-        {"icon": "🎯", "title": "API Ready", "desc": "Perfect für REST Calls und Webhook Responses"}
-      ]},
-      {"type": "prompt", "content": "Erstelle eine React Komponente für [KOMPONENTE] mit Props [PROPS]. --print", "label": "Headless Component Generator"},
-      {"type": "text", "content": "Mit --print bekommst du nur den Code, den du brauchst. Keine ```javascript Blöcke, keine Erklärungen, keine Höflichkeitsfloskeln. Direkt ready für deine Automation Pipeline."},
-      {"type": "tip", "content": "Kombiniere --print mit Slash Commands für maximale Effizienz: /generate-api UserService --print"}
-    ]
-  },
-  {
-    "title": "n8n Workflow-Setup: Claude als Code-Generator integrieren",
-    "blocks": [
-      {"type": "text", "content": "Hier wird's richtig spicy. Mit n8n kannst du Claude zu einem vollautomatischen Code-Generator machen. Trigger, Generate, Deploy — alles ohne manuellen Eingriff."},
-      {"type": "subtitle", "content": "Der Complete Automation Flow"},
+      {"type": "subtitle", "content": "Context-Switching für verschiedene Arbeitsbereiche"},
+      {"type": "text", "content": "Der Trick ist, Claude je nach Aufgabe mit dem passenden Kontext zu füttern. Frontend-Work braucht andere Informationen als Backend-Debugging."},
       {"type": "numbered", "items": [
-        "TRIGGER — Webhook oder Scheduler startet den Workflow",
-        "CLAUDE REQUEST — HTTP Node sendet Prompt mit --print Flag",
-        "FILE OPERATIONS — Code wird direkt in Projekt-Dateien geschrieben",
-        "GIT COMMIT — Automatischer Commit mit Generated Code",
-        "DEPLOYMENT — Optional: Trigger für Build & Deploy Pipeline"
+        "Frontend Context: UI-Components, Design System, State Management",
+        "Backend Context: API Design, Database Schema, Business Logic",
+        "DevOps Context: Deployment Pipeline, Infrastructure, Monitoring",
+        "Testing Context: Test Strategies, Mock Data, Coverage Goals"
       ]},
-      {"type": "prompt", "content": "Erstelle mir einen n8n Workflow der:\n1. Auf GitHub Issues mit Label 'generate-code' reagiert\n2. Den Issue-Text als Prompt an Claude sendet (mit --print)\n3. Den generierten Code in die entsprechende Datei schreibt\n4. Einen Pull Request mit dem Code erstellt\n5. Das Issue automatisch schließt\n\nClaud Prompt Format: 'Generiere [ISSUE_CONTENT] basierend auf meiner CLAUDE.md --print'", "label": "GitHub Integration Workflow"},
-      {"type": "cards", "items": [
-        {"icon": "🎣", "title": "Webhook Trigger", "desc": "GitHub, GitLab, oder Custom Hooks starten Generation"},
-        {"icon": "🤖", "title": "Claude API Call", "desc": "HTTP Request mit deinem Prompt und --print Flag"},
-        {"icon": "💾", "title": "File Write", "desc": "Direct write in deine Projekt-Struktur"},
-        {"icon": "🚀", "title": "Auto Deploy", "desc": "Trigger für Build Pipeline nach Code Generation"}
-      ]},
-      {"type": "warning", "content": "Teste Automationen immer in einem separaten Branch. Code-Generation kann unerwartete Ergebnisse haben."},
-      {"type": "tip", "content": "Nutze n8n's Error Handling um bei fehlerhafter Generation automatisch ein Issue zu erstellen."}
+      {"type": "prompt", "content": "Erstelle eine modulare Claude-Struktur für mein [PROJEKTTYP] mit [ANZAHL_ENTWICKLER] Entwicklern. \n\nHauptbereiche: [FRONTEND/BACKEND/MOBILE/etc.]\nTeam-Rollen: [ROLLEN_LISTE]\nTech-Komplexität: [EINFACH/MITTEL/KOMPLEX]\n\nErstelle:\n1. Ordnerstruktur für .claude/\n2. Aufgabenverteilung pro Kontext-Datei\n3. Naming Conventions für Team-Konsistenz\n4. Update-Workflow für Änderungen", "label": "Enterprise Claude Structure"},
+      {"type": "tip", "content": "Verwende Git Hooks, um automatisch zu prüfen, ob die Claude-Dateien bei größeren Änderungen aktualisiert werden müssen."},
+      {"type": "warning", "content": "Überkompliziere nicht. Wenn dein Team < 5 Personen hat, reicht meist eine gut strukturierte CLAUDE.md aus."}
     ]
   },
   {
-    "title": "Pro-Tricks: Diese Kombinationen machen dich unschlagbar",
+    "title": "Command Chaining — Workflows automatisieren",
     "blocks": [
-      {"type": "text", "content": "Jetzt kommt das Finale — die Kombination aller drei Tricks zu einem System, das dich 10x produktiver macht. Diese Setups nutzen nur die Profis:"},
-      {"type": "subtitle", "content": "The Ultimate Development Stack"},
+      {"type": "text", "content": "Der nächste Level: Commands miteinander verketten für komplexe Workflows. Statt /review, dann /refactor, dann /test einzeln auszuführen, erstellst du einen /workflow Command, der alle Schritte in der richtigen Reihenfolge abarbeitet."},
+      {"type": "subtitle", "content": "Workflow-Commands: Von simpel zu komplex"},
+      {"type": "text", "content": "Chaining funktioniert durch intelligente Prompt-Strukturierung. Ein Command kann mehrere Phasen haben, wobei jede Phase das Ergebnis der vorherigen nutzt."},
       {"type": "cards", "items": [
-        {"icon": "🧠", "title": "Smart Context", "desc": "CLAUDE.md + Commands = Claude kennt dein Projekt perfekt"},
-        {"icon": "⚡", "title": "Lightning Fast", "desc": "Slash Commands + --print = Instant Code ohne Gequatsche"},
-        {"icon": "🔄", "title": "Full Automation", "desc": "--print + n8n = Complete hands-off Development"}
+        {"icon": "🔄", "title": "Sequential Processing", "desc": "Commands bauen aufeinander auf"},
+        {"icon": "🎯", "title": "Context Retention", "desc": "Informationen bleiben über Phasen erhalten"},
+        {"icon": "📋", "title": "Conditional Logic", "desc": "IF-THEN Logik in Commands"}
       ]},
-      {"type": "prompt", "content": "Setup für mich das Ultimate Claude Development Environment:\n\n1. Analysiere mein [PROJEKTTYP] Projekt und erstelle eine optimale CLAUDE.md\n2. Generiere 10 Custom Slash Commands für meine häufigsten Aufgaben\n3. Erstelle n8n Workflow Templates für:\n   - Automatische Component Generation aus Figma Comments\n   - Code Review Automation mit GitHub Integration\n   - Auto-Testing Pipeline mit Claude-generated Tests\n\nAlles soll mit --print Flag für seamless Integration funktionieren.", "label": "Ultimate Setup Generator"},
+      {"type": "subtitle", "content": "Der Ultimate Workflow-Command"},
+      {"type": "prompt", "content": "# Full Development Workflow\n\n## PHASE 1: Analysis\nAnalysiere den bereitgestellten Code:\n- Komplexität bewerten\n- Potentielle Issues identifizieren  \n- Verbesserungsmöglichkeiten finden\n\n## PHASE 2: Planning\nBasierend auf Analysis erstelle:\n- Refactoring-Plan (wenn nötig)\n- Test-Strategie\n- Implementation Steps\n\n## PHASE 3: Implementation\nNUR wenn in Phase 1 Issues gefunden:\n- Refactored Code bereitstellen\n- Erklärung der Änderungen\n- Migration Guide (bei Breaking Changes)\n\n## PHASE 4: Testing\n- Unit Tests für neuen/geänderten Code\n- Integration Test Beispiele\n- Edge Case Abdeckung\n\n## PHASE 5: Documentation\n- Code Comments aktualisieren\n- README Updates (wenn nötig)\n- API Documentation (für Public Methods)\n\nOUTPUT: Strukturierter Report mit allen Phasen, auch wenn manche übersprungen werden.", "label": "/workflow Command"},
+      {"type": "text", "content": "Dieser Workflow-Command ersetzt 5+ einzelne Commands und stellt sicher, dass nichts vergessen wird. Besonders wertvoll für Code Reviews oder beim Onboarding neuer Features."},
+      {"type": "tip", "content": "Verwende Conditional Logic in Commands: 'Nur wenn X, dann Y'. Das verhindert unnötige Ausgaben bei simplen Tasks."},
+      {"type": "subtitle", "content": "Team-Workflows: Commands für Collaboration"},
+      {"type": "bullets", "items": [
+        "/handoff — Übergabe-Dokumentation für Kollegen erstellen",
+        "/review-prep — Code für Review vorbereiten mit Context",
+        "/onboard — Neuen Kollegen in Feature-Branch einführen",
+        "/deploy-check — Pre-Deployment Validation Checklist"
+      ]}
+    ]
+  },
+  {
+    "title": "Performance & Limits — Claude optimal nutzen",
+    "blocks": [
+      {"type": "text", "content": "Claude hat Limits, aber die meisten Nutzer stoßen nie an die echten Grenzen, weil sie ineffizient prompten. Hier lernst du, wie du maximale Performance bei minimaler Token-Verschwendung erzielst."},
+      {"type": "subtitle", "content": "Token-Optimierung: Mehr Output für weniger Input"},
+      {"type": "bullets", "items": [
+        "Verwende Abkürzungen und Akronyme in System-Prompts",
+        "Referenziere Dateien statt Content zu duplizieren",
+        "Strukturiere lange Prompts hierarchisch",
+        "Nutze Batch-Processing für ähnliche Tasks"
+      ]},
+      {"type": "text", "content": "Ein optimierter Prompt kann 50-70% weniger Tokens verbrauchen bei gleicher Ausgabe-Qualität. Das bedeutet günstigere API-Calls und schnellere Responses."},
+      {"type": "subtitle", "content": "Rate Limiting intelligent umgehen"},
+      {"type": "text", "content": "Statt gegen Rate Limits zu kämpfen, arbeite mit ihnen. Queuing, Batching und Smart Retry Logic machen deine Automatisierungen robust."},
       {"type": "numbered", "items": [
-        "CLAUDE.md mit deinem kompletten Projekt-Context erstellen",
-        "Mindestens 8-10 Slash Commands für deine Daily Tasks definieren", 
-        "n8n Workflow für automatische Code-Generation bei Git Events",
-        "Testing Pipeline die Claude für Unit Test Generation nutzt",
-        "Documentation Automation — Claude schreibt deine Docs",
-        "Error Monitoring mit automatic Fix Suggestions via Claude"
+        "Implement exponential backoff bei Rate Limit Errors",
+        "Batch ähnliche Requests zusammen",
+        "Verwende lokales Caching für wiederholte Queries",
+        "Prioritize kritische Requests über Nice-to-Have"
       ]},
-      {"type": "tip", "content": "Start mit einem Command pro Tag. Nach einer Woche hast du ein komplettes Arsenal an Claude-Superkräften."},
-      {"type": "warning", "content": "Diese Power comes with responsibility. Immer Code reviewen bevor es in Production geht, auch wenn's von Claude kommt."},
-      {"type": "text", "content": "Mit diesen drei Insider-Tricks verwandelst du Claude von einem Chat-Bot zu deinem persönlichen Senior Developer. Tausende Entwickler nutzen bereits diese Methoden — jetzt bist du auch dabei. 🚀"}
+      {"type": "prompt", "content": "Optimiere folgenden Prompt für minimalen Token-Verbrauch bei maximaler Präzision:\n\n[DEINEN_LANGEN_PROMPT_HIER_EINFÜGEN]\n\nOptimierungsziele:\n- 50%+ weniger Tokens\n- Gleiche Ausgabe-Qualität  \n- Behalte alle wichtigen Details\n- Nutze Abkürzungen wo sinnvoll\n- Entferne Redundanzen\n\nZeige vorher/nachher Token-Schätzung.", "label": "Prompt Optimizer"},
+      {"type": "tip", "content": "Messbare Verbesserung: Tracke deine Token-Usage pro Command. Ziel sind 20% Reduktion pro Monat bei gleicher Funktionalität."},
+      {"type": "warning", "content": "Over-Optimization kann Verständlichkeit zerstören. Finde die Balance zwischen Effizienz und Maintainability."},
+      {"type": "cards", "items": [
+        {"icon": "💰", "title": "Cost Reduction", "desc": "Bis zu 70% weniger API-Kosten"},
+        {"icon": "⚡", "title": "Speed Boost", "desc": "Schnellere Response Times"},
+        {"icon": "🔄", "title": "Higher Throughput", "desc": "Mehr Requests im Rate Limit"}
+      ]},
+      {"type": "text", "content": "Bonus: Verwende Response Streaming für lange Outputs. Statt auf die komplette Antwort zu warten, kannst du bereits mit den ersten Tokens arbeiten."}
+    ]
+  },
+  {
+    "title": "Monitoring & Debugging — Deine Claude-Performance überwachen",
+    "blocks": [
+      {"type": "text", "content": "Profis tracken ihre Claude-Usage wie Performance-Metriken ihrer Apps. Welche Commands funktionieren? Wo verschwendest du Tokens? Welche Prompts produzieren die besten Ergebnisse? Ohne Monitoring optimierst du blind."},
+      {"type": "subtitle", "content": "Essential Metriken für Claude-Monitoring"},
+      {"type": "bullets", "items": [
+        "Token Usage pro Command (Input/Output Ratio)",
+        "Response Quality Score (subjektiv, aber trackbar)",
+        "Command Success Rate (brauchbare vs. unbrauchbare Outputs)",
+        "Average Response Time per Request Type",
+        "API Error Rate und Error Categories"
+      ]},
+      {"type": "text", "content": "Das Ziel: Datengetriebene Optimierung deiner Prompts und Workflows. Nach einem Monat weißt du genau, welche 20% deiner Commands 80% des Wertes liefern."},
+      {"type": "subtitle", "content": "Simple Logging für Claude-Requests"},
+      {"type": "prompt", "content": "Erstelle ein einfaches Logging-System für meine Claude-API Calls:\n\nSprache: [PYTHON/JAVASCRIPT/PHP]\nFramework: [EXPRESS/FLASK/LARAVEL/etc.]\nStorage: [JSON_FILE/DATABASE/CSV]\n\nLogging-Felder:\n- timestamp\n- command_used\n- input_tokens \n- output_tokens\n- response_time\n- success (boolean)\n- error_message (if any)\n- quality_rating (1-5, optional)\n\nBonus: Simple Dashboard für Metrics-Übersicht", "label": "Claude Usage Logger"},
+      {"type": "subtitle", "content": "Debugging häufiger Claude-Probleme"},
+      {"type": "numbered", "items": [
+        "Inconsistent Outputs → Command zu vage formuliert",
+        "High Token Usage → Prompt-Redundanzen eliminieren", 
+        "Poor Quality Results → Context-Informationen fehlen",
+        "Rate Limit Hits → Request-Batching implementieren",
+        "Slow Response Times → Input-Length optimieren"
+      ]},
+      {"type": "tip", "content": "Weekly Review: Analysiere deine Top 5 Commands der Woche. Was lief gut? Was kann verbessert werden? 15 Minuten Investment, massive Verbesserungen."},
+      {"type": "cards", "items": [
+        {"icon": "📈", "title": "Performance Tracking", "desc": "Messbare Verbesserung deiner Prompts"},
+        {"icon": "🐛", "title": "Issue Detection", "desc": "Probleme finden bevor sie kosten"},
+        {"icon": "💡", "title": "Optimization Insights", "desc": "Datenbasierte Prompt-Verbesserungen"}
+      ]},
+      {"type": "warning", "content": "Don't over-analyze: Tracking ist wichtig, aber täglich 30min+ Analytics ist Verschwendung. Wöchentliche Reviews reichen."},
+      {"type": "prompt", "content": "Analysiere meine Claude-Usage der letzten Woche:\n\nTotal Requests: [ANZAHL]\nTop Commands: [COMMAND_LISTE mit Usage-Count]\nAverage Tokens per Request: [ZAHL]\nError Rate: [PROZENT]\nCostliest Commands: [TOP_3]\n\nErstelle:\n1. Performance Summary\n2. 3 konkrete Optimierungs-Empfehlungen\n3. Commands die ich eliminieren/mergen sollte\n4. Nächste Woche Ziele für Verbesserung", "label": "Weekly Usage Analyzer"}
     ]
   }
 ]
