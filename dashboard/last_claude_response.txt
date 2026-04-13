@@ -1,180 +1,167 @@
 [
   {
-    "title": "🧠 CLAUDE.md als Projekt-Gehirn: Dein digitaler Zwilling",
+    "title": "Was ist Claude und warum solltest du es nutzen?",
     "blocks": [
-      {"type": "text", "content": "Stell dir vor, Claude könnte sich perfekt an jedes deiner Projekte erinnern – ohne dass du jedes Mal von vorne erklären musst. Genau das macht CLAUDE.md möglich. Diese eine Datei wird zum Gehirn deines Projekts und revolutioniert, wie du mit KI arbeitest."},
-      {"type": "subtitle", "content": "Was macht CLAUDE.md so mächtig?"},
-      {"type": "bullets", "items": [
-        "Claude versteht sofort den Kontext deines Projekts",
-        "Keine repetitiven Erklärungen mehr nötig",
-        "Konsistente Antworten über alle Gespräche hinweg",
-        "Perfekt für komplexe, langfristige Projekte"
+      {"type": "text", "content": "Claude ist der KI-Assistent von Anthropic - und ehrlich gesagt mein absoluter Favorit für komplexe Aufgaben. Während ChatGPT oft oberflächlich bleibt, geht Claude richtig in die Tiefe. Besonders beim Programmieren ist Claude ein absoluter Game-Changer."},
+      {"type": "cards", "items": [
+        {"icon": "💡", "title": "Besseres Verständnis", "desc": "Claude versteht Kontext und Nuancen deutlich besser"},
+        {"icon": "🔧", "title": "Code-Expertise", "desc": "Schreibt sauberen, funktionalen Code in allen Sprachen"},
+        {"icon": "🎯", "title": "Präzise Antworten", "desc": "Weniger Halluzinationen, mehr Fakten"},
+        {"icon": "📚", "title": "Längere Gespräche", "desc": "Behält Kontext über sehr lange Unterhaltungen"}
       ]},
-      {"type": "text", "content": "Die Magie liegt in der Struktur. Eine gut aufgebaute CLAUDE.md macht aus Claude einen Experten für DEIN spezifisches Projekt."},
-      {"type": "tip", "content": "Platziere die CLAUDE.md immer im Hauptverzeichnis deines Projekts. Claude erkennt sie automatisch und lädt den Kontext."},
-      {"type": "subtitle", "content": "Der ultimative CLAUDE.md Template"},
-      {"type": "prompt", "content": "# [PROJEKTNAME]\n\n## 🎯 Mission\n[Beschreibe in 2-3 Sätzen das Hauptziel des Projekts]\n\n## 👥 Zielgruppe\n[Wer ist die Hauptzielgruppe? Welche Pain Points haben sie?]\n\n## 🏗️ Tech Stack\n[Liste alle verwendeten Technologien, Frameworks, Tools auf]\n\n## 📁 Projektstruktur\n```\n[Zeige die wichtigsten Ordner und Dateien]\n```\n\n## 🎨 Design System\n- Farben: [Hauptfarben mit Hex-Codes]\n- Fonts: [Verwendete Schriftarten]\n- Spacing: [Abstände und Größen]\n\n## 📋 Coding Standards\n[Spezifische Regeln für dieses Projekt]\n\n## 🔧 Setup Instructions\n[Schritt-für-Schritt Setup für neue Entwickler]\n\n## 📊 Key Metrics\n[Wichtige KPIs und wie sie gemessen werden]", "label": "Basis CLAUDE.md Template"},
-      {"type": "warning", "content": "Aktualisiere deine CLAUDE.md regelmäßig! Eine veraltete Projektbeschreibung führt zu verwirrenden Antworten von Claude."}
+      {"type": "subtitle", "content": "Der Unterschied zu ChatGPT"},
+      {"type": "text", "content": "Während ChatGPT oft versucht zu gefallen und manchmal Unsinn erzählt, ist Claude ehrlicher. Er sagt dir, wenn er etwas nicht weiß, und seine Code-Vorschläge funktionieren meistens auf Anhieb. Das spart dir STUNDEN an Debugging."},
+      {"type": "tip", "content": "Claude ist besonders stark bei: Code-Reviews, Debugging, komplexen Erklärungen, ethischen Fragen und langen, strukturierten Texten."}
     ]
   },
   {
-    "title": "⚡ Slash Commands: Deine persönlichen Claude-Superkräfte",
+    "title": "Claude-Konto einrichten - Schritt für Schritt",
     "blocks": [
-      {"type": "text", "content": "Slash Commands sind wie Hotkeys für Claude – aber viel mächtiger. Mit eigenen Commands in .claude/commands/ verwandelst du wiederkehrende Aufgaben in Ein-Wort-Befehle. Das spart nicht nur Zeit, sondern macht deine Workflows unglaublich effizient."},
-      {"type": "subtitle", "content": "Warum Slash Commands dein Game-Changer sind"},
-      {"type": "cards", "items": [
-        {"icon": "🚀", "title": "Instant-Execution", "desc": "Ein Wort, komplexe Aktion. /review analysiert sofort deinen gesamten Code."},
-        {"icon": "🎯", "title": "Konsistenz", "desc": "Gleiche Qualität bei jeder Ausführung. Keine schwankenden Ergebnisse mehr."},
-        {"icon": "⚙️", "title": "Anpassbarkeit", "desc": "Perfekt auf deine Arbeitsweise und Projekte zugeschnitten."}
-      ]},
-      {"type": "text", "content": "Die Ordnerstruktur ist entscheidend für effektive Commands. Hier ist das Setup, das Profis verwenden:"},
-      {"type": "prompt", "content": ".claude/\n├── commands/\n│   ├── dev/\n│   │   ├── review.md\n│   │   ├── refactor.md\n│   │   └── debug.md\n│   ├── content/\n│   │   ├── blog.md\n│   │   ├── social.md\n│   │   └── email.md\n│   └── analysis/\n│       ├── competitor.md\n│       ├── performance.md\n│       └── seo.md", "label": "Profi Command-Struktur"},
-      {"type": "subtitle", "content": "Power-Commands die du sofort brauchst"},
-      {"type": "prompt", "content": "# /review\n\nAnalysiere den bereitgestellten Code systematisch:\n\n1. **Funktionalität**: Macht der Code was er soll?\n2. **Performance**: Identifiziere Bottlenecks\n3. **Security**: Prüfe auf Sicherheitslücken\n4. **Best Practices**: Entspricht er den Standards?\n5. **Refactoring**: Konkrete Verbesserungsvorschläge\n\nFormat: \n- ✅ Was gut läuft\n- ⚠️ Was verbessert werden kann\n- 🚨 Kritische Issues\n- 💡 Konkrete Next Steps", "label": "Code Review Command"},
-      {"type": "prompt", "content": "# /content-audit\n\nAnalysiere den Content nach diesen Kriterien:\n\n**SEO-Performance:**\n- Keyword-Dichte und -Verteilung\n- Meta-Descriptions und Headlines\n- Internal Linking Opportunities\n\n**Engagement-Faktoren:**\n- Hook-Stärke der ersten 3 Sätze\n- Call-to-Action Platzierung\n- Emotional Triggers\n\n**Conversion-Optimierung:**\n- Vertrauen-aufbauende Elemente\n- Social Proof Integration\n- Urgency und Scarcity\n\nGib konkrete Verbesserungsvorschläge mit Priorität.", "label": "Content Audit Command"},
-      {"type": "tip", "content": "Beginne mit 3-5 Commands die du täglich brauchst. Erweitere dann schrittweise. Zu viele Commands auf einmal überfordern nur."}
-    ]
-  },
-  {
-    "title": "🔄 Das --print Flag: Automatisierung auf Steroiden",
-    "blocks": [
-      {"type": "text", "content": "Das --print Flag ist Claudes Geheimwaffe für Automatisierungen. Es macht Claude 'headless' – perfekt für n8n Workflows und API-Integrationen. Während andere noch manuell kopieren und einfügen, laufen deine Prozesse vollautomatisch."},
-      {"type": "subtitle", "content": "Warum --print alles verändert"},
-      {"type": "bullets", "items": [
-        "Keine UI-Ablenkungen – nur pure Ausgabe",
-        "Perfekt strukturiert für weitere Verarbeitung", 
-        "Integration in n8n, Zapier und eigene APIs möglich",
-        "Skalierbare Workflows ohne manuellen Input"
-      ]},
-      {"type": "warning", "content": "Das --print Flag funktioniert nur mit der Claude API, nicht im Web-Interface. Du brauchst API-Zugang für diese Power-Features."},
-      {"type": "subtitle", "content": "n8n Integration: Der Pfeil-Flow"},
-      {"type": "text", "content": "Der 'Pfeil-Flow' ist ein bewährtes Muster für n8n + Claude Automatisierungen. Daten fließen linear durch definierte Stationen – wie ein Fließband für Content-Erstellung."},
-      {"type": "cards", "items": [
-        {"icon": "📥", "title": "Input Node", "desc": "Webhook oder Trigger empfängt Rohdaten"},
-        {"icon": "🔄", "title": "Claude Processing", "desc": "Mehrere Claude-Nodes für verschiedene Aufgaben"},
-        {"icon": "📤", "title": "Output Node", "desc": "Fertiges Ergebnis an Ziel-System"}
-      ]},
-      {"type": "prompt", "content": "{\n  \"model\": \"claude-3-sonnet-20240229\",\n  \"max_tokens\": 2000,\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"[AUFGABE_BESCHREIBUNG] --print\"\n    }\n  ],\n  \"system\": \"Du bist ein [EXPERTEN_ROLLE]. Gib nur das gewünschte Ergebnis aus, keine Erklärungen oder Formatierung. Perfekt für API-Integration.\"\n}", "label": "API Call Template für --print"},
-      {"type": "subtitle", "content": "Praxis-Beispiel: Automatische Blog-Erstellung"},
+      {"type": "text", "content": "Die Anmeldung bei Claude ist simpel, aber es gibt ein paar Tricks, die du wissen solltest, um das Maximum rauszuholen."},
       {"type": "numbered", "items": [
-        "n8n Webhook empfängt Keyword + Briefing",
-        "Claude Node 1: Outline erstellen mit --print",
-        "Claude Node 2: Vollständigen Artikel schreiben",
-        "Claude Node 3: Meta-Description + Tags generieren",
-        "WordPress API: Artikel direkt veröffentlichen"
+        "Gehe zu claude.ai und klicke auf 'Sign Up'",
+        "Verwende deine beste E-Mail-Adresse (nicht die Spam-Adresse!)",
+        "Bestätige deine E-Mail - check auch den Spam-Ordner",
+        "Wähle deinen Anzeigenamen klug - Claude merkt sich, wie du heißt",
+        "Aktiviere 2-Faktor-Authentifizierung für Sicherheit"
       ]},
-      {"type": "prompt", "content": "# n8n Claude Node Setup\n\n**Node 1 - Outline:**\nErstelle eine detaillierte Gliederung für einen Blogartikel zum Thema \"[KEYWORD]\". Zielgruppe: [ZIELGRUPPE]. Fokus auf [HAUPTZIEL]. --print\n\n**Node 2 - Content:**\nSchreibe basierend auf dieser Gliederung: [OUTLINE] einen vollständigen, SEO-optimierten Blogartikel. Länge: [WÖRTER]. Tonality: [TON]. --print\n\n**Node 3 - Meta:**\nGeneriere für diesen Artikel: [ARTIKEL] eine Meta-Description (155 Zeichen), 5 relevante Tags und einen Social Media Teaser. Format: JSON. --print", "label": "Blog-Automation Workflow"}
-    ]
-  },
-  {
-    "title": "🎯 Template-Aufbau: Die Wissenschaft perfekter Prompts",
-    "blocks": [
-      {"type": "text", "content": "Ein guter Prompt ist wie ein Kochrezept – jede Zutat in der richtigen Reihenfolge und Menge. Aber ein PERFEKTER Prompt ist ein Template, das sich an jede Situation anpassen lässt. Hier lernst du die Anatomie von Templates, die immer funktionieren."},
-      {"type": "subtitle", "content": "Die 7-Schichten-Architektur"},
-      {"type": "numbered", "items": [
-        "**Context Layer**: Wer ist Claude in dieser Rolle?",
-        "**Goal Layer**: Was soll am Ende herauskommen?", 
-        "**Input Layer**: Welche Informationen bekommt Claude?",
-        "**Process Layer**: Wie soll Claude vorgehen?",
-        "**Output Layer**: In welchem Format soll das Ergebnis sein?",
-        "**Quality Layer**: Welche Standards müssen erfüllt werden?",
-        "**Constraint Layer**: Was sind die Grenzen und No-Gos?"
-      ]},
-      {"type": "prompt", "content": "# [TEMPLATE_NAME]\n\n## KONTEXT\nDu bist [EXPERTENROLLE] mit [JAHRE] Jahren Erfahrung in [FACHBEREICH]. Deine Stärke liegt in [SPEZIALISIERUNG].\n\n## ZIEL\n[KONKRETE_AUFGABE] für [ZIELGRUPPE] mit dem Fokus auf [HAUPTZIEL].\n\n## INPUT\n- [VARIABLE_1]: [BESCHREIBUNG]\n- [VARIABLE_2]: [BESCHREIBUNG] \n- [VARIABLE_3]: [BESCHREIBUNG]\n\n## PROZESS\n1. [SCHRITT_1_BESCHREIBUNG]\n2. [SCHRITT_2_BESCHREIBUNG]\n3. [SCHRITT_3_BESCHREIBUNG]\n\n## OUTPUT FORMAT\n[GEWÜNSCHTES_FORMAT mit Beispiel]\n\n## QUALITÄTSSTANDARDS\n- [STANDARD_1]\n- [STANDARD_2]\n- [STANDARD_3]\n\n## CONSTRAINTS\n- Nicht mehr als [LIMITE]\n- Vermeide [NO_GO_1, NO_GO_2]\n- Stil: [TONALITY]", "label": "Universal Template Framework"},
-      {"type": "tip", "content": "Teste jeden neuen Template mit 3 verschiedenen Inputs. Nur wenn alle drei gute Ergebnisse liefern, ist das Template produktionsreif."},
-      {"type": "subtitle", "content": "Advanced Template-Techniken"},
-      {"type": "cards", "items": [
-        {"icon": "🎭", "title": "Persona Layering", "desc": "Multiple Expertisen in einem Prompt kombinieren"},
-        {"icon": "📊", "title": "Dynamic Scoring", "desc": "Claude bewertet eigene Ausgabe nach definierten Kriterien"},
-        {"icon": "🔄", "title": "Iterative Refinement", "desc": "Template verbessert sich selbst durch Feedback-Loops"}
-      ]},
-      {"type": "prompt", "content": "# Multi-Persona Template\n\nAnalysiere [INPUT] aus drei Perspektiven:\n\n**👨‍💼 Business Analyst:**\n[Geschäftliche Bewertung mit Fokus auf ROI und Risiken]\n\n**👨‍🔬 Technical Expert:**  \n[Technische Machbarkeit und Implementation]\n\n**👥 User Experience Designer:**\n[Nutzerzentrierung und Usability]\n\n**🎯 Synthesis:**\nBasierend auf allen drei Perspektiven, empfehle ich:\n[KONKRETE_HANDLUNGSEMPFEHLUNG]\n\n**📊 Confidence Score:**\nBusiness Impact: [X]/10\nTechnical Feasibility: [X]/10  \nUser Value: [X]/10", "label": "Multi-Perspektiven Analyse"}
-    ]
-  },
-  {
-    "title": "🏗️ Dateistruktur: Organisation die skaliert",
-    "blocks": [
-      {"type": "text", "content": "Eine chaotische Dateistruktur ist der Tod jeder KI-Automatisierung. Claude braucht Ordnung, um Kontext richtig zu verstehen. Die richtige Struktur macht den Unterschied zwischen einem Tool, das manchmal funktioniert, und einem System, auf das du dich 100% verlassen kannst."},
-      {"type": "subtitle", "content": "Die Profi-Hierarchie"},
-      {"type": "text", "content": "Große Teams bei OpenAI, Anthropic und Google nutzen diese bewährte Struktur. Sie ist battle-tested für Projekte mit hunderten von Prompts und Commands."},
-      {"type": "prompt", "content": "projekt-root/\n├── CLAUDE.md                    # Projekt-Gehirn\n├── .claude/                     # Claude-spezifische Files\n│   ├── commands/                # Deine Slash Commands\n│   │   ├── content/            # Content-Erstellung\n│   │   │   ├── blog.md\n│   │   │   ├── social.md\n│   │   │   └── newsletter.md\n│   │   ├── analysis/           # Datenanalyse\n│   │   │   ├── competitor.md\n│   │   │   ├── performance.md\n│   │   │   └── trends.md\n│   │   └── development/        # Code & Tech\n│   │       ├── review.md\n│   │       ├── debug.md\n│   │       └── optimize.md\n│   ├── templates/              # Wiederverwendbare Templates\n│   │   ├── api-documentation.md\n│   │   ├── user-story.md\n│   │   └── bug-report.md\n│   ├── context/                # Projekt-Kontext Files\n│   │   ├── brand-guidelines.md\n│   │   ├── tech-stack.md\n│   │   └── user-personas.md\n│   └── automations/           # n8n Workflows & API Calls\n│       ├── blog-pipeline.json\n│       ├── social-scheduler.json\n│       └── report-generator.json\n└── docs/                      # Klassische Dokumentation\n    ├── api/\n    ├── guides/\n    └── examples/", "label": "Enterprise-Level Struktur"},
-      {"type": "warning", "content": "Übertreibe es nicht am Anfang! Starte mit CLAUDE.md + einem commands/ Ordner. Erweitere nur wenn du wirklich mehr brauchst."},
-      {"type": "subtitle", "content": "Naming Conventions die funktionieren"},
+      {"type": "warning", "content": "WICHTIG: Claude ist regional begrenzt. Falls du eine Fehlermeldung bekommst, nutze ein VPN mit US- oder UK-Server."},
+      {"type": "subtitle", "content": "Free vs. Pro - Was lohnt sich?"},
       {"type": "bullets", "items": [
-        "Commands: Verben (review.md, analyze.md, generate.md)",
-        "Templates: Nomen + Zweck (blog-post.md, email-sequence.md)",
-        "Context Files: Adjektiv + Nomen (brand-guidelines.md, user-personas.md)",
-        "Keine Leerzeichen, keine Umlaute, alles lowercase"
+        "Free: 5 Nachrichten pro Stunde, begrenzt auf einfache Aufgaben",
+        "Pro (20$/Monat): Unbegrenzte Nachrichten, Zugang zu Claude 3 Opus",
+        "Pro lohnt sich ab 10+ Stunden Nutzung pro Woche",
+        "Für Code-Projekte ist Pro fast Pflicht"
       ]},
-      {"type": "tip", "content": "Erstelle eine INDEX.md in jedem Unterordner. Claude kann dann schnell alle verfügbaren Commands und Templates überblicken."},
-      {"type": "subtitle", "content": "Die Macht der Verschachtelung"},
-      {"type": "text", "content": "Fortgeschrittene Nutzer verwenden verschachtelte Commands – Commands die andere Commands aufrufen. Das ermöglicht komplexe Workflows mit einem einzigen Befehl."},
-      {"type": "prompt", "content": "# /content-pipeline\n\n**Schritt 1:** Führe /research [TOPIC] aus\n**Schritt 2:** Nutze Ergebnisse für /outline [CONTENT_TYPE] \n**Schritt 3:** Erstelle mit /write-content den finalen Content\n**Schritt 4:** Optimiere mit /seo-optimize\n**Schritt 5:** Generiere /social-snippets für Distribution\n\n**Ausgabe:** Komplettes Content-Paket ready-to-publish\n\n**Variablen:**\n- [TOPIC]: Hauptthema des Contents\n- [CONTENT_TYPE]: blog|newsletter|social|video-script\n- [TARGET_AUDIENCE]: Spezifische Zielgruppe", "label": "Master-Command Pipeline"}
+      {"type": "tip", "content": "Teste Claude erstmal kostenlos für eine Woche. Wenn du merkst, dass du dauernd ans Limit stößt, upgrade auf Pro."}
     ]
   },
   {
-    "title": "🚀 Workflow-Integration: Vom Einzelkämpfer zum System",
+    "title": "Die Claude-Oberfläche verstehen",
     "blocks": [
-      {"type": "text", "content": "Die wahre Magie passiert, wenn alle drei Tricks zusammenarbeiten. CLAUDE.md liefert den Kontext, Slash Commands führen Aktionen aus, --print macht alles automatisierbar. Das Ergebnis: Ein KI-System, das wie eine Erweiterung deines Gehirns funktioniert."},
-      {"type": "subtitle", "content": "Das Zusammenspiel verstehen"},
+      {"type": "text", "content": "Claude's Interface ist minimalistisch - aber hinter der einfachen Oberfläche steckt viel Power. Hier zeige ich dir, wo alles ist und wie du es optimal nutzt."},
       {"type": "cards", "items": [
-        {"icon": "🧠", "title": "CLAUDE.md", "desc": "Liefert permanenten Projekt-Kontext für alle Interaktionen"},
-        {"icon": "⚡", "title": "Slash Commands", "desc": "Führen spezifische Aufgaben mit hoher Konsistenz aus"},
-        {"icon": "🔄", "title": "--print Flag", "desc": "Macht Ergebnisse automatisierbar und skalierbar"}
+        {"icon": "💬", "title": "Chat-Bereich", "desc": "Hier tippst du deine Prompts - unterstützt auch sehr lange Texte"},
+        {"icon": "📋", "title": "Conversation History", "desc": "Links findest du alle deine Gespräche der letzten Zeit"},
+        {"icon": "⚙️", "title": "Settings", "desc": "Minimale Einstellungen - Claude ist absichtlich simpel gehalten"},
+        {"icon": "🔄", "title": "New Conversation", "desc": "Startet fresh - wichtig für neue Themen"}
       ]},
-      {"type": "text", "content": "Ein praktisches Beispiel: Du entwickelst eine App und willst täglich automatische Code-Reviews. So sieht der komplette Workflow aus:"},
-      {"type": "numbered", "items": [
-        "CLAUDE.md beschreibt deine App-Architektur und Coding Standards",
-        "/review Command nutzt diese Infos für konsistente Code-Analyse", 
-        "n8n triggert täglich via API mit --print Flag",
-        "Ergebnisse landen automatisch als Issues in GitHub",
-        "Slack-Notification mit Summary für das Team"
-      ]},
-      {"type": "prompt", "content": "# Täglicher Code-Review Workflow\n\n## n8n Workflow Setup:\n\n**Node 1 - Git Trigger:**\n- Überwacht Repository auf neue Commits\n- Filtert nur Production-Branch\n\n**Node 2 - Claude API Call:**\n```json\n{\n  \"messages\": [{\n    \"role\": \"user\", \n    \"content\": \"/review {{$node[\\\"Git\\\"].json[\\\"diff\\\"]}} --print\"\n  }],\n  \"system\": \"Context aus CLAUDE.md wird automatisch geladen\"\n}\n```\n\n**Node 3 - GitHub Integration:**\n- Erstellt Issue mit Review-Ergebnissen\n- Taggt relevante Entwickler\n- Setzt Priority basierend auf Critical Issues\n\n**Node 4 - Slack Notification:**\n- Daily Summary an #dev-channel\n- Highlights für kritische Findings", "label": "Automatischer Code-Review"},
-      {"type": "tip", "content": "Starte klein: Ein Workflow, ein Command, ein Ziel. Wenn das perfekt läuft, erweitere schrittweise. Komplexität ist der Feind der Zuverlässigkeit."},
-      {"type": "subtitle", "content": "Advanced Integration Patterns"},
+      {"type": "subtitle", "content": "Pro-Tipps für die Navigation"},
       {"type": "bullets", "items": [
-        "**Chain Commands**: Ein Command triggert den nächsten automatisch",
-        "**Conditional Flows**: Verschiedene Pfade je nach Claude-Ausgabe",  
-        "**Feedback Loops**: Ergebnisse werden zur Verbesserung zurückgeführt",
-        "**Multi-Model Orchestration**: Claude + andere KIs in einem Workflow"
+        "Nutze Cmd/Ctrl + K für schnelle Navigation",
+        "Lange Gespräche werden automatisch gespeichert",
+        "Du kannst Conversations umbenennen für bessere Organisation",
+        "Copy-Paste funktioniert perfekt - auch für Code-Blöcke"
       ]},
-      {"type": "warning", "content": "API-Limits beachten! Claude hat Rate-Limits. Für hochfrequente Automationen brauchst du Error-Handling und Retry-Logic."},
-      {"type": "prompt", "content": "# Multi-Channel Content Distribution\n\n**Trigger:** Neuer Blog-Post veröffentlicht\n\n**Workflow:**\n1. `/content-analyze` - Extrahiere Key Messages\n2. `/social-adapt linkedin` - LinkedIn-Version erstellen  \n3. `/social-adapt twitter` - Twitter-Thread generieren\n4. `/social-adapt instagram` - Instagram-Carousel entwickeln\n5. `/email-teaser` - Newsletter-Snippet schreiben\n6. Schedule alle Channels mit optimalen Zeiten\n\n**Output:** Ein Blog-Post wird zu 15+ Social Media Posts\n**Zeit:** Von 4 Stunden auf 4 Minuten reduziert", "label": "Content-Multiplikator Workflow"}
+      {"type": "tip", "content": "Organisiere deine Gespräche nach Projekten. Benenne sie um in 'Website Redesign', 'Python Learning' etc. - das spart später viel Zeit beim Wiederfinden."}
     ]
   },
   {
-    "title": "💡 Pro-Tipps: Von gut zu unschlagbar",
+    "title": "Die ersten Prompts - So startest du richtig",
     "blocks": [
-      {"type": "text", "content": "Diese drei Insider-Tricks sind erst der Anfang. Hier sind die fortgeschrittenen Techniken, die den Unterschied zwischen Amateuren und Profis ausmachen. Diese Tipps kommen aus hunderten von Stunden praktischer Erfahrung."},
-      {"type": "subtitle", "content": "Fehler die selbst Profis machen"},
-      {"type": "cards", "items": [
-        {"icon": "❌", "title": "Kontext-Überladung", "desc": "Zu viele Infos in CLAUDE.md verwirren mehr als sie helfen"},
-        {"icon": "⚠️", "title": "Command-Chaos", "desc": "Zu viele ähnliche Commands führen zu Verwirrung"},
-        {"icon": "🔄", "title": "Update-Vergessen", "desc": "Veraltete Templates produzieren schlechte Ergebnisse"}
-      ]},
-      {"type": "subtitle", "content": "Die 80/20 Regel für Claude"},
-      {"type": "text", "content": "80% deiner Ergebnisse kommen von 20% deiner Commands. Identifiziere diese Power-Commands und perfektioniere sie, statt hunderte mittelmäßige zu sammeln."},
+      {"type": "text", "content": "Der erste Eindruck zählt - auch bei Claude. Mit den richtigen Starter-Prompts legst du den Grundstein für produktive Gespräche. Hier sind meine bewährtesten Einstiegs-Prompts."},
+      {"type": "subtitle", "content": "Der perfekte Kennenlern-Prompt"},
+      {"type": "prompt", "content": "Hi Claude! Ich bin [DEIN NAME] und arbeite als [DEINE ROLLE/BERUF]. Ich möchte dich als meinen KI-Assistenten für [HAUPTZWECK] nutzen. Kannst du mir kurz erklären, wie du am besten bei [SPEZIFISCHER AUFGABE] hilfst und was ich beachten sollte?", "label": "Kennenlern-Prompt"},
+      {"type": "subtitle", "content": "Code-spezifische Starter"},
+      {"type": "prompt", "content": "Ich bin [ERFAHRUNGSLEVEL] in [PROGRAMMIERSPRACHE] und möchte [PROJEKT/ZIEL] umsetzen. Kannst du mir dabei helfen und dabei erklären, warum du bestimmte Ansätze wählst? Ich lerne gerne die Logik dahinter.", "label": "Code-Lern-Prompt"},
+      {"type": "prompt", "content": "Ich habe ein Problem mit meinem [SPRACHE]-Code. Er soll [GEWÜNSCHTE FUNKTION], aber [AKTUELLES PROBLEM]. Kannst du den Code reviewen und Verbesserungsvorschläge machen?\n\n```[SPRACHE]\n[DEIN CODE HIER]\n```", "label": "Code-Review-Prompt"},
+      {"type": "tip", "content": "Claude liebt Kontext! Je mehr Details du über dein Projekt, dein Skill-Level und deine Ziele gibst, desto bessere Hilfe bekommst du."},
+      {"type": "warning", "content": "Vermeide zu generische Prompts wie 'Hilf mir beim Programmieren'. Sei spezifisch - Claude kann dann viel gezielter helfen."}
+    ]
+  },
+  {
+    "title": "Claude für Code - Die ultimativen Prompts",
+    "blocks": [
+      {"type": "text", "content": "Hier kommt der Goldschatz: Meine besten Code-Prompts, die ich täglich nutze. Diese Prompts sind erprobt und bringen sofort Ergebnisse. Kopiere sie einfach und passe sie an deine Needs an."},
+      {"type": "subtitle", "content": "Code schreiben lassen"},
+      {"type": "prompt", "content": "Schreibe mir eine [SPRACHE]-Funktion, die [GEWÜNSCHTE FUNKTIONALITÄT] macht. \n\nAnforderungen:\n- [SPEZIFISCHE ANFORDERUNG 1]\n- [SPEZIFISCHE ANFORDERUNG 2]\n- Kommentiere den Code ausführlich\n- Zeige mir auch ein Verwendungsbeispiel\n\nZielgruppe: [ANFÄNGER/FORTGESCHRITTEN/EXPERTE]", "label": "Code-Generator"},
+      {"type": "subtitle", "content": "Code optimieren"},
+      {"type": "prompt", "content": "Analysiere meinen [SPRACHE]-Code und optimiere ihn für [PERFORMANCE/LESBARKEIT/SPEICHER/SICHERHEIT]:\n\n```[SPRACHE]\n[DEIN CODE]\n```\n\nBitte erkläre:\n1. Was du geändert hast und warum\n2. Welche Performance-Verbesserungen zu erwarten sind\n3. Alternative Ansätze, die ich überdenken könnte", "label": "Code-Optimizer"},
+      {"type": "subtitle", "content": "Fehler finden und beheben"},
+      {"type": "prompt", "content": "Mein [SPRACHE]-Code wirft folgenden Fehler: '[FEHLERMELDUNG]'\n\n```[SPRACHE]\n[DEIN CODE]\n```\n\nErwartetes Verhalten: [BESCHREIBUNG]\nTatsächliches Verhalten: [BESCHREIBUNG]\n\nBitte finde den Fehler, erkläre die Ursache und gib mir die korrigierte Version.", "label": "Bug-Killer"},
+      {"type": "subtitle", "content": "Code verstehen lernen"},
+      {"type": "prompt", "content": "Erkläre mir diesen [SPRACHE]-Code Schritt für Schritt, als wäre ich [DEIN LEVEL]:\n\n```[SPRACHE]\n[CODE ZUM VERSTEHEN]\n```\n\nBitte erkläre:\n- Was jede Zeile macht\n- Warum bestimmte Entscheidungen getroffen wurden\n- Welche Konzepte ich lernen sollte, um solchen Code selbst zu schreiben", "label": "Code-Erklärer"}
+    ]
+  },
+  {
+    "title": "Erweiterte Techniken für Profis",
+    "blocks": [
+      {"type": "text", "content": "Jetzt wird's interessant! Diese Advanced-Techniken nutzen die wahre Power von Claude aus. Damit holst du das Maximum aus jedem Gespräch raus."},
+      {"type": "subtitle", "content": "Multi-Step Prompting"},
+      {"type": "text", "content": "Statt alles auf einmal zu fragen, teile komplexe Aufgaben in Schritte auf. Claude arbeitet dann systematischer und macht weniger Fehler."},
+      {"type": "prompt", "content": "Ich möchte eine [BESCHREIBUNG DER APP/WEBSITE] erstellen. Lass uns das Schritt für Schritt angehen:\n\nSchritt 1: Hilf mir erstmal bei der Architektur - welche Komponenten brauche ich und wie hängen sie zusammen?\n\n(Warte auf Antwort, dann weiter mit Schritt 2)", "label": "Multi-Step Starter"},
+      {"type": "subtitle", "content": "Context Stacking"},
+      {"type": "text", "content": "Claude hat ein riesiges Gedächtnis. Nutze das! Baue Kontext über mehrere Nachrichten auf, statt alles neu zu erklären."},
       {"type": "bullets", "items": [
-        "Tracke welche Commands du am häufigsten nutzt",
-        "Investiere 80% der Zeit in deine Top-5 Commands",
-        "Lösche Commands die du 30 Tage nicht verwendet hast",
-        "Ein perfekter Command ist besser als zehn mittelmäßige"
+        "Beginne Gespräche mit 'Basierend auf unserem letzten Gespräch...'",
+        "Referenziere frühere Code-Beispiele: 'Wie die Funktion von vorhin...'",
+        "Baue auf vorherigen Lösungen auf: 'Erweitere das um...'",
+        "Claude merkt sich den gesamten Conversation-Thread"
       ]},
-      {"type": "tip", "content": "Führe ein 'Command-Tagebuch' für eine Woche. Du wirst überrascht sein, welche Commands du wirklich brauchst vs. was du denkst zu brauchen."},
-      {"type": "subtitle", "content": "Version Control für deine KI-Assets"},
-      {"type": "text", "content": "Behandle deine Claude-Konfiguration wie Code. Git-Versionierung für .claude/ Ordner macht dich unverwundbar gegen Fehler und ermöglicht Teamwork."},
-      {"type": "prompt", "content": "# .gitignore Ergänzungen für Claude-Projekte\n\n# Persönliche API Keys\n.claude/config/api-keys.json\n\n# Temporäre Outputs  \n.claude/temp/\n.claude/outputs/\n\n# Große Context Files (falls zu groß für Repo)\n.claude/context/large-datasets/\n\n# Aber IMMER committen:\n# .claude/commands/\n# .claude/templates/ \n# CLAUDE.md\n# .claude/automations/", "label": "Git Setup für Claude"},
-      {"type": "subtitle", "content": "Performance-Hacks die keiner kennt"},
+      {"type": "subtitle", "content": "Code-Review wie ein Senior Developer"},
+      {"type": "prompt", "content": "Führe ein professionelles Code-Review für meinen [SPRACHE]-Code durch:\n\n```[SPRACHE]\n[DEIN CODE]\n```\n\nBitte prüfe auf:\n✅ Code-Qualität und Best Practices\n✅ Performance-Issues\n✅ Sicherheitslücken\n✅ Maintainability\n✅ Potential für Refactoring\n\nGib mir konkrete Verbesserungsvorschläge mit Code-Beispielen.", "label": "Senior Code Review"},
+      {"type": "tip", "content": "Pro-Tipp: Nutze Claude als Pair-Programming-Partner. Erkläre ihm deine Denkweise, lass ihn Feedback geben und diskutiere Alternativen. Das macht dich zum besseren Programmierer!"}
+    ]
+  },
+  {
+    "title": "Claude in deinen Workflow integrieren",
+    "blocks": [
+      {"type": "text", "content": "Die wahre Magic passiert, wenn Claude Teil deines täglichen Workflows wird. Hier zeige ich dir, wie du Claude strategisch einsetzt, um produktiver zu werden - ohne süchtig zu werden."},
+      {"type": "subtitle", "content": "Der optimale Tagesablauf mit Claude"},
+      {"type": "cards", "items": [
+        {"icon": "🌅", "title": "Morgens", "desc": "Plane deinen Tag: 'Claude, ich hab heute [AUFGABEN]. Wie strukturiere ich das am besten?'"},
+        {"icon": "💻", "title": "Beim Coden", "desc": "Claude als Pair-Partner: Erkläre deine Probleme, diskutiere Lösungen, lass reviewen"},
+        {"icon": "🔍", "title": "Beim Debugging", "desc": "Schneller Fehler finden: Paste deinen Code + Fehlermeldung, spare Stunden"},
+        {"icon": "📚", "title": "Zum Lernen", "desc": "Neue Konzepte verstehen: 'Erkläre mir X, als wäre ich [DEIN LEVEL]'"}
+      ]},
+      {"type": "subtitle", "content": "Organisiere deine Claude-Gespräche"},
+      {"type": "bullets", "items": [
+        "Ein Gespräch pro Projekt - nicht alles durcheinander mischen",
+        "Benenne Conversations sinnvoll: 'React Dashboard', 'Python API', etc.",
+        "Starte neue Conversations für komplett neue Themen",
+        "Nutze ein Gespräch für verwandte Probleme (z.B. verschiedene Bugs im selben Projekt)"
+      ]},
+      {"type": "subtitle", "content": "Die goldenen Regeln für nachhaltigen Claude-Einsatz"},
       {"type": "numbered", "items": [
-        "**Prompt Caching**: Wiederhole erfolgreiche Prompt-Teile für schnellere Responses",
-        "**Context Compression**: Fasse lange Dokumente in Key-Points zusammen",
-        "**Batch Processing**: Mehrere ähnliche Aufgaben in einem Call abarbeiten", 
-        "**Smart Chunking**: Große Inputs intelligent in Teile zerlegen"
+        "Versuche erstmal selbst - Claude soll helfen, nicht ersetzen",
+        "Verstehe die Lösungen, die Claude gibt - copy-paste ist nicht lernen",
+        "Nutze Claude für Inspiration und Diskussion, nicht als Wahrheitsquelle",
+        "Teste Claude's Code immer - auch KI macht Fehler",
+        "Kombiniere mehrere Quellen - Claude + Docs + Stack Overflow"
       ]},
-      {"type": "prompt", "content": "# Batch-Processing Template\n\nBearbeite diese [ANZAHL] [AUFGABEN_TYP] in einem Durchgang:\n\n**Input 1:** [BESCHREIBUNG_1]\n**Input 2:** [BESCHREIBUNG_2]  \n**Input 3:** [BESCHREIBUNG_3]\n\n**Gewünschtes Format für JEDEN Input:**\n[FORMAT_TEMPLATE]\n\n**Trenne Ergebnisse mit:** \n--- [INPUT_NUMMER] ---\n\n**Qualitätscheck:** Jedes Ergebnis muss [QUALITÄTSKRITERIEN] erfüllen.", "label": "Batch-Processing Command"},
-      {"type": "warning", "content": "Überwache deine API-Kosten! Batch-Processing spart Zeit, kann aber teurer werden. Setze Alerts bei ungewöhnlich hohen Kosten."},
-      {"type": "text", "content": "Der wichtigste Tipp zum Schluss: Experimentiere, aber dokumentiere. Jede erfolgreiche Technik, die du entwickelst, sollte in deinem persönlichen Claude-Playbook landen. So baust du über Zeit ein unschlagbares Arsenal auf."}
+      {"type": "warning", "content": "Vorsicht vor KI-Abhängigkeit! Claude soll deine Fähigkeiten verstärken, nicht ersetzen. Bleib kritisch und lerne weiter die Grundlagen."},
+      {"type": "tip", "content": "Mein Geheimtipp: Führe ein 'Claude-Tagebuch'. Notiere dir die besten Prompts und Lösungen. Nach einem Monat hast du eine Gold-Mine an wiederverwendbaren Prompts!"}
+    ]
+  },
+  {
+    "title": "Troubleshooting und häufige Probleme",
+    "blocks": [
+      {"type": "text", "content": "Auch mit Claude läuft nicht immer alles glatt. Hier sind die häufigsten Probleme und wie du sie löst - damit du nicht stundenlang rumtüftelst."},
+      {"type": "subtitle", "content": "Claude antwortet nicht oder macht Fehler"},
+      {"type": "cards", "items": [
+        {"icon": "🚫", "title": "Rate Limit erreicht", "desc": "Warte 1 Stunde oder upgrade auf Pro. Bei Pro fast nie ein Problem."},
+        {"icon": "🔄", "title": "Claude 'vergisst' Kontext", "desc": "Gespräch ist zu lang. Starte neu und fasse wichtige Punkte zusammen."},
+        {"icon": "❌", "title": "Fehlende Details", "desc": "Claude braucht mehr Kontext. Sei spezifischer in deinen Prompts."},
+        {"icon": "🤖", "title": "Generische Antworten", "desc": "Prompt ist zu vague. Frage konkreter und gib Beispiele."}
+      ]},
+      {"type": "subtitle", "content": "Code funktioniert nicht"},
+      {"type": "bullets", "items": [
+        "Gib Claude das komplette Error-Log - nicht nur die erste Zeile",
+        "Zeige den vollständigen Code-Kontext, nicht nur das Problem-Snippet",
+        "Erwähne deine Umgebung: Python-Version, Browser, OS, etc.",
+        "Beschreibe genau, was du erwartest vs. was passiert"
+      ]},
+      {"type": "subtitle", "content": "Regionale Beschränkungen umgehen"},
+      {"type": "text", "content": "Falls Claude in deinem Land nicht verfügbar ist, gibt es legale Workarounds:"},
+      {"type": "numbered", "items": [
+        "Nutze ein VPN mit US- oder UK-Server (ExpressVPN, NordVPN)",
+        "Stelle sicher, dass dein VPN auch DNS-Queries routet",
+        "Lösche Browser-Cookies und Cache nach VPN-Aktivierung",
+        "Manche Mobile-Apps funktionieren auch ohne VPN"
+      ]},
+      {"type": "subtitle", "content": "Performance-Probleme beheben"},
+      {"type": "prompt", "content": "Claude, mein Code ist langsam:\n\n```[SPRACHE]\n[LANGSAMER CODE]\n```\n\nTestdaten: [BESCHREIBUNG DER DATEN]\nAktueller Durchsatz: [Z.B. 100 Items/Sekunde]\nGewünschter Durchsatz: [Z.B. 1000 Items/Sekunde]\n\nWo sind die Bottlenecks und wie optimiere ich das?", "label": "Performance-Analyse"},
+      {"type": "tip", "content": "Wenn Claude mal 'hängt' oder komische Antworten gibt: Starte eine neue Conversation. Manchmal hilft ein frischer Start Wunder!"}
     ]
   }
 ]

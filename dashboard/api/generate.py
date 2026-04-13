@@ -15,17 +15,19 @@ from http.server import BaseHTTPRequestHandler
 # ── Claude API ────────────────────────────────────────────────
 
 SYSTEM_PROMPT = """Du bist der Content-Ersteller fuer Miss Agent C (@miss.agent.c).
-Du erstellst EXTREM wertvolle, ausfuehrliche Freebies.
+Du erstellst kompakte, hochwertige Freebies die sofort Mehrwert liefern.
 
-REGELN:
-- Mindestens 5-6 Sektionen, jede mit echtem Mehrwert
-- Praxisnah, keine oberflaechlichen Tipps
-- Jede Sektion hat mehrere Bloecke (text, bullets, numbered, tip, warning, prompt, cards)
+STIL:
+- Kompakt und intensiv — jeder Satz muss Wert liefern, kein Fuelltext
+- Scanbar: Leute LESEN nicht, sie SCANNEN. Nutze Bullets, Cards, kurze Absaetze
+- Max 3-4 Sektionen — lieber weniger aber knackiger
+- Pro Sektion: 1 kurzer Einleitungssatz, dann direkt Bullets/Prompts/Cards
+- Fliesstext MAXIMAL 2 Saetze am Stueck, dann visueller Wechsel
 - Prompts muessen SOFORT kopierbar sein mit [PLATZHALTERN]
-- Deutsch, persoenlich (du-Form), im Stil von Olga
-- Kein Fuelltext, kein generisches KI-Deutsch
-- Sei konkret: Beispiele, Zahlen, Schritt-fuer-Schritt
-- KEINE Backticks (```) innerhalb von JSON-Strings verwenden! Schreibe Code-Beispiele als normalen Text.
+- Deutsch, du-Form, direkt und persoenlich
+- Kein generisches KI-Deutsch (Im heutigen dynamischen... VERBOTEN)
+- Konkret: Beispiele, Zahlen, Copy-Paste-fertig
+- KEINE Backticks innerhalb von JSON-Strings!
 
 AUSGABE: Gib NUR ein JSON-Array zurueck. Kein Markdown, kein Text davor/danach.
 
@@ -54,7 +56,7 @@ def call_claude(briefing, title):
         "system": SYSTEM_PROMPT,
         "messages": [{
             "role": "user",
-            "content": f"Erstelle ein umfangreiches Freebie.\n\nTITEL: {title}\n\nBRIEFING:\n{briefing}\n\nErstelle 5-6 ausfuehrliche Sektionen. Antworte NUR mit dem JSON-Array."
+            "content": f"Erstelle ein kompaktes, wertvolles Freebie.\n\nTITEL: {title}\n\nBRIEFING:\n{briefing}\n\nWICHTIG: Max 3-4 Sektionen. Scanbar, viele Cards/Bullets, wenig Fliesstext. In 3-5 Min lesbar. Antworte NUR mit dem JSON-Array."
         }]
     }
 

@@ -45,16 +45,19 @@ VERCEL_TOKEN = os.environ.get("VERCEL_TOKEN", "")
 # ── Claude API ────────────────────────────────────────────────
 
 SYSTEM_PROMPT = """Du bist der Content-Ersteller für Miss Agent C (@miss.agent.c).
-Du erstellst EXTREM wertvolle, ausführliche Freebies die Follower umhauen.
+Du erstellst kompakte, hochwertige Freebies die sofort Mehrwert liefern.
 
-REGELN:
-- Mindestens 5-8 Sektionen, jede mit echtem Mehrwert
-- Tiefgründig und praxisnah — keine oberflächlichen Tipps
-- Jede Sektion hat mehrere Blöcke (text, bullets, numbered, tip, warning, prompt, cards)
-- Prompts müssen SOFORT kopierbar und einsetzbar sein mit [PLATZHALTERN]
-- Schreibe auf Deutsch, persönlich (du-Form), im Stil von Olga
-- Kein Fülltext, kein generisches KI-Deutsch
-- Sei konkret: Beispiele, Zahlen, Schritt-für-Schritt
+STIL:
+- Kompakt und intensiv — jeder Satz muss Wert liefern, kein Fülltext
+- Scanbar: Leute LESEN nicht, sie SCANNEN. Nutze Bullets, Cards, kurze Absätze
+- Max 3-4 Sektionen — lieber weniger aber knackiger
+- Pro Sektion: 1 kurzer Einleitungssatz, dann direkt Bullets/Prompts/Cards
+- Fließtext MAXIMAL 2 Sätze am Stück, dann visueller Wechsel
+- Prompts müssen SOFORT kopierbar sein mit [PLATZHALTERN]
+- Deutsch, du-Form, direkt und persönlich wie Olga spricht
+- Kein generisches KI-Deutsch ("Im heutigen dynamischen..." VERBOTEN)
+- Konkret: Beispiele, Zahlen, Copy-Paste-fertig
+- KEINE Backticks (```) in JSON-Strings
 
 AUSGABE-FORMAT: Gib NUR gültiges JSON zurück. Kein Markdown, kein Text davor/danach.
 Das JSON muss ein Array von Sektionen sein:
@@ -87,16 +90,20 @@ def generate_content_with_claude(briefing, title):
         system=SYSTEM_PROMPT,
         messages=[{
             "role": "user",
-            "content": f"""Erstelle ein umfangreiches, wertvolles Freebie.
+            "content": f"""Erstelle ein kompaktes, wertvolles Freebie.
 
 TITEL: {title}
 
 BRIEFING:
 {briefing}
 
-Erstelle mindestens 6 ausführliche Sektionen mit echtem Mehrwert.
-Jede Sektion soll mehrere Blöcke haben (Text, Bullets, Prompts, Tipps, etc.).
-Das Freebie muss so gut sein, dass Leute es sofort speichern und teilen wollen.
+WICHTIG:
+- 3-4 Sektionen, NICHT mehr. Qualität vor Quantität.
+- Jede Sektion: 1 kurzer Einleitungssatz, dann sofort Bullets/Prompts/Cards
+- Nutze VIELE Cards und Bullets — wenig Fließtext
+- Alles muss in 3-5 Minuten lesbar sein
+- Jeder Prompt sofort kopierbar mit [PLATZHALTERN]
+- Lieber 1 genialer Tipp als 5 mittelmäßige
 
 Antworte NUR mit dem JSON-Array der Sektionen."""
         }]
