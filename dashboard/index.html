@@ -711,21 +711,62 @@
                     </div>
                 </div>
 
-                <!-- Step 3: Generate -->
+                <!-- Step 3: Deploy -->
                 <div class="form-card">
-                    <h3>Claude Code Befehl</h3>
-                    <p>Kopiere diesen Befehl und füge ihn in Claude Code ein. Claude baut dein Freebie und deployed es automatisch.</p>
+                    <h3>Freebie erstellen</h3>
+                    <p>Ein Klick — dein Freebie wird generiert, deployed und der ManyChat-Redirect aktiviert.</p>
 
-                    <button class="btn btn-primary" onclick="generateCommand()" style="margin-bottom:1rem">
+                    <button class="btn btn-primary" id="deploy-btn" onclick="deployFreebie()" style="margin-bottom:1rem">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                        Befehl generieren
+                        <span id="deploy-btn-text">Freebie erstellen & deployen</span>
                     </button>
 
-                    <div id="command-output" style="display:none">
-                        <div class="output-box" id="command-text">
-                            <button class="copy-output" onclick="copyCommand()">Kopieren</button>
+                    <!-- Progress -->
+                    <div id="deploy-progress" style="display:none">
+                        <div style="background:#f0f4f5;border-radius:10px;padding:1.2rem 1.5rem;margin-bottom:1rem">
+                            <div id="deploy-status" style="font-weight:600;margin-bottom:0.5rem">Wird erstellt...</div>
+                            <div style="background:#e2e8f0;border-radius:6px;height:6px;overflow:hidden">
+                                <div id="deploy-bar" style="background:var(--orange);height:100%;width:0%;transition:width 0.5s ease;border-radius:6px"></div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Success -->
+                    <div id="deploy-success" style="display:none">
+                        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:1.5rem;text-align:center">
+                            <div style="font-size:2.5rem;margin-bottom:0.5rem">🎉</div>
+                            <h3 style="color:#16a34a;margin-bottom:0.5rem">Freebie ist live!</h3>
+                            <p id="deploy-url" style="margin-bottom:1rem"></p>
+                            <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap">
+                                <a id="link-freebie" href="#" target="_blank" class="btn btn-primary">Freebie ansehen</a>
+                                <a id="link-redirect" href="#" target="_blank" class="btn btn-secondary">Redirect testen</a>
+                                <button class="btn btn-outline" onclick="copyUrl()">URL kopieren</button>
+                            </div>
+                            <p id="deploy-keyword" style="margin-top:1rem;font-size:0.85rem;color:var(--text-muted)"></p>
+                        </div>
+                    </div>
+
+                    <!-- Error -->
+                    <div id="deploy-error" style="display:none">
+                        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:14px;padding:1.5rem">
+                            <h3 style="color:#dc2626;margin-bottom:0.5rem">Fehler</h3>
+                            <p id="deploy-error-msg" style="color:#7f1d1d"></p>
+                            <button class="btn btn-outline" onclick="resetDeploy()" style="margin-top:1rem">Nochmal versuchen</button>
+                        </div>
+                    </div>
+
+                    <!-- Fallback: Claude Code -->
+                    <details style="margin-top:1.5rem">
+                        <summary style="font-size:0.85rem;color:var(--text-muted);cursor:pointer">Alternativ: Claude Code Befehl kopieren</summary>
+                        <div style="margin-top:0.75rem">
+                            <button class="btn btn-outline" onclick="generateCommand()" style="margin-bottom:0.5rem">Befehl generieren</button>
+                            <div id="command-output" style="display:none">
+                                <div class="output-box" id="command-text">
+                                    <button class="copy-output" onclick="copyCommand()">Kopieren</button>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </div>
 
@@ -901,6 +942,135 @@ Bitte:
                     document.querySelector('.copy-output').textContent = 'Kopieren';
                 }, 2000);
             });
+        }
+
+        // ── Deploy Freebie ───────────────────
+        let deployedUrl = '';
+
+        async function deployFreebie() {
+            const title = document.getElementById('freebie-title').value.trim();
+            const keyword = (document.getElementById('freebie-keyword').value || 'FREEBIE').toUpperCase().trim();
+            const desc = document.getElementById('freebie-desc').value.trim();
+            const tagsRaw = document.getElementById('freebie-tags').value.trim();
+            const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : [];
+
+            if (!title) {
+                alert('Bitte gib einen Titel ein.');
+                return;
+            }
+
+            // UI: Progress
+            document.getElementById('deploy-btn').disabled = true;
+            document.getElementById('deploy-btn-text').textContent = 'Wird erstellt...';
+            document.getElementById('deploy-progress').style.display = 'block';
+            document.getElementById('deploy-success').style.display = 'none';
+            document.getElementById('deploy-error').style.display = 'none';
+
+            const bar = document.getElementById('deploy-bar');
+            const status = document.getElementById('deploy-status');
+
+            bar.style.width = '20%';
+            status.textContent = 'HTML wird generiert...';
+
+            // Sections aus Beschreibung bauen (einfache Variante)
+            const sections = buildSectionsFromDesc(title, desc);
+
+            try {
+                bar.style.width = '40%';
+                status.textContent = 'Wird auf Vercel deployed...';
+
+                const resp = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        title: title,
+                        keyword: keyword,
+                        description: desc || 'Ein Freebie von Miss Agent C',
+                        sections: sections,
+                        tags: tags,
+                        heroColor: selectedColor,
+                    })
+                });
+
+                bar.style.width = '80%';
+                status.textContent = 'Redirect wird aktualisiert...';
+
+                const result = await resp.json();
+
+                if (result.success) {
+                    bar.style.width = '100%';
+                    status.textContent = 'Fertig!';
+                    deployedUrl = result.freebie_url;
+
+                    setTimeout(() => {
+                        document.getElementById('deploy-progress').style.display = 'none';
+                        document.getElementById('deploy-success').style.display = 'block';
+                        document.getElementById('deploy-url').innerHTML =
+                            `<a href="${result.freebie_url}" target="_blank" style="color:var(--orange);font-weight:600">${result.freebie_url}</a>`;
+                        document.getElementById('link-freebie').href = result.freebie_url;
+                        document.getElementById('link-redirect').href = result.redirect_url;
+                        document.getElementById('deploy-keyword').textContent =
+                            `ManyChat-Keyword: ${result.keyword} — Redirect: ${result.redirect_url}`;
+
+                        // Freebie zur Liste hinzufügen
+                        FREEBIES.push({
+                            name: result.name,
+                            title: result.title,
+                            keyword: result.keyword,
+                            desc: desc,
+                            url: result.freebie_url,
+                            color: selectedColor,
+                            status: 'live',
+                            date: new Date().toISOString().split('T')[0]
+                        });
+                        renderFreebies();
+                        document.getElementById('stat-total').textContent = FREEBIES.length;
+                    }, 500);
+                } else {
+                    throw new Error(result.error || 'Unbekannter Fehler');
+                }
+            } catch (err) {
+                document.getElementById('deploy-progress').style.display = 'none';
+                document.getElementById('deploy-error').style.display = 'block';
+                document.getElementById('deploy-error-msg').textContent = err.message;
+            }
+
+            document.getElementById('deploy-btn').disabled = false;
+            document.getElementById('deploy-btn-text').textContent = 'Freebie erstellen & deployen';
+        }
+
+        function resetDeploy() {
+            document.getElementById('deploy-error').style.display = 'none';
+            document.getElementById('deploy-progress').style.display = 'none';
+        }
+
+        function copyUrl() {
+            navigator.clipboard.writeText(deployedUrl).then(() => {
+                alert('URL kopiert!');
+            });
+        }
+
+        function buildSectionsFromDesc(title, desc) {
+            // Baue einfache Sektionen aus der Beschreibung
+            if (!desc) return [{
+                title: 'Willkommen',
+                blocks: [
+                    {type: 'text', content: `Willkommen zu: ${title}. Dieses Freebie wurde erstellt von Miss Agent C.`},
+                    {type: 'tip', content: 'Speichere diese Seite ab und komm immer wieder darauf zurück!'}
+                ]
+            }];
+
+            // Wenn die Beschreibung Zeilen mit - enthält, mach daraus Bullet-Points
+            const lines = desc.split('\n').filter(l => l.trim());
+            const bullets = lines.filter(l => l.trim().startsWith('-')).map(l => l.trim().replace(/^-\s*/, ''));
+            const text = lines.filter(l => !l.trim().startsWith('-')).join(' ');
+
+            const blocks = [];
+            if (text) blocks.push({type: 'text', content: text});
+            if (bullets.length) blocks.push({type: 'bullets', items: bullets});
+            blocks.push({type: 'tip', content: 'Für tiefgehende Inhalte verwende "Claude recherchiert" und kopiere den Befehl in Claude Code.'});
+
+            return [{title: 'Überblick', blocks: blocks}];
         }
 
         // ── Render Freebie List ───────────────
