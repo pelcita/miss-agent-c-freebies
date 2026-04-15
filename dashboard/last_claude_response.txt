@@ -1,167 +1,50 @@
 [
   {
-    "title": "Was ist Claude und warum solltest du es nutzen?",
+    "title": "Dein kompletter Content-Stack. Kostenlos.",
     "blocks": [
-      {"type": "text", "content": "Claude ist der KI-Assistent von Anthropic - und ehrlich gesagt mein absoluter Favorit für komplexe Aufgaben. Während ChatGPT oft oberflächlich bleibt, geht Claude richtig in die Tiefe. Besonders beim Programmieren ist Claude ein absoluter Game-Changer."},
+      {"type": "text", "content": "Einmal installiert. Null Abos. Claude Code verwandelt sich in deine komplette Content-Zentrale."},
       {"type": "cards", "items": [
-        {"icon": "💡", "title": "Besseres Verständnis", "desc": "Claude versteht Kontext und Nuancen deutlich besser"},
-        {"icon": "🔧", "title": "Code-Expertise", "desc": "Schreibt sauberen, funktionalen Code in allen Sprachen"},
-        {"icon": "🎯", "title": "Präzise Antworten", "desc": "Weniger Halluzinationen, mehr Fakten"},
-        {"icon": "📚", "title": "Längere Gespräche", "desc": "Behält Kontext über sehr lange Unterhaltungen"}
+        {"icon": "🎨", "title": "Frontend Design", "desc": "Websites in Produktionsqualität — Anthropic offiziell"},
+        {"icon": "🖼️", "title": "Canvas Design", "desc": "Profi-Grafiken per Prompt — Anthropic offiziell"},
+        {"icon": "📝", "title": "claude-blog", "desc": "22 Befehle für Blog + SEO — 483 ⭐ auf GitHub"},
+        {"icon": "📈", "title": "Marketing Skills", "desc": "43 Skills für Content & Growth — 21K ⭐ auf GitHub"},
+        {"icon": "🎯", "title": "Theme Factory", "desc": "10 Profi-Themes für alles — Anthropic offiziell"}
       ]},
-      {"type": "subtitle", "content": "Der Unterschied zu ChatGPT"},
-      {"type": "text", "content": "Während ChatGPT oft versucht zu gefallen und manchmal Unsinn erzählt, ist Claude ehrlicher. Er sagt dir, wenn er etwas nicht weiß, und seine Code-Vorschläge funktionieren meistens auf Anhieb. Das spart dir STUNDEN an Debugging."},
-      {"type": "tip", "content": "Claude ist besonders stark bei: Code-Reviews, Debugging, komplexen Erklärungen, ethischen Fragen und langen, strukturierten Texten."}
+      {"type": "tip", "content": "Alle Skills sind open source und MIT-lizensiert. Einmal installiert, funktionieren sie offline."}
     ]
   },
   {
-    "title": "Claude-Konto einrichten - Schritt für Schritt",
+    "title": "Die 3 Must-Have Skills zuerst",
     "blocks": [
-      {"type": "text", "content": "Die Anmeldung bei Claude ist simpel, aber es gibt ein paar Tricks, die du wissen solltest, um das Maximum rauszuholen."},
-      {"type": "numbered", "items": [
-        "Gehe zu claude.ai und klicke auf 'Sign Up'",
-        "Verwende deine beste E-Mail-Adresse (nicht die Spam-Adresse!)",
-        "Bestätige deine E-Mail - check auch den Spam-Ordner",
-        "Wähle deinen Anzeigenamen klug - Claude merkt sich, wie du heißt",
-        "Aktiviere 2-Faktor-Authentifizierung für Sicherheit"
-      ]},
-      {"type": "warning", "content": "WICHTIG: Claude ist regional begrenzt. Falls du eine Fehlermeldung bekommst, nutze ein VPN mit US- oder UK-Server."},
-      {"type": "subtitle", "content": "Free vs. Pro - Was lohnt sich?"},
-      {"type": "bullets", "items": [
-        "Free: 5 Nachrichten pro Stunde, begrenzt auf einfache Aufgaben",
-        "Pro (20$/Monat): Unbegrenzte Nachrichten, Zugang zu Claude 3 Opus",
-        "Pro lohnt sich ab 10+ Stunden Nutzung pro Woche",
-        "Für Code-Projekte ist Pro fast Pflicht"
-      ]},
-      {"type": "tip", "content": "Teste Claude erstmal kostenlos für eine Woche. Wenn du merkst, dass du dauernd ans Limit stößt, upgrade auf Pro."}
-    ]
-  },
-  {
-    "title": "Die Claude-Oberfläche verstehen",
-    "blocks": [
-      {"type": "text", "content": "Claude's Interface ist minimalistisch - aber hinter der einfachen Oberfläche steckt viel Power. Hier zeige ich dir, wo alles ist und wie du es optimal nutzt."},
+      {"type": "text", "content": "Start mit diesen 3 — sie decken 80% deiner Creator-Needs ab:"},
       {"type": "cards", "items": [
-        {"icon": "💬", "title": "Chat-Bereich", "desc": "Hier tippst du deine Prompts - unterstützt auch sehr lange Texte"},
-        {"icon": "📋", "title": "Conversation History", "desc": "Links findest du alle deine Gespräche der letzten Zeit"},
-        {"icon": "⚙️", "title": "Settings", "desc": "Minimale Einstellungen - Claude ist absichtlich simpel gehalten"},
-        {"icon": "🔄", "title": "New Conversation", "desc": "Startet fresh - wichtig für neue Themen"}
-      ]},
-      {"type": "subtitle", "content": "Pro-Tipps für die Navigation"},
-      {"type": "bullets", "items": [
-        "Nutze Cmd/Ctrl + K für schnelle Navigation",
-        "Lange Gespräche werden automatisch gespeichert",
-        "Du kannst Conversations umbenennen für bessere Organisation",
-        "Copy-Paste funktioniert perfekt - auch für Code-Blöcke"
-      ]},
-      {"type": "tip", "content": "Organisiere deine Gespräche nach Projekten. Benenne sie um in 'Website Redesign', 'Python Learning' etc. - das spart später viel Zeit beim Wiederfinden."}
+        {"icon": "🎨", "title": "Frontend Design", "desc": "Schluss mit KI-Einheitslook. Echte Design-Systeme für Landing Pages und Dashboards. Brutalist, Retro-Futurist oder Minimalist — Claude wählt eine klare Richtung statt generischer Optik."},
+        {"icon": "📝", "title": "claude-blog", "desc": "Ein Befehl, ein Artikel. /blog write [DEIN THEMA] — Claude recherchiert, schreibt und optimiert. SEO für Google UND KI-Zitierplattformen wie ChatGPT."},
+        {"icon": "📈", "title": "Marketing Skills", "desc": "LinkedIn-Carousels, Instagram-Captions, Twitter-Threads. 43 Skills für Content-Kalender bis Performance-Analyse als wiederholbare Workflows."}
+      ]}
     ]
   },
   {
-    "title": "Die ersten Prompts - So startest du richtig",
+    "title": "Power-Combo: Canvas + Theme Factory",
     "blocks": [
-      {"type": "text", "content": "Der erste Eindruck zählt - auch bei Claude. Mit den richtigen Starter-Prompts legst du den Grundstein für produktive Gespräche. Hier sind meine bewährtesten Einstiegs-Prompts."},
-      {"type": "subtitle", "content": "Der perfekte Kennenlern-Prompt"},
-      {"type": "prompt", "content": "Hi Claude! Ich bin [DEIN NAME] und arbeite als [DEINE ROLLE/BERUF]. Ich möchte dich als meinen KI-Assistenten für [HAUPTZWECK] nutzen. Kannst du mir kurz erklären, wie du am besten bei [SPEZIFISCHER AUFGABE] hilfst und was ich beachten sollte?", "label": "Kennenlern-Prompt"},
-      {"type": "subtitle", "content": "Code-spezifische Starter"},
-      {"type": "prompt", "content": "Ich bin [ERFAHRUNGSLEVEL] in [PROGRAMMIERSPRACHE] und möchte [PROJEKT/ZIEL] umsetzen. Kannst du mir dabei helfen und dabei erklären, warum du bestimmte Ansätze wählst? Ich lerne gerne die Logik dahinter.", "label": "Code-Lern-Prompt"},
-      {"type": "prompt", "content": "Ich habe ein Problem mit meinem [SPRACHE]-Code. Er soll [GEWÜNSCHTE FUNKTION], aber [AKTUELLES PROBLEM]. Kannst du den Code reviewen und Verbesserungsvorschläge machen?\n\n```[SPRACHE]\n[DEIN CODE HIER]\n```", "label": "Code-Review-Prompt"},
-      {"type": "tip", "content": "Claude liebt Kontext! Je mehr Details du über dein Projekt, dein Skill-Level und deine Ziele gibst, desto bessere Hilfe bekommst du."},
-      {"type": "warning", "content": "Vermeide zu generische Prompts wie 'Hilf mir beim Programmieren'. Sei spezifisch - Claude kann dann viel gezielter helfen."}
-    ]
-  },
-  {
-    "title": "Claude für Code - Die ultimativen Prompts",
-    "blocks": [
-      {"type": "text", "content": "Hier kommt der Goldschatz: Meine besten Code-Prompts, die ich täglich nutze. Diese Prompts sind erprobt und bringen sofort Ergebnisse. Kopiere sie einfach und passe sie an deine Needs an."},
-      {"type": "subtitle", "content": "Code schreiben lassen"},
-      {"type": "prompt", "content": "Schreibe mir eine [SPRACHE]-Funktion, die [GEWÜNSCHTE FUNKTIONALITÄT] macht. \n\nAnforderungen:\n- [SPEZIFISCHE ANFORDERUNG 1]\n- [SPEZIFISCHE ANFORDERUNG 2]\n- Kommentiere den Code ausführlich\n- Zeige mir auch ein Verwendungsbeispiel\n\nZielgruppe: [ANFÄNGER/FORTGESCHRITTEN/EXPERTE]", "label": "Code-Generator"},
-      {"type": "subtitle", "content": "Code optimieren"},
-      {"type": "prompt", "content": "Analysiere meinen [SPRACHE]-Code und optimiere ihn für [PERFORMANCE/LESBARKEIT/SPEICHER/SICHERHEIT]:\n\n```[SPRACHE]\n[DEIN CODE]\n```\n\nBitte erkläre:\n1. Was du geändert hast und warum\n2. Welche Performance-Verbesserungen zu erwarten sind\n3. Alternative Ansätze, die ich überdenken könnte", "label": "Code-Optimizer"},
-      {"type": "subtitle", "content": "Fehler finden und beheben"},
-      {"type": "prompt", "content": "Mein [SPRACHE]-Code wirft folgenden Fehler: '[FEHLERMELDUNG]'\n\n```[SPRACHE]\n[DEIN CODE]\n```\n\nErwartetes Verhalten: [BESCHREIBUNG]\nTatsächliches Verhalten: [BESCHREIBUNG]\n\nBitte finde den Fehler, erkläre die Ursache und gib mir die korrigierte Version.", "label": "Bug-Killer"},
-      {"type": "subtitle", "content": "Code verstehen lernen"},
-      {"type": "prompt", "content": "Erkläre mir diesen [SPRACHE]-Code Schritt für Schritt, als wäre ich [DEIN LEVEL]:\n\n```[SPRACHE]\n[CODE ZUM VERSTEHEN]\n```\n\nBitte erkläre:\n- Was jede Zeile macht\n- Warum bestimmte Entscheidungen getroffen wurden\n- Welche Konzepte ich lernen sollte, um solchen Code selbst zu schreiben", "label": "Code-Erklärer"}
-    ]
-  },
-  {
-    "title": "Erweiterte Techniken für Profis",
-    "blocks": [
-      {"type": "text", "content": "Jetzt wird's interessant! Diese Advanced-Techniken nutzen die wahre Power von Claude aus. Damit holst du das Maximum aus jedem Gespräch raus."},
-      {"type": "subtitle", "content": "Multi-Step Prompting"},
-      {"type": "text", "content": "Statt alles auf einmal zu fragen, teile komplexe Aufgaben in Schritte auf. Claude arbeitet dann systematischer und macht weniger Fehler."},
-      {"type": "prompt", "content": "Ich möchte eine [BESCHREIBUNG DER APP/WEBSITE] erstellen. Lass uns das Schritt für Schritt angehen:\n\nSchritt 1: Hilf mir erstmal bei der Architektur - welche Komponenten brauche ich und wie hängen sie zusammen?\n\n(Warte auf Antwort, dann weiter mit Schritt 2)", "label": "Multi-Step Starter"},
-      {"type": "subtitle", "content": "Context Stacking"},
-      {"type": "text", "content": "Claude hat ein riesiges Gedächtnis. Nutze das! Baue Kontext über mehrere Nachrichten auf, statt alles neu zu erklären."},
-      {"type": "bullets", "items": [
-        "Beginne Gespräche mit 'Basierend auf unserem letzten Gespräch...'",
-        "Referenziere frühere Code-Beispiele: 'Wie die Funktion von vorhin...'",
-        "Baue auf vorherigen Lösungen auf: 'Erweitere das um...'",
-        "Claude merkt sich den gesamten Conversation-Thread"
-      ]},
-      {"type": "subtitle", "content": "Code-Review wie ein Senior Developer"},
-      {"type": "prompt", "content": "Führe ein professionelles Code-Review für meinen [SPRACHE]-Code durch:\n\n```[SPRACHE]\n[DEIN CODE]\n```\n\nBitte prüfe auf:\n✅ Code-Qualität und Best Practices\n✅ Performance-Issues\n✅ Sicherheitslücken\n✅ Maintainability\n✅ Potential für Refactoring\n\nGib mir konkrete Verbesserungsvorschläge mit Code-Beispielen.", "label": "Senior Code Review"},
-      {"type": "tip", "content": "Pro-Tipp: Nutze Claude als Pair-Programming-Partner. Erkläre ihm deine Denkweise, lass ihn Feedback geben und diskutiere Alternativen. Das macht dich zum besseren Programmierer!"}
-    ]
-  },
-  {
-    "title": "Claude in deinen Workflow integrieren",
-    "blocks": [
-      {"type": "text", "content": "Die wahre Magic passiert, wenn Claude Teil deines täglichen Workflows wird. Hier zeige ich dir, wie du Claude strategisch einsetzt, um produktiver zu werden - ohne süchtig zu werden."},
-      {"type": "subtitle", "content": "Der optimale Tagesablauf mit Claude"},
+      {"type": "text", "content": "Für Creator die visuell arbeiten — diese beiden ergänzen sich perfekt:"},
       {"type": "cards", "items": [
-        {"icon": "🌅", "title": "Morgens", "desc": "Plane deinen Tag: 'Claude, ich hab heute [AUFGABEN]. Wie strukturiere ich das am besten?'"},
-        {"icon": "💻", "title": "Beim Coden", "desc": "Claude als Pair-Partner: Erkläre deine Probleme, diskutiere Lösungen, lass reviewen"},
-        {"icon": "🔍", "title": "Beim Debugging", "desc": "Schneller Fehler finden: Paste deinen Code + Fehlermeldung, spare Stunden"},
-        {"icon": "📚", "title": "Zum Lernen", "desc": "Neue Konzepte verstehen: 'Erkläre mir X, als wäre ich [DEIN LEVEL]'"}
+        {"icon": "🖼️", "title": "Canvas Design", "desc": "Grafiken wie vom Profi-Designer. Zwei-Phasen-Prozess: Erst Design-Philosophie, dann hochwertige Visuals als PNG oder PDF. Kein Canva nötig."},
+        {"icon": "🎯", "title": "Theme Factory", "desc": "10 kuratierte Profi-Themes: Ocean Depths, Tech Innovation, Midnight Galaxy. Ein Theme wählen, überall anwenden — Slides, Docs, Landing Pages."}
       ]},
-      {"type": "subtitle", "content": "Organisiere deine Claude-Gespräche"},
-      {"type": "bullets", "items": [
-        "Ein Gespräch pro Projekt - nicht alles durcheinander mischen",
-        "Benenne Conversations sinnvoll: 'React Dashboard', 'Python API', etc.",
-        "Starte neue Conversations für komplett neue Themen",
-        "Nutze ein Gespräch für verwandte Probleme (z.B. verschiedene Bugs im selben Projekt)"
-      ]},
-      {"type": "subtitle", "content": "Die goldenen Regeln für nachhaltigen Claude-Einsatz"},
-      {"type": "numbered", "items": [
-        "Versuche erstmal selbst - Claude soll helfen, nicht ersetzen",
-        "Verstehe die Lösungen, die Claude gibt - copy-paste ist nicht lernen",
-        "Nutze Claude für Inspiration und Diskussion, nicht als Wahrheitsquelle",
-        "Teste Claude's Code immer - auch KI macht Fehler",
-        "Kombiniere mehrere Quellen - Claude + Docs + Stack Overflow"
-      ]},
-      {"type": "warning", "content": "Vorsicht vor KI-Abhängigkeit! Claude soll deine Fähigkeiten verstärken, nicht ersetzen. Bleib kritisch und lerne weiter die Grundlagen."},
-      {"type": "tip", "content": "Mein Geheimtipp: Führe ein 'Claude-Tagebuch'. Notiere dir die besten Prompts und Lösungen. Nach einem Monat hast du eine Gold-Mine an wiederverwendbaren Prompts!"}
+      {"type": "tip", "content": "Pro-Tipp: Theme Factory Theme wählen, dann Canvas Design für Social Media Visuals nutzen — perfekt konsistentes Branding."}
     ]
   },
   {
-    "title": "Troubleshooting und häufige Probleme",
+    "title": "Installation — Copy & Paste",
     "blocks": [
-      {"type": "text", "content": "Auch mit Claude läuft nicht immer alles glatt. Hier sind die häufigsten Probleme und wie du sie löst - damit du nicht stundenlang rumtüftelst."},
-      {"type": "subtitle", "content": "Claude antwortet nicht oder macht Fehler"},
-      {"type": "cards", "items": [
-        {"icon": "🚫", "title": "Rate Limit erreicht", "desc": "Warte 1 Stunde oder upgrade auf Pro. Bei Pro fast nie ein Problem."},
-        {"icon": "🔄", "title": "Claude 'vergisst' Kontext", "desc": "Gespräch ist zu lang. Starte neu und fasse wichtige Punkte zusammen."},
-        {"icon": "❌", "title": "Fehlende Details", "desc": "Claude braucht mehr Kontext. Sei spezifischer in deinen Prompts."},
-        {"icon": "🤖", "title": "Generische Antworten", "desc": "Prompt ist zu vague. Frage konkreter und gib Beispiele."}
-      ]},
-      {"type": "subtitle", "content": "Code funktioniert nicht"},
-      {"type": "bullets", "items": [
-        "Gib Claude das komplette Error-Log - nicht nur die erste Zeile",
-        "Zeige den vollständigen Code-Kontext, nicht nur das Problem-Snippet",
-        "Erwähne deine Umgebung: Python-Version, Browser, OS, etc.",
-        "Beschreibe genau, was du erwartest vs. was passiert"
-      ]},
-      {"type": "subtitle", "content": "Regionale Beschränkungen umgehen"},
-      {"type": "text", "content": "Falls Claude in deinem Land nicht verfügbar ist, gibt es legale Workarounds:"},
-      {"type": "numbered", "items": [
-        "Nutze ein VPN mit US- oder UK-Server (ExpressVPN, NordVPN)",
-        "Stelle sicher, dass dein VPN auch DNS-Queries routet",
-        "Lösche Browser-Cookies und Cache nach VPN-Aktivierung",
-        "Manche Mobile-Apps funktionieren auch ohne VPN"
-      ]},
-      {"type": "subtitle", "content": "Performance-Probleme beheben"},
-      {"type": "prompt", "content": "Claude, mein Code ist langsam:\n\n```[SPRACHE]\n[LANGSAMER CODE]\n```\n\nTestdaten: [BESCHREIBUNG DER DATEN]\nAktueller Durchsatz: [Z.B. 100 Items/Sekunde]\nGewünschter Durchsatz: [Z.B. 1000 Items/Sekunde]\n\nWo sind die Bottlenecks und wie optimiere ich das?", "label": "Performance-Analyse"},
-      {"type": "tip", "content": "Wenn Claude mal 'hängt' oder komische Antworten gibt: Starte eine neue Conversation. Manchmal hilft ein frischer Start Wunder!"}
+      {"type": "text", "content": "Öffne Claude Code → tippe /plugin → Discover Tab → kopiere die Befehle:"},
+      {"type": "prompt", "content": "/plugin marketplace add anthropics/skills\n/plugin install frontend-design", "label": "Frontend Design"},
+      {"type": "prompt", "content": "/plugin marketplace add anthropics/skills\n/plugin install canvas-design", "label": "Canvas Design"},
+      {"type": "prompt", "content": "/plugin marketplace add AgriciDaniel/claude-blog", "label": "claude-blog"},
+      {"type": "prompt", "content": "/plugin marketplace add coreyhaines31/marketingskills", "label": "Marketing Skills"},
+      {"type": "prompt", "content": "/plugin marketplace add anthropics/skills\n/plugin install theme-factory", "label": "Theme Factory"},
+      {"type": "warning", "content": "claude-blog braucht Python 3.11+ für Analyse-Features. Andere Skills funktionieren ohne zusätzliche Software."}
     ]
   }
 ]

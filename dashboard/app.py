@@ -544,11 +544,14 @@ def api_generate():
             print(f"🔄 Aktualisiere Redirect für {keyword}...")
             redirect_result = update_redirect_file(keyword, freebie_url)
 
-        # 5. Sections speichern für späteren Zugriff
+        # 5. Sections + Briefing speichern
         sections_dir = BASE_DIR / "examples"
         sections_dir.mkdir(exist_ok=True)
         (sections_dir / f"{name}-sections.json").write_text(
             json.dumps(sections, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
+        (sections_dir / f"{name}-meta.json").write_text(
+            json.dumps({"title": title, "keyword": keyword, "briefing": briefing or description, "heroColor": hero_color}, ensure_ascii=False, indent=2), encoding="utf-8"
         )
 
         return jsonify({
@@ -581,6 +584,15 @@ def api_pdf_download(name):
     if pdf_files:
         return send_file(str(pdf_files[0]), as_attachment=True)
     return jsonify({"error": "PDF nicht gefunden"}), 404
+
+
+@app.route("/api/sections/<name>")
+def api_sections(name):
+    """Gibt Briefing/Meta-Daten eines Freebies zurück."""
+    meta_file = BASE_DIR / "examples" / f"{name}-meta.json"
+    if meta_file.exists():
+        return jsonify(json.loads(meta_file.read_text(encoding="utf-8")))
+    return jsonify({}), 404
 
 
 @app.route("/api/freebies", methods=["GET"])

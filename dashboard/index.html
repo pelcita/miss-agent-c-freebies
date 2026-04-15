@@ -1196,9 +1196,31 @@ Bitte:
                     <div class="freebie-actions">
                         <a href="${f.url || '/' + f.name + '/index.html'}" target="_blank">Ansehen</a>
                         <button onclick="copyText(null, '${f.url || ''}')" style="padding:0.5rem 0.8rem;border-radius:8px;font-size:0.8rem;font-weight:600;color:var(--orange);border:1px solid var(--border);background:none;cursor:pointer">Link</button>
+                        <button onclick="editFreebie('${f.name}', '${(f.title || f.name).replace(/'/g, '')}')" style="padding:0.5rem 0.8rem;border-radius:8px;font-size:0.8rem;font-weight:600;color:var(--sky);border:1px solid var(--border);background:none;cursor:pointer">Bearbeiten</button>
+                        <button onclick="deleteFreebie('${f.name}')" style="padding:0.5rem 0.8rem;border-radius:8px;font-size:0.8rem;font-weight:600;color:#ef4444;border:1px solid var(--border);background:none;cursor:pointer">X</button>
                     </div>
                 </div>
             `).join('');
+        }
+
+        function editFreebie(name, title) {
+            // Wechsle zur Erstellen-Seite mit vorausgefüllten Daten
+            showPage('create');
+            document.getElementById('freebie-title').value = title;
+
+            // Lade existierende sections.json falls vorhanden
+            fetch('/api/sections/' + name)
+                .then(r => r.ok ? r.json() : null)
+                .then(data => {
+                    if (data && data.briefing) {
+                        selectMethod('research');
+                        document.getElementById('research-topic').value = data.briefing;
+                    }
+                })
+                .catch(() => {});
+
+            // Hinweis anzeigen
+            alert('Freebie "' + title + '" wird bearbeitet. Passe dein Briefing an und klick erneut auf "Freebie erstellen & deployen". Die alte Version wird überschrieben.');
         }
 
         async function deleteFreebie(name) {
